@@ -1,0 +1,49 @@
+.App {
+  margin: 10px;
+}
+
+.AppHeader {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: large;
+}
+
+.App-link {
+  color: #fbb361;
+}
+
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a {
+  display: block;
+  color: rgb(238, 159, 159);
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background-color: rgb(22, 10, 10);
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

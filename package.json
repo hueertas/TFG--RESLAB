@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "create-react-app": "^4.0.2",
+    "truffle": "^5.1.66"
+  }
 }
