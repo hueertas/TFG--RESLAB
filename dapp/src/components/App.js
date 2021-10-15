@@ -1,15 +1,21 @@
 
 import {DrizzleContext} from "@drizzle/react-plugin";
-import Header from './Header';
-import Asignaturas from './Asignaturas/Asignaturas';
-import Alumnos from "./Alumnos/Alumnos";
-import Reservas from "./Reservas/Reservas";
-import Profesores from "./Profesores/Profesores";
+
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from "react-router-dom";
+
+
+
+
+import Header from './Header';
+import Asignaturas from './Asignaturas/Asignaturas';
+import Alumnos from "./Alumnos/Alumnos";
+import Reservas from "./Reservas/Reservas";
+import Profesores from "./Profesores/Profesores";
+
 
 
 import '../css/App.css';

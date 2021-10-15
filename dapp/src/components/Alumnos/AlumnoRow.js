@@ -10,7 +10,7 @@ const AlumnoRow = (props) => {
         <ContractData
             drizzle={drizzle}
             drizzleState={drizzleState}
-            contract={"reslabetsit"}
+            contract={"ReslabEtsit"}
             method={"datosAlumno"}
             methodArgs={[alumnoAddr]}
             render={datos => <>

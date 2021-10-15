@@ -8,22 +8,24 @@ const Header = () => (
    );
    export default Header;
 
-   /*import {newContextComponents} from "@drizzle/react-components";
+  /* import {newContextComponents} from "@drizzle/react-components";
    const {ContractData} = newContextComponents;
    
    const Header = props => (
        <header className="AppHeader">
            <h1>
-               Reservas-laboratorio-ETSIT : &nbsp;
+               Reservas-laboratorio-ETSIT :&nbsp;
                <ContractData
                    drizzle={props.drizzle}
                    drizzleState={props.drizzleState}
-                   contract={"reslabetsit"}
+                   contract={"ReslabEtsit"}
                    method={"nombre"}
                />
+               
+
               
            </h1>
        </header>
    );
    
-   export default Header;*/
+   export default Header; //??????????????????????????????????????*/

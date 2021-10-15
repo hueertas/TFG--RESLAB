@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT >=0.7.4 <0.9.0;
 pragma solidity >=0.7.4 <0.9.0;
 
 contract Migrations {

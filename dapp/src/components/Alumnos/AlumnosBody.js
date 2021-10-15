@@ -11,7 +11,7 @@ const AlumnosBody = (props) => {
         rows.push(<ContractData
             drizzle={drizzle}
             drizzleState={drizzleState}
-            contract={"reslabetsit"}
+            contract={"ReslabEtsit"}
             method={"matriculas"}
             methodArgs={[i]}
             render={addr => <AlumnoRow drizzle={drizzle}
