@@ -1,6 +1,10 @@
 
 import {DrizzleContext} from "@drizzle/react-plugin";
 
+import React from 'react';
+import '../css/App.css';
+import AppVisual from "./AppVisual";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -65,7 +69,7 @@ function App() {
                    <Profesores drizzle={drizzle} drizzleState={drizzleState}/>
               </Route>
               <Route path="/MisReservas/">
-                   <Reservas drizzle={drizzle} drizzleState={drizzleState}/>
+                   <AppVisual drizzle={drizzle} drizzleState={drizzleState}/>
               </Route>
             </Router>
               

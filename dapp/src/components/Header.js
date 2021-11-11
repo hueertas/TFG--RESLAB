@@ -8,6 +8,9 @@ const Header = () => (
    );
    export default Header;
 
+
+   //METER IMAGEN !
+
   /* import {newContextComponents} from "@drizzle/react-components";
    const {ContractData} = newContextComponents;
    
