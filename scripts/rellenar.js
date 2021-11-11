@@ -64,3 +64,6 @@ module.exports = async callback => {
 //npx truffle migrate
 //npx truffle migrate --reset --compile-all
 //npx truffle exec scripts/rellenar.js
+
+//errores
+
