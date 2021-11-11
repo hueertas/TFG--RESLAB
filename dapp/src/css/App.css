@@ -55,6 +55,13 @@ table {
  }
 
 
+ .TextoAppVisual {
+  position: absolute;
+  top: 160px;
+  left: 200px;
+  }
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

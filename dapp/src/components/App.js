@@ -13,7 +13,7 @@ import {
 import Header from './Header';
 import Asignaturas from './Asignaturas/Asignaturas';
 import Alumnos from "./Alumnos/Alumnos";
-import Reservas from "./Reservas/Reservas";
+import Reservas from "./MisReservas/MisReservas";
 import Profesores from "./Profesores/Profesores";
 
 
@@ -29,7 +29,7 @@ const Navegacion = () => (
           <li><Link to="/asignaturas/">Asignaturas</Link></li>
           <li><Link to="/alumnos/">Alumnos</Link></li>
           <li><Link to="/profesores/">Profesores</Link></li>
-          <li><Link to="/reservas/">Reservas</Link></li>
+          <li><Link to="/MisReservas/">Mis Reservas</Link></li>
           </ul>
     </nav>
 );
@@ -64,7 +64,7 @@ function App() {
               <Route path="/profesores/">
                    <Profesores drizzle={drizzle} drizzleState={drizzleState}/>
               </Route>
-              <Route path="/reservas/">
+              <Route path="/MisReservas/">
                    <Reservas drizzle={drizzle} drizzleState={drizzleState}/>
               </Route>
             </Router>

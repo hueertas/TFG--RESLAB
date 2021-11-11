@@ -1,4 +1,5 @@
 pragma solidity ^0.7.4;
+pragma experimental ABIEncoderV2;//enabled when passing an array of string(struct) as a function paramete
 
 
 /*
@@ -51,26 +52,31 @@ contract ReslabEtsit {
     
     
     /// puestos de la asignatura.
-    Puesto[] public puestos;
+   // Puesto[] public puestos;
     
     //labs de la asignatura
     
-    Laboratorio[] public laboratorios;
-    
-    
-     struct Laboratorio {
-        string nombre;
+   // Laboratorio[] public laboratorios;
+   
+   
+    /**
+    * datos de todos los labs con sus parametro en la pantalla de inicio
+    * DUDA -> QUIERO PONERARRAY DE STRING DE ASIGNATURA!!
+    **/
+     struct DatosLaboratorio {
         uint labId;
-        uint maxPuestos;
+        string nombreL;
+        //string[] asignaturaL;
+       
     }
     
-
-    /*struct Laboratorio{
-        string nombre;
-        
-        
-        
-    }*/
+    /**
+    * datos del alumno que se registra 
+    **/
+   // datos persona 
+    struct DatosPersona {
+	address dir;
+    }
 
     /// Datos de un alumno.
     struct DatosAlumno {
@@ -78,6 +84,11 @@ contract ReslabEtsit {
         string email;
         
     }
+    
+    /**
+     * Datos profe que se registra 
+     * */
+     
     
     struct DatosProfesor{
         string nombreP;
@@ -87,14 +98,61 @@ contract ReslabEtsit {
     }
     
     
-    struct DatosAsignatura{
+    
+    /**
+     * Datos de lasegunda pantalla donde te aparcene el estado de reserva, puestos etc del lab)
+     * */
+    struct PinchaLab {
+        
+	address dir;
+	
+	string fecha;
+	string entradaTurno;
+	string salidaTurno;
+	string puesto;
+        
+	string estado;
+	string asignatura;
+	string info; //enumerado del sistema operativo!!!!!!!!!!!
+    }
+    
+   /* struct DatosAsignatura{
         string nombre;
         Laboratorio[] laboratorio;
         Puesto[] puesto;
         //credito semanal
         //Matriculas matriculados;
     }
+    */
     
+    
+    
+    /**
+     * Datos de los datos de las ultimas reservas registradas // FALTAN PUESTO
+     * */
+     
+     struct UltimaReserva{
+         string lab;
+         uint turno;
+         string fecha;
+         
+         
+     }
+     
+     /**
+      * Datos de mireserva //FALTA PUESTO
+      * */
+      
+      struct ReservaAlumno{
+          string lab;
+          string fecha;
+          uint estado;
+          //string puesto;
+
+      }
+      
+      // acceder a los datos de una persona dada su direccion
+      mapping (address => DatosPersona) public datosPersona;
     
     /// Acceder a los datos de un alumno dada su direccion.
     mapping (address => DatosAlumno) public datosAlumno;
@@ -102,9 +160,12 @@ contract ReslabEtsit {
       /// Acceder a los datos de un profe dada su direccion.
     mapping (address => DatosProfesor) public datosProfesor;
     
-    mapping (address => DatosAsignatura)  datosAsignatura;
+    //mapping (address => DatosAsignatura)  datosAsignatura;
     
-    mapping(uint => Laboratorio) public labPuestos; //acceder a los puestos del lab dada la info del lab
+    
+    mapping (address => DatosLaboratorio)  datosLaboratorio;
+
+    //mapping(uint => Laboratorio) public labPuestos; //acceder a los puestos del lab dada la info del lab
   
 
     
@@ -118,43 +179,68 @@ contract ReslabEtsit {
     //Array credito semanal 
     address [] public creditosemanal;
     
-    address[] public asignaturasRegistradas;
+    //address[] public asignaturasRegistradas;
     
     
+    // labs en la escuela
+    DatosLaboratorio[] public laboratoriosRegistrados;
+    //reservas de la escuela
+    
+    UltimaReserva[] public reservasLab;
         
    
 
+     //reserva para un usuario 
   
+    mapping (address => ReservaAlumno) public reservasAlumno;
+    
+    
+    //turno de la escuela
 
-  /*  mapping(uint => bool) public registeredLaboratorios; //saberr si un lab esta registrado
-    mapping(uint => Laboratorio) public labPuestos; //acceder a los puestos del lab dada la info del lab 
+    mapping (string => mapping (string  => uint[] )) public turnos;
+    
+        /// Mapping para evitar duplicados de turnos.
+    mapping (string => mapping (string  => mapping ( uint => bool ))) public turnos_existentes;
+    
+    /// Direcciones de las personas que han asistido a algun aula en alguna de las fechas y en algun turno.
+    mapping (string => mapping (string => mapping (uint => address[] ))) public personas;
+   
+    /// Direcciones de las personas que han asistido a algun aula en alguna de las fechas.
+    mapping (string => mapping (string => address[] )) public personasTotales;
+    
+    // Dada la fecha actual, el nombre del aula, el turno y la dirección de la persona, devuelve
+    // la entrada correspondiente a dicha persona.
+    mapping (string => mapping (string => mapping (uint => mapping (address => PinchaLab)))) public datosLab;
 
-    // labId -> puestoId ->week-> hour -> waitingList[]
-    mapping(uint => mapping(uint => mapping(uint => mapping(uint => address[])))) public reservations;
-    // labId -> puestoId ->week-> hour -> waitingListLength
+    
+    /// Ultimas entradas de cada persona.
+    mapping (address => UltimaReserva[] ) public ultimosRegistros;
+
+  // mapping(uint => bool) public registeredLaboratorios; //saberr si un lab esta registrado
+   // mapping(uint => Laboratorio) public labPuestos; //acceder a los puestos del lab dada la info del lab 
+    // labId -> mes ->semana-> hora -> waitingList[]
+ /*   mapping(uint => mapping(uint => mapping(uint => mapping(uint => address[])))) public reservations;
+    // labId -> mes ->semana-> hora -> waitingListLength
     mapping(uint => mapping(uint => mapping(uint => mapping(uint => uint)))) public reservationLengths;
-
-    // address -> labId -> puestoId ->week-> hour -> bool
-    mapping(address => mapping(uint => mapping(uint => mapping(uint => mapping(uint => bool))))) public isPuestoReserved;
-
+    // address -> _labID -> mes ->semana-> hora -> bool*/
+ /*   mapping(address => mapping(uint => mapping(uint => mapping(uint => mapping(uint => bool))))) public isLabReserved;
     event Reservation(
         address indexed _from,
-        uint _labId,
-        uint _puestoId,
-        uint _week,
-        uint _hour
+        uint _labID,
+        uint _mes,
+        uint _semana,
+        uint _hora
     );
-
     event Cancellation(
         address indexed _from,
-        uint _labId,
-        uint _puestoId,
-        uint _week,
-        uint _hour
+        uint _labID,
+        uint _mes,
+        uint _semana,
+        uint _hora
     );
     
-    */
-  
+    
+  */
     
     
     
@@ -195,7 +281,7 @@ contract ReslabEtsit {
      *
      * @return El numero de puestos creadas.
      */
-    function puestosLength() public view returns(uint) {
+   /* function puestosLength() public view returns(uint) {
         return puestos.length;
     }
     
@@ -207,46 +293,242 @@ contract ReslabEtsit {
      * @return El numero de labs creadas.
      */
     function laboratoriosLength() public view returns(uint) {
-        return laboratorios.length;
+        return laboratoriosRegistrados.length;
     }
     
     
     
+        /**
+     * El numero de reservas existentes.
+     *
+     * @return El numero de alertas existentes.
+     */
+    function reservasLength() public view returns(uint) {
+        return reservasLab.length;
+
+    }
+
+	  /**
+     * El numero de ultimosRegistros existentes.
+     *
+     * @return El numero de ultimosRegistros existentes.
+     */
+    function ultimosRegistrosLength(address dir) public view returns(uint) {
+	return ultimosRegistros[dir].length;
+    }
+        
+    /**
+     * Permite obtener la longitud del array de personasTotales.
+     * 
+     */
+    function personasLength(string memory _nombre, string memory _fecha) public view returns(uint) {
+
+	uint longitud = personasTotales[_fecha][_nombre].length;
+
+	if(longitud == 0){
+	  longitud = 1;
+	}
+
+  	return longitud;
+
+    }
+
+
+
+    /**
+     * Permite obtener un address del array de personas.
+     * 
+     */
+    function dirPersonas(string memory _nombre, string memory _fecha, uint _indice) public view returns(address) {
+
+	if(personasTotales[_fecha][_nombre].length > 0){
+	address _dirUno = personasTotales[_fecha][_nombre][_indice];
+	return _dirUno;
+
+	}else{
+	return msg.sender;
+	}			
+	
+    }
+    
+        /**
+     * Obtiene los datos de una persona registrada.
+     * 
+     * @param persona La direccion de una persona.
+     * 
+     * @return los datos de una persona registrada.
+     */
+    function obtenerDatosPersona(address persona)  public view returns(address) {
+	
+	
+	if(!estaRegistrado(persona)){
+	return address(0);
+	} else{	
+	return datosPersona[persona].dir;
+	}
+	
+        
+        
+    } 
+    
+
+
+        /**
+     * La alerta (si la hay) de un alumno.
+     *
+     */
+    function reservas(address _dir) public view returns (ReservaAlumno memory) {
+
+	return reservasAlumno[_dir]; 
+    }
+
+
+
+    /**
+     * Eliminar la alerta de un usuario
+     *
+     */
+    function reiniciarReserva() public {
+
+	reservasAlumno[msg.sender].estado = 0 ;
+
+
+    }
+
+        /**
+     * El aula del que se desea ver el historial.
+     *
+     */
+    function LabPulsado(uint x) public view returns (string memory) {
+
+	return laboratoriosRegistrados[x].nombreL; 
+    }
+
     
     /**
+     * Crear un lab. 
+     *
+     * Las labss se meteran en el array labss, y nos referiremos a ellas por su posicion en el array.
+     * 
+     * @param _nombre El nombre del aula.
+     * 
+     * @return La posicion en el array aulas,
+     */
+    
+     /**
+     * Las personas pueden registrar su asistencia a un lab con el metodo guardarReserva.
+     * 
+     * Impedir que se pueda meter un nombre vacio.
+     *
+     *  _nombre El nombre del aula. 
+     * _ent Hora de entrada al aula.
+     *  _fecha Fecha de entrada al aula.
+     *  _puesto Puesto en el aula.
+     */
+    function guardarReserva(string memory _nombre, string memory _entradaTurno, string memory _fecha, string memory _puesto, uint _turno) public {
+        
+	
+    bytes memory a = bytes(_nombre);
+    require(a.length != 0, "El nombre no puede ser vacio");
+
+	bytes memory b = bytes(_entradaTurno);
+	require(b.length != 0, "La hora de entrada no puede ser vacio");
+
+	bytes memory c = bytes(_fecha);
+	require(c.length != 0, "La fecha no puede ser vacio");
+
+	bytes memory d = bytes(_puesto);
+        require(d.length != 0, "El puesto no puede ser vacio");
+
+	datosLab[_fecha][_nombre][_turno][msg.sender].dir = msg.sender;
+	datosLab[_fecha][_nombre][_turno][msg.sender].fecha = _fecha;
+	datosLab[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
+	datosLab[_fecha][_nombre][_turno][msg.sender].puesto = _puesto;
+ 	
+	if (reservasAlumno[msg.sender].estado==0) {
+   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Inicial";
+	} else if (reservasAlumno[msg.sender].estado==1) {
+   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Sospechoso";
+	} else if (reservasAlumno[msg.sender].estado==2) {
+   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Positivo";
+	} else {
+   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Negativo";
+	}
+
+        personas[_fecha][_nombre][_turno].push(msg.sender);
+	personasTotales[_fecha][_nombre].push(msg.sender);
+	ultimosRegistros[msg.sender].push(UltimaReserva(_nombre,_turno,_fecha));
+	
+	if (turnos_existentes[_fecha][_nombre][_turno] == false){
+	   turnos[_fecha][_nombre].push(_turno);
+	   turnos_existentes[_fecha][_nombre][_turno] = true;
+	}
+
+        
+    }
+    
+
+    /**
+     * Las personas pueden registrar su salida del aula con el metodo guardarSalida.
+     * 
+     * Impedir que se pueda meter un nombre vacio.
+     *
+     * _nombre El nombre del aula. 
+     *  _sal Hora de salida al aula.
+     *  _fecha Fecha de entrada al aula.
+     */
+    function guardarSalida(string memory _nombre, string memory _salidaTurno, string memory _fecha, uint _turno) public {
+
+	datosLab[_fecha][_nombre][_turno][msg.sender].salidaTurno = _salidaTurno;
+        
+    }
+
+
+
+    /**
+     * El administrador puede eliminar un aula con el metodo eliminarAula.
+     * 
+     * Impedir que se pueda meter un indice vacio.
+     *
+     *  _indice El nombre del aula. 
+     */
+    
+    
+    
+    /*
      * Crear un puesto
      *
      * Llos puestos se meteran en el array de puestos y nos refereimos por su posicion en el array
-     * @param _nombre El nombre de puesto 
+     *  _nombre El nombre de puesto 
      
    
      * 
-     * @return La posicion en el array lab
+     * La posicion en el array lab
      */
      
      
      //poner lo del laboratorio pero me dice lo de use pragma experimental ABIENCODERV2
-    function creaPuesto(string memory _nombre,TipoConexionesRed  _tipoConexionesRed,TipoSO  _TipoSO/*Laboratorio _laboratorio*/) soloProfesor public returns (uint) {
+    //function creaPuesto(string memory _nombre,TipoConexionesRed  _tipoConexionesRed,TipoSO  _TipoSO/*Laboratorio _laboratorio*/) soloProfesor public returns (uint) {
         
-        bytes memory bn = bytes(_nombre);
-        require(bn.length != 0, "El nombre de la puesto no puede ser vacio");
+     //  bytes memory bn = bytes(_nombre);
+       // require(bn.length != 0, "El nombre de la puesto no puede ser vacio");
         
-        puestos.push(Puesto(_nombre,_tipoConexionesRed,_TipoSO/*_laboratorio*/));
-        return puestos.length - 1;
-    }
+        //puestos.push(Puesto(_nombre,_tipoConexionesRed,_TipoSO/*_laboratorio*/));
+        //return puestos.length - 1;
+  //  }
     
     
     
     
         
      //poner lo del laboratorio pero me dice lo de use pragma experimental ABIENCODERV2
-   function creaLaboratorio(string memory _nombre,uint  _labId,uint _maxPuestos) soloProfesor public returns (uint) {
+    function creaLaboratorio(string memory _nombreL)  public returns (uint) {
         
-        bytes memory bn = bytes(_nombre);
+        bytes memory bn = bytes(_nombreL);
         require(bn.length != 0, "El nombre del lab no puede ser vacio");
         
-        laboratorios.push(Laboratorio(_nombre,_labId,_maxPuestos));
-        return laboratorios.length - 1;
+        laboratoriosRegistrados.push(DatosLaboratorio(laboratoriosRegistrados.length,_nombreL));
+        return laboratoriosRegistrados.length - 1;
     }
     
     
@@ -281,10 +563,10 @@ contract ReslabEtsit {
      *
      * .
      */
-    function asignaturasRegistradasLength() public view returns(uint) {
+    /*function asignaturasRegistradasLength() public view returns(uint) {
         return asignaturasRegistradas.length;
     }
-    
+    */
     
     
     
@@ -429,50 +711,42 @@ contract ReslabEtsit {
    /*function addLab(uint labId, uint maxPuestos) public {
         require(registeredLaboratorios[labId] == false, "lab has already been registered");
         require(msg.sender == owner, "You are not the owner");
-
         labPuestos[labId] = Laboratorio({
             labId: labId,
             maxPuestos: maxPuestos
         });
-
         registeredLaboratorios[labId] = true;
     }
-
-    function addReservation(uint labId, uint puestoId,uint week, uint hour) public {
-        require(registeredLaboratorios[labId] == true, "lab does not exist");
-        require(puestoId < labPuestos[labId].maxPuestos, "Puesto does not exist");
+    */
+   /* function addReservation(uint   _labID, uint mes,uint semana, uint hora) public {
+        require(registeredLaboratorios[_labID] == true, "lab does not exist");
+        //require(puestoId < labPuestos[labId].maxPuestos, "Puesto does not exist");
         require(
-            isPuestoReserved[msg.sender][labId][puestoId][week][hour] == false, 
-            "You already have a reservation for this puesto at this time"
+            isLabReserved[msg.sender][_labID][mes][semana][hora] == false, 
+            "You already have a reservation for this lab at this time"
         );
-
-        reservations[labId][puestoId][week][hour] .push(msg.sender);
-        reservationLengths[labId][puestoId][week][hour]  += 1;
-        isPuestoReserved[msg.sender][labId][puestoId][week][hour] = true;
-
-        emit Reservation(msg.sender, labId, puestoId, week,hour);
+        reservations[_labID][mes][semana][hora] .push(msg.sender);
+        reservationLengths[_labID][mes][semana][hora]  += 1;
+        isLabReserved[msg.sender][_labID][mes][semana][hora] = true;
+        emit Reservation(msg.sender, _labID, mes, semana,hora);
     }
-
-    function cancelReservation(uint labId, uint puestoId,uint week, uint hour) public {
-        require(registeredLaboratorios[labId] == true, "lab does not exist");
-        require(puestoId < labPuestos[labId].maxPuestos, "Puesto does not exist");
+    function cancelReservation(uint _labID, uint mes,uint semana, uint hora) public {
+        require(registeredLaboratorios[_labID] == true, "lab does not exist");
+       // require(puestoId < labPuestos[_labID].maxPuestos, "Puesto does not exist");
         require(
-            isPuestoReserved[msg.sender][labId][puestoId][week][hour] == true, 
-            "You don't have a reservation for this Puesto"
+            isLabReserved[msg.sender][_labID][mes][semana][hora] == true, 
+            "You don't have a reservation for this Lab"
         );
-
-        for (uint i = 0; i < reservations[labId][puestoId][week][hour].length; i++) {
-            if (reservations[labId][puestoId][week][hour][i] == msg.sender) {
-                delete reservations[labId][puestoId][week][hour][i];
+        for (uint i = 0; i < reservations[_labID][mes][semana][hora].length; i++) {
+            if (reservations[_labID][mes][semana][hora][i] == msg.sender) {
+                delete reservations[_labID][mes][semana][hora][i];
                 break;
             }
         }
-
-        reservationLengths[labId][puestoId][week][hour] -= 1;
-        isPuestoReserved[msg.sender][labId][puestoId][week][hour] = false;
-
-        emit Cancellation(msg.sender, labId, puestoId, week,hour);
-    }*/
+        reservationLengths[_labID][mes][semana][hora] -= 1;
+        isLabReserved[msg.sender][_labID][mes][semana][hora] = false;
+        emit Cancellation(msg.sender, _labID, mes, semana,hora);
+    } */
     
     /**
      * Modificador para que una funcion solo la pueda ejecutar el profesor.
@@ -519,5 +793,10 @@ contract ReslabEtsit {
         
         require(!estaRegistrado(msg.sender), "Solo permitido a profes no registrados");
         _;
+    }
+    
+    
+       receive() external payable {
+        revert("No se permite la recepcion de dinero.");
     }
 }
