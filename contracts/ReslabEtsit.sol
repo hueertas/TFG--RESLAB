@@ -176,6 +176,10 @@ contract ReslabEtsit {
     //array con las direcciones de los profes registrados 
     address[] public profesRegistrados;
     
+        // Array con las direcciones de las personas registradas.
+    address[] public registradosP;
+
+    
     //Array credito semanal 
     address [] public creditosemanal;
     
@@ -607,6 +611,16 @@ contract ReslabEtsit {
     }
     
     
+        function autoregistroP() noRegistradosP public {
+        
+        require(msg.sender!=address(0), "El address no puede estar vacio");
+        
+        datosPersona[msg.sender] = DatosPersona(msg.sender);
+        
+        registradosP.push(msg.sender);
+        
+    }
+    
     
   
     function autoRegistro(string memory _nombreP, string memory _emailP,string memory _asignaturaP,string memory _departamentoP ) noRegistrados public {
@@ -685,7 +699,11 @@ contract ReslabEtsit {
         return b.length != 0;
     } 
     
-    
+    function estaRegistradoP(address persona) public view returns (bool) {
+
+	address _dir = datosPersona[persona].dir;
+        return _dir!=address(0);
+    } 
     
     
     //como hacer para que te devuelva los puestos segun asignatura 
@@ -792,6 +810,13 @@ contract ReslabEtsit {
       modifier noRegistrados() {
         
         require(!estaRegistrado(msg.sender), "Solo permitido a profes no registrados");
+        _;
+    }
+    
+        
+      modifier noRegistradosP() {
+        
+        require(!estaRegistradoP(msg.sender), "Solo permitido a personas no registrados");
         _;
     }
     

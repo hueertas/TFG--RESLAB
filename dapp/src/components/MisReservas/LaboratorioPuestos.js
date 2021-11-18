@@ -11,7 +11,7 @@ const LaboratorioPuestos = (props) => {
 
 let rows = [];
 	return(
-	<div style={{ display: (props.elementos[5] ? 'block' : 'none') }}>
+	<div style={{ display: (props.elementos[5] ? 'block' : 'visible') }}>
 		<div className="CabeceraLaboratorios">  
 				<div className="CabeceraLaboratoriosUno" >
 					<p><b>Listado de entradas del Laboratorio {props.pulsada}</b></p>  

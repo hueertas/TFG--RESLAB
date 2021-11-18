@@ -11,7 +11,7 @@ import {
 } from 'react-accessible-accordion';
 
 /* Uso de los componentes ContractData y ContractForm de Drizzle para React */
-const {ContractData} = newContextComponents;
+const {ContractData, ContractForm} = newContextComponents;
 
 export default class BuscaLab extends React.Component {
 
@@ -40,11 +40,10 @@ let rows = []
 										</AccordionItemButton>
 									</AccordionItemHeading>
 									<AccordionItemPanel>
-										<button className="BPanel" type="button" onClick={() => this.props.visualizacion(0,0,1,0,0,1,i+1,0,0,0,0)}> 
+										<button className="BPanel" type="button" onClick={() => this.props.visualizacion(1,0,0,1,i+1,0)}> 
 											Ver Laboratorio
-										</button>
-									
-									
+										</button>	
+
 									
 									</AccordionItemPanel>
 								</AccordionItem>
@@ -54,7 +53,7 @@ let rows = []
 			/>);
 	}
       return (
-			<div style={{ display: (this.props.elementos[4] ? 'block' : 'none') }}>
+			<div style={{ display: (this.props.elementos[4] ? 'block' : 'visible') }}>
 				<caption className="TituloPanel"><b>Listado de Laboratorios</b></caption>
 				<table id="Tabla" className="TablaPanelLabs" >{rows}</table>
 			</div>
@@ -78,6 +77,9 @@ un fragmento de contenido o una miniatura que representa una sección de conteni
    Cuando queremos que dos palabras no se separen al ajustar el texto al tamaño de la ventana
    
    *visualizacion -> appvisual
+
+
+    this.props.visualizacion(1,0,0,1,i+1,0)}> 
 
 */ 
 

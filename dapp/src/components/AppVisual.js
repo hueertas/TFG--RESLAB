@@ -105,13 +105,12 @@ render(){
  				drizzleState={this.props.drizzleState}
  				contract={"ReslabEtsit"}
  				method={"reservasLength"}
-				render={   num_alertas => 
+				render={   num_reservas => 
 					<div className="App">		   
-						
 						
 						<MisReservas drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} 
 						elementos={this.state.elementos} visualizacion={this.visualizacion} 
-						obtenerFecha={this.obtenerFecha} fecha={this.state.fecha} /> 
+						obtenerFecha={this.obtenerFecha} fecha={this.state.fecha} numReservas={num_reservas} /> 
 						
 					</div> 
 			  }/>

@@ -61,6 +61,66 @@ table {
   left: 200px;
   }
 
+  .FechaConsulta {
+    position:absolute; 
+    bottom:300px; 
+    top: 300px;
+    right:40px;
+    }
+
+
+  .PanelHistorial {
+    position:absolute;
+    bottom:310px; 
+    left:400px;
+    }
+
+    .FilaSecciónLab{
+      display: flex;
+      }
+
+
+
+      .BPanel {
+        color: white;
+        width: 75pt;
+        height: 15pt;
+        margin-top: 2px;
+        background: #000080;
+        border: none; 
+        text-align: center;
+        opacity: 0.7;
+        transition: 0.3s;
+        }
+
+
+        .TituloPanel {
+          color: black;
+          text-align:right;
+          font-size: 35px;
+          font-weight: bold;
+          display: block;
+          position:relative;
+          
+          right: 350px;
+          }
+
+          .TablaPanelLabs {
+            display: block;
+            background-color: #e8fae6;
+            width: 380px;
+            height: 280px;
+            overflow-x: auto;
+            overflow-y: auto; 
+            position:relative;
+            top : 10vh;
+            right: 350px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 2px;
+            background-color: #dcdcdc;
+            }
+        
 
 @keyframes App-logo-spin {
   from {
