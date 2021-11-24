@@ -17,8 +17,9 @@ import {
 import Header from './Header';
 import Asignaturas from './Asignaturas/Asignaturas';
 import Alumnos from "./Alumnos/Alumnos";
-import Reservas from "./MisReservas/MisReservas";
+import MisReservas from "./MisReservas/MisReservas";
 import Profesores from "./Profesores/Profesores";
+import Laboratorios from "./Laboratorios/Laboratorios";
 
 
 
@@ -34,6 +35,7 @@ const Navegacion = () => (
           <li><Link to="/alumnos/">Alumnos</Link></li>
           <li><Link to="/profesores/">Profesores</Link></li>
           <li><Link to="/MisReservas/">Mis Reservas</Link></li>
+          <li><Link to="/laboratorios/">Listado de laboratorios</Link></li>
           </ul>
     </nav>
 );
@@ -67,6 +69,9 @@ function App() {
               </Route>
               <Route path="/profesores/">
                    <Profesores drizzle={drizzle} drizzleState={drizzleState}/>
+              </Route>
+              <Route path="/laboratorios/">
+                   <Laboratorios drizzle={drizzle} drizzleState={drizzleState}/>
               </Route>
               <Route path="/MisReservas/">
                    <AppVisual drizzle={drizzle} drizzleState={drizzleState}/>

@@ -526,7 +526,7 @@ contract ReslabEtsit {
     
         
      //poner lo del laboratorio pero me dice lo de use pragma experimental ABIENCODERV2
-    function creaLaboratorio(string memory _nombreL)  public returns (uint) {
+    function creaLaboratorio(uint _labId, string memory _nombreL)  soloOwner public returns (uint) {
         
         bytes memory bn = bytes(_nombreL);
         require(bn.length != 0, "El nombre del lab no puede ser vacio");
@@ -534,6 +534,7 @@ contract ReslabEtsit {
         laboratoriosRegistrados.push(DatosLaboratorio(laboratoriosRegistrados.length,_nombreL));
         return laboratoriosRegistrados.length - 1;
     }
+    
     
     
     
@@ -765,6 +766,21 @@ contract ReslabEtsit {
         isLabReserved[msg.sender][_labID][mes][semana][hora] = false;
         emit Cancellation(msg.sender, _labID, mes, semana,hora);
     } */
+
+
+
+
+           /**
+     * Modificador para que una funcion solo la pueda ejecutar el profesor.
+     * 
+     *
+     */
+    modifier soloOwner() {
+        
+        require(msg.sender == owner, "Solo permitido al owner");
+        _;
+    }
+    
     
     /**
      * Modificador para que una funcion solo la pueda ejecutar el profesor.
