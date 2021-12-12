@@ -400,7 +400,7 @@ contract ReslabEtsit {
     }
 
         /**
-     * El aula del que se desea ver el historial.
+     * El lab del que se desea ver el historial.
      *
      */
     function LabPulsado(uint x) public view returns (string memory) {
@@ -449,7 +449,7 @@ contract ReslabEtsit {
 	datosLab[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
 	datosLab[_fecha][_nombre][_turno][msg.sender].puesto = _puesto;
  	
-	if (reservasAlumno[msg.sender].estado==0) {
+	/*if (reservasAlumno[msg.sender].estado==0) {
    	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Inicial";
 	} else if (reservasAlumno[msg.sender].estado==1) {
    	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Sospechoso";
@@ -457,7 +457,7 @@ contract ReslabEtsit {
    	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Positivo";
 	} else {
    	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Negativo";
-	}
+	}*/
 
         personas[_fecha][_nombre][_turno].push(msg.sender);
 	personasTotales[_fecha][_nombre].push(msg.sender);
@@ -486,6 +486,79 @@ contract ReslabEtsit {
 	datosLab[_fecha][_nombre][_turno][msg.sender].salidaTurno = _salidaTurno;
         
     }
+
+
+
+
+      /**
+     * Permite al administrador obtener los datos de un aula para que sean visualizados.
+     * 
+     */
+    function guardarEntradasLaboratorio(string memory _nombre, string memory _fecha) public view returns(PinchaLab[] memory) {
+
+	uint cont = 0;
+	uint iterador = 0;
+
+	uint num_turnos = turnos[_fecha][_nombre].length;
+	
+	for(uint j = 0; j < num_turnos ; j++){
+
+	cont = cont + personas[_fecha][_nombre][turnos[_fecha][_nombre][j]].length;
+
+	}	
+
+
+	if(num_turnos > 0){
+
+	PinchaLab[] memory entradas = new PinchaLab[](cont);
+
+	for(uint j = 0; j < num_turnos ; j++){
+
+	address[] memory _dir = personas[_fecha][_nombre][turnos[_fecha][_nombre][j]];	
+
+	for(uint i = iterador; i < _dir.length + iterador ; i++){
+
+	entradas[i].dir = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].dir;
+	entradas[i].fecha = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].fecha;
+	entradas[i].entradaTurno = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].entradaTurno;
+	entradas[i].salidaTurno = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].salidaTurno;
+	entradas[i].puesto = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].puesto;
+	entradas[i].estado = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].estado;
+	entradas[i].asignatura = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].asignatura;
+    entradas[i].info = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].info;
+	
+	}
+	iterador = iterador + _dir.length;
+	}
+	iterador = 0;
+	cont = 0;
+	num_turnos = 0;
+	return entradas;
+
+	}
+	else{
+	
+	PinchaLab[] memory entradas_dos = new PinchaLab[](1);
+	entradas_dos[0].dir = address(0x69068964Eb1d8F0cAF8Af7481bFDb2FA015E4C56);
+  	entradas_dos[0].fecha = "DISPONIBLES";
+	entradas_dos[0].entradaTurno = "EN LA FECHA";
+	entradas_dos[0].salidaTurno = "Y";
+	entradas_dos[0].puesto = "ESTA";
+    entradas_dos[0].asignatura = "core";
+	entradas_dos[0].estado = "AULA";
+
+	return entradas_dos;
+
+	}	
+
+    }
+
+
+
+
+
+
+
 
 
 
@@ -526,7 +599,7 @@ contract ReslabEtsit {
     
         
      //poner lo del laboratorio pero me dice lo de use pragma experimental ABIENCODERV2
-    function creaLaboratorio(uint _labId, string memory _nombreL)  soloOwner public returns (uint) {
+    function creaLaboratorio( string memory _nombreL)  soloOwner public returns (uint) {
         
         bytes memory bn = bytes(_nombreL);
         require(bn.length != 0, "El nombre del lab no puede ser vacio");

@@ -55,26 +55,32 @@ const MisReservas = (props) => {
 							method={"laboratoriosLength"}
 							render={aulen =>  
 									<div id="Panel" className="Historial">
-											<BuscaLab drizzle={props.drizzle}
-											drizzleState={props.drizzleState}
-											longitud={aulen} elementos={props.elementos} 
-											visualizacion={props.visualizacion}/>
-									
+
+										<BuscaLab drizzle={props.drizzle} drizzleState={props.drizzleState} 
+										longitud={aulen} elementos={props.elementos} visualizacion={props.visualizacion}/>
+											
+											
+											{aulen}
+											{ "hola que tal son aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +props.elementos}
+
+											{
+
+										
 											<LaboratorioSecciones drizzle={props.drizzle}
 											drizzleState={props.drizzleState} fechaConsulta={props.fecha} 
-											elementos={props.elementos} visualizacion={props.visualizacion}/>
-									</div> 		
+											elementos={props.elementos} visualizacion={props.visualizacion}/> }
+									</div> 	
+
+										
 									}
 						/>
-					</div>  
+						</div>  
+				 
 				</div>
 			}/>
 	);
 };
 
 export default MisReservas;
-//Failed to compile
-/*./src/components/MisReservas/MisReservas.js
-Module not found: Can't resolve 'react-bootstrap/Accordion' in 'C:\Users\Paula Huertas\reslabetsit\dapp\src\components\MisReservas'*/
 
-//crear la appvisual!!!!!!!!!
+

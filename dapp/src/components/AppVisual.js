@@ -3,6 +3,7 @@ import Header from './Header';
 import MisReservas from "./MisReservas/MisReservas";
 
 
+
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -22,12 +23,12 @@ constructor(props){
 		 boton de volver, entrada para introducir fecha, panel de lab,
 		tabla de historial de registros de un lab, indice del lab pulsada, 
 		texto del panel de control]*/
-		//elementos: [1,1,0,1,1,0,0,1,0,1,1], 
+		//elementos: [1,1,0,1,1,0,0,1,0,1,1],     elementos: [0,1,1,0,0,1], 
         elementos: [0,1,1,0,0,1], 
 
         
 		/* La variable de estado "alarma" se utiliza para almacenar el estado de las reservas.*/
-		reerva : "No hay reserva",
+		reserva : "No hay reserva",
 		/* La variable de estado "fecha" se utiliza para almacenar la fecha de consulta introducida en un aula.
 		Inicialmente no hay ninguna fecha seleccionada.*/
 		fecha: "ninguna"
@@ -52,11 +53,11 @@ let volver;
 let fecha;
 let panel;
 let tabla;
-let aulaPulsada;
+let LabPulsado;
 
 let texto;
 
-aulaPulsada = e;
+LabPulsado = e;
 
  
     if (a > 0) { 
@@ -93,7 +94,7 @@ aulaPulsada = e;
 	texto = false;
     }
 	
-let ver = [volver,fecha,panel,tabla,aulaPulsada,texto];
+let ver = [volver,fecha,panel,tabla,LabPulsado,texto];
 this.setState({elementos: ver});
 
 }
@@ -106,7 +107,8 @@ render(){
  				contract={"ReslabEtsit"}
  				method={"reservasLength"}
 				render={   num_reservas => 
-					<div className="App">		   
+					<div className="App">	
+					
 						
 						<MisReservas drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} 
 						elementos={this.state.elementos} visualizacion={this.visualizacion} 

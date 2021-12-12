@@ -40,10 +40,11 @@ let rows = []
 										</AccordionItemButton>
 									</AccordionItemHeading>
 									<AccordionItemPanel>
-										<button className="BPanel" type="button" onClick={() => this.props.visualizacion(1,0,0,1,i+1,0)}> 
+									<button className="BPanel" type="button" onClick={() => this.props.visualizacion(1,0,0,1,i+1,0)}> 
 											Ver Laboratorio
 										</button>	
 
+									
 									
 									</AccordionItemPanel>
 								</AccordionItem>
@@ -53,7 +54,7 @@ let rows = []
 			/>);
 	}
       return (
-			<div style={{ display: (this.props.elementos[4] ? 'block' : 'visible') }}>
+			<div style={{ display: (this.props.elementos[2] ? 'block' : 'none') }}>
 				<caption className="TituloPanel"><b>Listado de Laboratorios</b></caption>
 				<table id="Tabla" className="TablaPanelLabs" >{rows}</table>
 			</div>
@@ -82,5 +83,8 @@ un fragmento de contenido o una miniatura que representa una sección de conteni
     this.props.visualizacion(1,0,0,1,i+1,0)}> 
 
 */ 
-
+/**									<button className="BPanel" type="button" onClick={() => this.props.visualizacion(1,0,0,1,i+1,0)}> 
+											Ver Laboratorio
+										</button>	
+										 */
 

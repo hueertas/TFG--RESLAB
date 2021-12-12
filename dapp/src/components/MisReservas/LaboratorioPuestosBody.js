@@ -17,13 +17,14 @@ let rows = [];
 				method={"dirPersonas"}
 				methodArgs={[props.nombreLaboratorio, props.fecha, i]}
 				render={dir => <ContractData 
+								
 							   drizzle={props.drizzle}
 						       drizzleState={props.drizzleState}
 						       contract={"ReslabEtsit"}
 						       method={"obtenerDatosPersona"}
 						       methodArgs={[dir]}
 						       render={datosPersona => 
-								  <LaboratorioRow drizzle={props.drizzle}
+								  <LaboratorioRow  drizzle={props.drizzle}
 								  drizzleState={props.drizzleState} 
 								  entrada={props.entradas[i]} i={i} 
 								  datosPersona={datosPersona}/>	

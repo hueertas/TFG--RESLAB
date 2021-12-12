@@ -7,31 +7,66 @@ const {ContractData} = newContextComponents;
 
 const LaboratorioSecciones = (props) => {
 
-	if (props.elementos[7] > 0) { 
+	if (props.elementos[4] > 0) { 
 		return (
+
+
+			<div className="XPanelHistorial">
 				<ContractData
 				drizzle={props.drizzle}
 				drizzleState={props.drizzleState}
 				contract={"ReslabEtsit"}
 				method={"LabPulsado"}
-				methodArgs={[props.elementos[7] - 1]}
-				render={ pulsada => <ContractData
+				methodArgs={[props.elementos[4] - 1]}
+
+				
+				render={ pulsada => 
+					<div  className="XHistorial">
+
+
+{"holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+
+						
+
+				
+				
+									<ContractData
 									drizzle={props.drizzle}
 									drizzleState={props.drizzleState}
 									contract={"ReslabEtsit"}
 									method={"personasLength"}
 									methodArgs={[pulsada, props.fechaConsulta]}
 									render={ longitud => 
-									<LaboratorioPuestos drizzle={props.drizzle}
+
+													<div  className="XHistorial">
+
+
+														{"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"}
+														{props.visualizacion}			
+
+									{<LaboratorioPuestos drizzle={props.drizzle}
 									drizzleState={props.drizzleState} fechaConsulta={props.fechaConsulta} 
-									elementos={props.elementos} pulsada={pulsada} longitud={longitud} visualizacion={props.visualizacion}/>
+									elementos={props.elementos} pulsada={pulsada} longitud={longitud} visualizacion={props.visualizacion}/>}
+
+</div>
+						
+									
 									}/>
-				}/>
+
+
+							</div> 
+						}
+						/>
+							</div> 
+
+
 		);
 	}
+
 	else{
 		return (<div></div>);
 	}
+	
 };
 
 export default LaboratorioSecciones;

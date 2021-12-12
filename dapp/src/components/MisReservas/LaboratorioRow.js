@@ -7,7 +7,7 @@ const {ContractData} = newContextComponents;
 const LaboratorioRow = (props) => {
 	
 let rows = [];
-	if(props.PinchaLab.fecha == "NO"){
+	if(props.entrada.fecha === "NO"){
 		rows.push( <tr key={"Persona-" + props.i}>
 					<td></td>
 					<td></td>
@@ -15,6 +15,7 @@ let rows = [];
 					<td></td>
 					<td></td>
                     <td></td>
+
 					<td></td>
 				</tr>
 		);	
@@ -22,12 +23,12 @@ let rows = [];
 	else{
 		rows.push( <tr key={"Persona-" + props.i}>
 					<td>{props.datosPersona}</td>
-					<td>{props.PinchaLab.fecha}</td>
-					<td>{props.PinchaLab.entradaTurno}-{props.PinchaLab.salidaTurno}</td>
-					<td>&emsp;{props.PinchaLab.puesto}</td>
-					<td>{props.PinchaLab.estado}</td>
-                    <td>{props.PinchaLab.asignatura}</td>
-					<td>{props.PinchaLab.info}</td>
+					<td>{props.entrada.fecha}</td>
+					<td>{props.entrada.entradaTurno}-{props.entrada.salidaTurno}</td>
+					<td>&emsp;{props.entrada.puesto}</td>
+					<td>{props.entrada.estado}</td>
+                    <td>{props.entrada.asignatura}</td>
+					<td>{props.entrada.info}</td>
 				</tr>
 		);
 	}

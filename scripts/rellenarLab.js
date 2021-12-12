@@ -42,8 +42,8 @@ module.exports = async callback => {
 
 
        console.log("Añadir labs:"); 
-       await reslabetsit.creaLaboratorio(1,"labB")
-       await reslabetsit.creaLaboratorio(2,"labC")
+       await reslabetsit.creaLaboratorio("labB")
+       await reslabetsit.creaLaboratorio("labC")
 
        console.log("se han añadido");
     
