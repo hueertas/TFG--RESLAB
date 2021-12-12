@@ -16,12 +16,12 @@ let rows = [];
 				<div className="CabeceraLaboratoriosUno" >
 					<p><b>Listado de entradas del Laboratorio {props.pulsada}</b></p>  
 					<span className="CabeceraLaboratoriosDos">
-						<p>En la siguiente tabla se muestra un listado con todas las entradas del Laboratorio {props.pulsada} en la fecha {props.fechaConsulta}</p>  
+						<p>En la siguiente tabla se muestra un listado con todas los puestos  del Laboratorio {props.pulsada} en la fecha {props.fechaConsulta}</p>  
 					</span>
 				</div>
 				
 				<div>
-					<p className="PuestosLaboratorio"><b>Entradas</b></p>  
+					<p className="PuestosLaboratorio"><b>Puestos</b></p>  
 				</div>
 				
 				<div className="CabeceraLaboratoriosCuatro">
@@ -50,7 +50,7 @@ let rows = [];
 
 								
 								
-							{"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+ props.longitud}
+							
 
 
 						  {<LaboratorioPuestosBody drizzle={props.drizzle}

@@ -104,17 +104,36 @@ contract ReslabEtsit {
      * */
     struct PinchaLab {
         
+
+	string puesto;
+        
+
+	string info; //enumerado del sistema operativo!!!!!!!!!!!
+    }
+
+
+    /**
+     * Datos de la tercera  pantalla donde te aparcene el estado de reserva, asignatuas etc del lab)
+     * */
+
+    struct PinchaPuesto {
+        
 	address dir;
 	
 	string fecha;
 	string entradaTurno;
 	string salidaTurno;
-	string puesto;
+	
         
 	string estado;
 	string asignatura;
 	string info; //enumerado del sistema operativo!!!!!!!!!!!
     }
+
+
+
+
+
     
    /* struct DatosAsignatura{
         string nombre;
@@ -216,7 +235,11 @@ contract ReslabEtsit {
     // la entrada correspondiente a dicha persona.
     mapping (string => mapping (string => mapping (uint => mapping (address => PinchaLab)))) public datosLab;
 
-    
+     // Dada la fecha actual, el nombre del aula, el turno y la dirección de la persona, devuelve
+    // la entrada correspondiente a dicha persona.
+    mapping (string => mapping (string => mapping (uint => mapping (address => PinchaPuesto)))) public datosPuesto;
+
+
     /// Ultimas entradas de cada persona.
     mapping (address => UltimaReserva[] ) public ultimosRegistros;
 
@@ -441,13 +464,11 @@ contract ReslabEtsit {
 	bytes memory c = bytes(_fecha);
 	require(c.length != 0, "La fecha no puede ser vacio");
 
-	bytes memory d = bytes(_puesto);
-        require(d.length != 0, "El puesto no puede ser vacio");
-
-	datosLab[_fecha][_nombre][_turno][msg.sender].dir = msg.sender;
-	datosLab[_fecha][_nombre][_turno][msg.sender].fecha = _fecha;
-	datosLab[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
-	datosLab[_fecha][_nombre][_turno][msg.sender].puesto = _puesto;
+	
+	datosPuesto[_fecha][_nombre][_turno][msg.sender].dir = msg.sender;
+	datosPuesto[_fecha][_nombre][_turno][msg.sender].fecha = _fecha;
+	datosPuesto[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
+	
  	
 	/*if (reservasAlumno[msg.sender].estado==0) {
    	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Inicial";
@@ -483,7 +504,7 @@ contract ReslabEtsit {
      */
     function guardarSalida(string memory _nombre, string memory _salidaTurno, string memory _fecha, uint _turno) public {
 
-	datosLab[_fecha][_nombre][_turno][msg.sender].salidaTurno = _salidaTurno;
+	datosPuesto[_fecha][_nombre][_turno][msg.sender].salidaTurno = _salidaTurno;
         
     }
 
@@ -518,13 +539,9 @@ contract ReslabEtsit {
 
 	for(uint i = iterador; i < _dir.length + iterador ; i++){
 
-	entradas[i].dir = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].dir;
-	entradas[i].fecha = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].fecha;
-	entradas[i].entradaTurno = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].entradaTurno;
-	entradas[i].salidaTurno = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].salidaTurno;
+	
 	entradas[i].puesto = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].puesto;
-	entradas[i].estado = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].estado;
-	entradas[i].asignatura = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].asignatura;
+	
     entradas[i].info = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].info;
 	
 	}
@@ -539,13 +556,10 @@ contract ReslabEtsit {
 	else{
 	
 	PinchaLab[] memory entradas_dos = new PinchaLab[](1);
-	entradas_dos[0].dir = address(0x69068964Eb1d8F0cAF8Af7481bFDb2FA015E4C56);
-  	entradas_dos[0].fecha = "DISPONIBLES";
-	entradas_dos[0].entradaTurno = "EN LA FECHA";
-	entradas_dos[0].salidaTurno = "Y";
-	entradas_dos[0].puesto = "ESTA";
-    entradas_dos[0].asignatura = "core";
-	entradas_dos[0].estado = "AULA";
+	
+	entradas_dos[0].puesto = "A";
+    
+	entradas_dos[0].info = "linux";
 
 	return entradas_dos;
 

@@ -11,23 +11,15 @@ let rows = [];
 		rows.push( <tr key={"Persona-" + props.i}>
 					<td></td>
 					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-                    <td></td>
-
-					<td></td>
+				
 				</tr>
 		);	
 	}
 	else{
 		rows.push( <tr key={"Persona-" + props.i}>
-					<td>{props.datosPersona}</td>
-					<td>{props.entrada.fecha}</td>
-					<td>{props.entrada.entradaTurno}-{props.entrada.salidaTurno}</td>
+					
 					<td>&emsp;{props.entrada.puesto}</td>
-					<td>{props.entrada.estado}</td>
-                    <td>{props.entrada.asignatura}</td>
+				
 					<td>{props.entrada.info}</td>
 				</tr>
 		);
