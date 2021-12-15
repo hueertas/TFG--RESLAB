@@ -1,13 +1,13 @@
 /* Importar las librerías y los componentes necesarios */
 import {newContextComponents} from "@drizzle/react-components";
-import LaboratorioPuestos from "./LaboratorioPuestos";
+import ListaPuestos from "./ListaPuestos";
 
 /* Uso del componente ContractData de Drizzle para React */
 const {ContractData} = newContextComponents;
 
-const LaboratorioSecciones = (props) => {
+const PuestoSecciones = (props) => {
 
-	if (props.elementos[4] > 0) { 
+	if (props.elementos[6] > 0) { 
 		return (
 
 
@@ -16,15 +16,15 @@ const LaboratorioSecciones = (props) => {
 				drizzle={props.drizzle}
 				drizzleState={props.drizzleState}
 				contract={"ReslabEtsit"}
-				method={"LabPulsado"}
-				methodArgs={[props.elementos[4] - 1]}
+				method={"PuestoPulsado"}
+				methodArgs={[props.elementos[6] - 1]}
 
 				
 				render={ pulsada => 
 					<div  className="XHistorial">
 
 
-{"holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+
 
 						
 
@@ -44,7 +44,7 @@ const LaboratorioSecciones = (props) => {
 														{"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"}
 														{props.visualizacion}			
 
-									{<LaboratorioPuestos drizzle={props.drizzle}
+									{<ListaPuestos drizzle={props.drizzle}
 									drizzleState={props.drizzleState} fechaConsulta={props.fechaConsulta} 
 									elementos={props.elementos} pulsada={pulsada} longitud={longitud} visualizacion={props.visualizacion}/>}
 
@@ -69,4 +69,4 @@ const LaboratorioSecciones = (props) => {
 	
 };
 
-export default LaboratorioSecciones;
+export default PuestoSecciones;

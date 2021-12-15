@@ -40,7 +40,7 @@ let rows = []
 										</AccordionItemButton>
 									</AccordionItemHeading>
 									<AccordionItemPanel>
-									<button className="BPanel" type="button" onClick={() => this.props.visualizacion(1,0,0,1,i+1,0)}> 
+									<button className="BPanel" type="button" onClick={() => this.props.visualizacion(1,0,0,1,i+1,0,0,0)}> 
 											Ver Laboratorio
 										</button>	
 
@@ -66,25 +66,18 @@ let rows = []
 /** 
  * allowZeroExpanded : boolean [optional, default: false]
 Allow the only remaining expanded item to be collapsed.
-
-
 * accordion-> Un acordeón es un conjunto de títulos interactivos apilados verticalmente, cada uno de los cuales contiene un título, 
 un fragmento de contenido o una miniatura que representa una sección de contenido. Los títulos funcionan como controles que permiten a
  los usuarios revelar u ocultar sus secciones de contenido asociadas. Los acordeones se usan comúnmente para reducir la necesidad de desplazarse
   al presentar múltiples secciones de contenido en una sola página.
-
   * this.props.longitud -> longitud de personastotales???
   *La entidad &nbsp; (del inglés Non Breaking Space que significa espacio sin ruptura) sirve para representar en HTML un espacio en blanco y se utiliza normalmente en dos ca
    Cuando queremos que dos palabras no se separen al ajustar el texto al tamaño de la ventana
    
    *visualizacion -> appvisual
-
-
     this.props.visualizacion(1,0,0,1,i+1,0)}> 
-
 */ 
 /**									<button className="BPanel" type="button" onClick={() => this.props.visualizacion(1,0,0,1,i+1,0)}> 
 											Ver Laboratorio
 										</button>	
 										 */
-

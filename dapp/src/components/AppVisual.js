@@ -22,9 +22,9 @@ constructor(props){
 		La posiciones del array se corresponden con:
 		 boton de volver, entrada para introducir fecha, panel de lab,
 		tabla de historial de registros de un lab, indice del lab pulsada, 
-		texto del panel de control]*/
+		texto del panel de control,registro,indice puesto pulsado,]*/
 		//elementos: [1,1,0,1,1,0,0,1,0,1,1],     elementos: [0,1,1,0,0,1], 
-        elementos: [0,1,1,0,0,1], 
+        elementos: [0,1,1,0,0,1,0,0], 
 
         
 		/* La variable de estado "alarma" se utiliza para almacenar el estado de las reservas.*/
@@ -46,7 +46,7 @@ obtenerFecha(x){
 
 /*Funcion para cambiar la variable de estado "elementos".
 Es utilizada por componentes hijos a los que se pasa como propiedad*/
-visualizacion(a,b,c,d,e,h) {
+visualizacion(a,b,c,d,e,h,i,j) {
   
 
 let volver;
@@ -56,8 +56,11 @@ let tabla;
 let LabPulsado;
 
 let texto;
+let PuestoPulsado;
+let registroPuesto;
 
 LabPulsado = e;
+PuestoPulsado =i;
 
  
     if (a > 0) { 
@@ -93,8 +96,15 @@ LabPulsado = e;
     } else { 
 	texto = false;
     }
+
+
+	if (j > 0) {  
+		registroPuesto = true;
+		} else { 
+			registroPuesto = false;
+		}
 	
-let ver = [volver,fecha,panel,tabla,LabPulsado,texto];
+let ver = [volver,fecha,panel,tabla,LabPulsado,texto,PuestoPulsado,registroPuesto];
 this.setState({elementos: ver});
 
 }
