@@ -38,11 +38,12 @@ contract ReslabEtsit {
    
    // enum Horario { turnom ,turnot}//poenr horas y turnos en enum???? array de horas 
     
-    struct Puesto {
-        string nombre;
+    struct DatosPuesto {
+        uint PuestoId;
+        string nombreP;
         //caracteristicas
-        TipoConexionesRed tipoConexionesRed;
-        TipoSO tipoSO;
+        //TipoConexionesRed tipoConexionesRed;
+        //TipoSO tipoSO;
        // Laboratorio laboratorio;
        
     }
@@ -208,6 +209,9 @@ contract ReslabEtsit {
     // labs en la escuela
     DatosLaboratorio[] public laboratoriosRegistrados;
     //reservas de la escuela
+
+    // puestos en la escuela
+    DatosPuesto[] public puestosRegistrados;
     
     UltimaReserva[] public reservasLab;
         
@@ -303,13 +307,13 @@ contract ReslabEtsit {
     
     
     
-    /**
-     * El numero depuestos creadas.
+/**
+     * El numero de labs  creadas.
      *
      * @return El numero de puestos creadas.
      */
-   /* function puestosLength() public view returns(uint) {
-        return puestos.length;
+    function puestosLength() public view returns(uint) {
+        return puestosRegistrados.length;
     }
     
     
@@ -431,18 +435,18 @@ contract ReslabEtsit {
 	return laboratoriosRegistrados[x].nombreL; 
     }
 
-    
-    /**
-     * Crear un lab. 
+
+          /**
+     * El lab del que se desea ver el historial.
      *
-     * Las labss se meteran en el array labss, y nos referiremos a ellas por su posicion en el array.
-     * 
-     * @param _nombre El nombre del aula.
-     * 
-     * @return La posicion en el array aulas,
      */
+    function PuestoPulsado(uint x) public view returns (string memory) {
+
+	return puestosRegistrados[x].nombreP; 
+    }
+
     
-     /**
+  /**
      * Las personas pueden registrar su asistencia a un lab con el metodo guardarReserva.
      * 
      * Impedir que se pueda meter un nombre vacio.
@@ -452,7 +456,7 @@ contract ReslabEtsit {
      *  _fecha Fecha de entrada al aula.
      *  _puesto Puesto en el aula.
      */
-    function guardarReserva(string memory _nombre, string memory _entradaTurno, string memory _fecha, string memory _puesto, uint _turno) public {
+    function guardarReserva(string memory _nombre, string memory _entradaTurno, string memory _fecha,  uint _turno) public {
         
 	
     bytes memory a = bytes(_nombre);
@@ -470,15 +474,15 @@ contract ReslabEtsit {
 	datosPuesto[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
 	
  	
-	/*if (reservasAlumno[msg.sender].estado==0) {
-   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Inicial";
+	if (reservasAlumno[msg.sender].estado==0) {
+   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Inicial";
 	} else if (reservasAlumno[msg.sender].estado==1) {
-   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Sospechoso";
+   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Sospechoso";
 	} else if (reservasAlumno[msg.sender].estado==2) {
-   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Positivo";
+   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Positivo";
 	} else {
-   	datosLab[_fecha][_nombre][_turno][msg.sender].estado = "Negativo";
-	}*/
+   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Negativo";
+	}
 
         personas[_fecha][_nombre][_turno].push(msg.sender);
 	personasTotales[_fecha][_nombre].push(msg.sender);

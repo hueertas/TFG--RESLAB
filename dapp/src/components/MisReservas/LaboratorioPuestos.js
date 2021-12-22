@@ -3,6 +3,8 @@ import {newContextComponents} from "@drizzle/react-components";
 import LaboratorioPuestosHeader from "./LaboratorioPuestosHeader";
 import LaboratorioPuestosBody from "./LaboratorioPuestosBody";
 import Table from 'react-bootstrap/Table';
+import PuestoSecciones from "./PuestoSecciones";
+import BuscaPuesto from "./BuscaPuesto";
 
 /* Uso de los componentes ContractData y ContractForm de Drizzle para React */
 const {ContractData} = newContextComponents;
@@ -38,7 +40,13 @@ let rows = [];
 					<LaboratorioPuestosHeader 
 					drizzle={props.drizzle}
  					drizzleState={props.drizzleState}/>
-					{<tbody>		
+
+
+
+					{<tbody>	
+
+
+
 						<ContractData
 						drizzle={props.drizzle}
 						drizzleState={props.drizzleState}
@@ -49,7 +57,7 @@ let rows = [];
 							
 
 								
-						//		
+						
 							
 
 
@@ -57,14 +65,61 @@ let rows = [];
 						  drizzleState={props.drizzleState} entradasLongitud={props.longitud} 
 						fecha={props.fechaConsulta} nombreLaboratorio={props.pulsada} entradas={entradas}/>
 
+						
+
 						  
 						}/>
 					</tbody>}
+
+
+							
+
+
 					</Table>}
+
+
+
+		<div className="PanelHistorialP">  
+				<ContractData
+					drizzle={props.drizzle}
+					drizzleState={props.drizzleState}
+					contract={"ReslabEtsit"}
+					method={"puestosLength"}
+					render={aulen =>  
+							<div id="PanelP" className="HistorialP">
+
+								
+
+								<BuscaPuesto drizzle={props.drizzle} drizzleState={props.drizzleState} 
+								longitud={aulen} elementos={props.elementos} visualizacion={props.visualizacion}/>
+									
+									
+									
+
+								
+								<PuestoSecciones drizzle={props.drizzle}
+								drizzleState={props.drizzleState} fechaConsulta={props.fecha} 
+								elementos={props.elementos} visualizacion={props.visualizacion}/> 
+
+
+
+								{"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"}
+							</div> 	
+
+								
+							}
+				/>
+		</div>  
+
+
 	</div>		
 	);	
 }
 
 export default LaboratorioPuestos;
 
-//aqui se llama a apuntar 
+
+
+
+
+

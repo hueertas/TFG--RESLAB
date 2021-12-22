@@ -11,7 +11,7 @@ const ListaPuestos = (props) => {
 
 let rows = [];
 	return(
-	<div style={{ display: (props.elementos[7] ? 'block' : 'none') }}>
+	<div style={{ display: (props.elementos[7] ? 'block' : 'visible') }}>
 		<div className="CabeceraPuestos">  
 				<div className="CabeceraPuestosUno" >
 					<p><b>Listado de entradas del Puesto {props.pulsada}</b></p>  
@@ -27,7 +27,7 @@ let rows = [];
 				<div className="CabeceraPuestosCuatro">
 					<span>
 						<p>Para regresar al panel pulse volver.</p>  
-						<button className="BVolver" style={{ display: (props.elementos[0] === true ? 'block' : 'none') }} onClick={() => props.visualizacion(0,1,1,0,0,1,0,0)} >
+						<button className="BVolver" style={{ display: (props.elementos[0] === true ? 'block' : 'visible') }} onClick={() => props.visualizacion(0,1,1,0,0,1,0,0)} >
 							<b>Volver</b>
 						</button>
 					</span>
@@ -42,22 +42,22 @@ let rows = [];
 						<ContractData
 						drizzle={props.drizzle}
 						drizzleState={props.drizzleState}
-						contract={"ReslabEtsit"}
+						contract={"Puestos"}
 						method={"guardarEntradasPuesto"}
 						methodArgs={[props.pulsada, props.fechaConsulta]}
 						render={entradas =>
-							<div id="PPanel" className="PHistorial">
+							
 
 								
 								
 							
 
 
-						  {<PuestoBody drizzle={props.drizzle}
+						  <PuestoBody drizzle={props.drizzle}
 						  drizzleState={props.drizzleState} entradasLongitud={props.longitud} 
-						fecha={props.fechaConsulta} nombrePuesto={props.pulsada} entradas={entradas}/>}
+						fecha={props.fechaConsulta} nombrePuesto={props.pulsada} entradas={entradas}/>
 
-						  </div>
+						
 						}/>
 					</tbody>}
 					</Table>}
