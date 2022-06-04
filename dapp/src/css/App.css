@@ -1,11 +1,13 @@
 .App {
   margin: 10px;
+  
 }
 
 .AppHeader {
   text-align: center;
   color: rgb(0, 0, 0);
   font-size: large;
+  
 }
 
 .App-link {
@@ -132,7 +134,40 @@ table {
               background-color: rgb(107, 38, 38);
               overflow: visible;
               }
+              .logo {
+                
+                overflow: visible;
+                float: right;
+                bottom : top;
+                
+                position:absolute;
+                right:60px;
+                top: 10px;
+                width: 100px;
+                height: 80px;
 
+                }
+
+                .Titulo{
+                 
+                  font-family:serif;
+                }
+
+                .escuelalogo{
+                  
+                  float: center;
+
+                  background-image: linear-gradient(50%);
+                 
+                  filter:brightness(150%);
+                  
+                  width: 500px;
+                  
+                 
+                 
+                 
+
+                }
 
              /* .Historial {
                 padding: 35px;

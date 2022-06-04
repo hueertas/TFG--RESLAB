@@ -1,26 +1,12 @@
-import {newContextComponents} from "@drizzle/react-components";
-
 import AlumnoRow from "./AlumnoRow";
 
-const {ContractData} = newContextComponents;
+const AlumnosBody = ({matriculasLength}) => {
 
-const AlumnosBody = (props) => {
-    const {drizzle, drizzleState, matriculasLength} = props;
     let rows = [];
     for (let i = 0; i < matriculasLength; i++) {
-        rows.push(<ContractData
-            drizzle={drizzle}
-            drizzleState={drizzleState}
-            contract={"ReslabEtsit"}
-            method={"matriculas"}
-            methodArgs={[i]}
-            render={addr => <AlumnoRow drizzle={drizzle}
-                                       drizzleState={drizzleState}
-                                       alumnoIndex={i}
-                                       alumnoAddr={addr}/>
-            }
-        />);
+        rows.push(<AlumnoRow key={"ab-"+i} alumnoIndex={i}/>);
     }
+
     return <tbody>{rows}</tbody>;
 };
 

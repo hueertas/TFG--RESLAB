@@ -9,9 +9,11 @@ const LaboratoriosHead = () =>
     <thead>
     <tr>
         <th>#</th>
-        <th>NumeroID</th>
-        
+        <th>Index</th>
         <th>Nombre</th>
+        
+        <th>Asignatura</th>
+        <th>Info</th>
     </tr>
     </thead>;
 

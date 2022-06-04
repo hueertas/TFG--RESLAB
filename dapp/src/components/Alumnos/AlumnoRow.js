@@ -1,25 +1,26 @@
-import {newContextComponents} from "@drizzle/react-components";
+import {drizzleReactHooks} from '@drizzle/react-plugin'
+import {Link} from "react-router-dom";
 
-const {ContractData} = newContextComponents;
+const {useDrizzle} = drizzleReactHooks;
 
-const AlumnoRow = (props) => {
-    const {drizzle, drizzleState, alumnoIndex, alumnoAddr} = props;
+const AlumnoRow = ({alumnoIndex}) => {
+    const {useCacheCall} = useDrizzle();
+
+    let {addr, datos} = useCacheCall(['ReslabEtsit'],
+        call => {
+            const addr = call("ReslabEtsit", "matriculas", alumnoIndex);
+            const datos = addr && call("ReslabEtsit", "datosAlumno", addr);
+            return {addr, datos};
+        }
+    );
+
     return <tr key={"ALU-" + alumnoIndex}>
         <th>A<sub>{alumnoIndex}</sub></th>
 
-        <ContractData
-            drizzle={drizzle}
-            drizzleState={drizzleState}
-            contract={"ReslabEtsit"}
-            method={"datosAlumno"}
-            methodArgs={[alumnoAddr]}
-            render={datos => <>
-                <td>{datos.nombre}</td>
-                <td>{datos.email}</td>
-            </>}
-        />
+        <td>{datos?.nombre}</td>
+        <td>{datos?.email}</td>
 
-        <td>{alumnoAddr}</td>
+        <td><Link to={`/alumnos/${addr}`}>Info</Link></td>
     </tr>;
 };
 

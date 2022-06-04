@@ -1,9 +1,13 @@
 
 const Header = () => (
     <header className="AppHeader">
-    <h1>
-    Reservas - laboratorio - ETSIT 
-    </h1>
+        <h1>
+            <div className="Titulo"> UPM - Aplicación de gestión reservas</div> 
+        
+
+            <img className="logo" src="/etsitlogo.png"/>
+            
+            </h1>
     </header>
    );
    export default Header;

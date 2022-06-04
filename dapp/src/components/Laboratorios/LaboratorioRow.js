@@ -1,34 +1,29 @@
 
 
+import {drizzleReactHooks} from '@drizzle/react-plugin'
+import {Link} from "react-router-dom";
 
-import {newContextComponents} from "@drizzle/react-components";
+const {useDrizzle} = drizzleReactHooks;
 
-const {ContractData} = newContextComponents;
-
-const LaboratorioRow = (props) => {
-    const {drizzle, drizzleState, laboratorioIndex } = props;
+const LaboratorioRow = ({laboratorioIndex}) => {
+    const {useCacheCall} = useDrizzle();
 
 
-    return <ContractData
-                        drizzle={drizzle}
-                        drizzleState={drizzleState}
-                        contract={"ReslabEtsit"}
-                        method={"laboratoriosRegistrados"}
-                        methodArgs={[laboratorioIndex]}
-                        render={ev =>
-                            <tr key={"LAB" + laboratorioIndex}>
-                                <th>L<sub>{laboratorioIndex}</sub></th>
-                                <td>{ev.nombreL}</td>
-                                <td>{ev.labId}</td>
-                               
+    const datos = useCacheCall("ReslabEtsit", "laboratoriosRegistrados", laboratorioIndex);
 
-                              
-                            </tr>
-                        }
-                    />;
-                };
+    return <tr key={"LAb" + laboratorioIndex}>
+                <th>Lab<sub>{laboratorioIndex}</sub></th>
+                <td>{datos?.laboratorioindex}</td>
+                <td>{datos?.nombreL}</td>
+                <td>{datos?.asignaura}</td>
+                {/*<td>{datos?.info}</td>*/}
+                <td><Link to={`/laboratorios/${laboratorioIndex}`}>Info</Link></td>
+       
+
+        
+    </tr>;
+};
 
 export default LaboratorioRow;
-
 
 

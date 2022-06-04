@@ -36,7 +36,11 @@ module.exports = async callback => {
         console.log("Crear dos laboratorios:");*/
 
 
+        console.log("Añadir asig:"); 
+        await reslabetsit.creaAsignatura("core","lab1","info")
+        await reslabetsit.creaAsignatura("ore","lab2","info")
  
+        console.log("se han añadido");
 
 
 

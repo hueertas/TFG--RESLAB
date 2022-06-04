@@ -34,22 +34,31 @@ contract ReslabEtsit {
     enum TipoSO {windows, macos , linux}
     
     enum TipoConexionesRed { cable, inalambrico} // array de strings 
+
+    
     
    
    // enum Horario { turnom ,turnot}//poenr horas y turnos en enum???? array de horas 
     
     struct DatosPuesto {
-        uint PuestoId;
-        string nombreP;
-        //caracteristicas
-        //TipoConexionesRed tipoConexionesRed;
-        //TipoSO tipoSO;
-       // Laboratorio laboratorio;
+       
+	string nombre;
+	uint fecha;
+	uint entradaTurno;
+	uint salidaTurno;
+    
+	bool estado;
+	
+	string reserva; //enumerado del sistema operativo!!!!!!!!!!!
        
     }
     
     
-    
+    struct DatosTurnos{
+        string nombre;
+        uint fecha;
+        uint hora;
+    }
     
     
     /// puestos de la asignatura.
@@ -64,12 +73,21 @@ contract ReslabEtsit {
     * datos de todos los labs con sus parametro en la pantalla de inicio
     * DUDA -> QUIERO PONERARRAY DE STRING DE ASIGNATURA!!
     **/
-     struct DatosLaboratorio {
-        uint labId;
+    struct DatosLaboratorio {
+        uint laboratorioindex;
+        
         string nombreL;
+        string asignaura;
+        string info;
+        
         //string[] asignaturaL;
        
     }
+
+
+
+
+    
     
     /**
     * datos del alumno que se registra 
@@ -99,64 +117,33 @@ contract ReslabEtsit {
     }
     
     
-    
-    /**
-     * Datos de lasegunda pantalla donde te aparcene el estado de reserva, puestos etc del lab)
-     * */
-    struct PinchaLab {
-        
-
-	string puesto;
-        
-
-	string info; //enumerado del sistema operativo!!!!!!!!!!!
-    }
-
-
-    /**
-     * Datos de la tercera  pantalla donde te aparcene el estado de reserva, asignatuas etc del lab)
-     * */
-
-    struct PinchaPuesto {
-        
-	address dir;
-	
-	string fecha;
-	string entradaTurno;
-	string salidaTurno;
-	
-        
-	string estado;
-	string asignatura;
-	string info; //enumerado del sistema operativo!!!!!!!!!!!
-    }
 
 
 
 
 
     
-   /* struct DatosAsignatura{
+    struct DatosAsignatura{
         string nombre;
-        Laboratorio[] laboratorio;
-        Puesto[] puesto;
+       // Laboratorio[] laboratorio;
+        string laboratorio;
+        string info;
         //credito semanal
         //Matriculas matriculados;
     }
-    */
+    
     
     
     
     /**
-     * Datos de los datos de las ultimas reservas registradas // FALTAN PUESTO
+     * 
+
+     si esta reservado por un alumno
      * */
      
-     struct UltimaReserva{
-         string lab;
-         uint turno;
-         string fecha;
-         
-         
+     struct DatosReserva{
+         address dirAlumno;
+         bool estaReservado;  
      }
      
      /**
@@ -172,7 +159,7 @@ contract ReslabEtsit {
       }
       
       // acceder a los datos de una persona dada su direccion
-      mapping (address => DatosPersona) public datosPersona;
+    mapping (address => DatosPersona) public datosPersona;
     
     /// Acceder a los datos de un alumno dada su direccion.
     mapping (address => DatosAlumno) public datosAlumno;
@@ -180,14 +167,14 @@ contract ReslabEtsit {
       /// Acceder a los datos de un profe dada su direccion.
     mapping (address => DatosProfesor) public datosProfesor;
     
-    //mapping (address => DatosAsignatura)  datosAsignatura;
+    mapping (address => DatosAsignatura)  datosAsignatura;
     
     
     mapping (address => DatosLaboratorio)  datosLaboratorio;
 
     //mapping(uint => Laboratorio) public labPuestos; //acceder a los puestos del lab dada la info del lab
   
-
+   // mapping (address => DatosPuesto)  datosPuesto;
     
     // Array con las direcciones de los alumnos matriculados.
     address[] public matriculas;
@@ -203,7 +190,10 @@ contract ReslabEtsit {
     //Array credito semanal 
     address [] public creditosemanal;
     
-    //address[] public asignaturasRegistradas;
+   //array con las direcciones de las asignaturas registradas 
+   address[] public asignaturasRegistradasdir;
+
+    DatosAsignatura[] public asignaturasRegistradas;
     
     
     // labs en la escuela
@@ -213,7 +203,11 @@ contract ReslabEtsit {
     // puestos en la escuela
     DatosPuesto[] public puestosRegistrados;
     
-    UltimaReserva[] public reservasLab;
+ 
+
+    // array turnos de los puestos
+
+    DatosTurnos[] public turnos;
         
    
 
@@ -224,54 +218,42 @@ contract ReslabEtsit {
     
     //turno de la escuela
 
-    mapping (string => mapping (string  => uint[] )) public turnos;
+    //mapping (string => mapping (string  => uint[] )) public turnos;
     
-        /// Mapping para evitar duplicados de turnos.
+    /// Mapping para evitar duplicados de turnos. // devuelve un bool
     mapping (string => mapping (string  => mapping ( uint => bool ))) public turnos_existentes;
     
-    /// Direcciones de las personas que han asistido a algun aula en alguna de las fechas y en algun turno.
+    /// Devuelve las direcciones de las personas que han asistido a algun lab en alguna de las fechas y en algun turno.
     mapping (string => mapping (string => mapping (uint => address[] ))) public personas;
    
-    /// Direcciones de las personas que han asistido a algun aula en alguna de las fechas.
+    /// Devuelve las Direcciones de las personas que han asistido a algun lab y en alguna de las fechas.
     mapping (string => mapping (string => address[] )) public personasTotales;
+
+    // devuelve los puestos totales qu tienes los labs???????????????como lo hago  lo que quiero es haya los puestos totales que tiene cada laboratorio??????
+
+    mapping(string => string[]) public puestosTotales;
     
-    // Dada la fecha actual, el nombre del aula, el turno y la dirección de la persona, devuelve
-    // la entrada correspondiente a dicha persona.
-    mapping (string => mapping (string => mapping (uint => mapping (address => PinchaLab)))) public datosLab;
-
-     // Dada la fecha actual, el nombre del aula, el turno y la dirección de la persona, devuelve
-    // la entrada correspondiente a dicha persona.
-    mapping (string => mapping (string => mapping (uint => mapping (address => PinchaPuesto)))) public datosPuesto;
 
 
-    /// Ultimas entradas de cada persona.
-    mapping (address => UltimaReserva[] ) public ultimosRegistros;
 
-  // mapping(uint => bool) public registeredLaboratorios; //saberr si un lab esta registrado
-   // mapping(uint => Laboratorio) public labPuestos; //acceder a los puestos del lab dada la info del lab 
-    // labId -> mes ->semana-> hora -> waitingList[]
- /*   mapping(uint => mapping(uint => mapping(uint => mapping(uint => address[])))) public reservations;
-    // labId -> mes ->semana-> hora -> waitingListLength
-    mapping(uint => mapping(uint => mapping(uint => mapping(uint => uint)))) public reservationLengths;
-    // address -> _labID -> mes ->semana-> hora -> bool*/
- /*   mapping(address => mapping(uint => mapping(uint => mapping(uint => mapping(uint => bool))))) public isLabReserved;
-    event Reservation(
-        address indexed _from,
-        uint _labID,
-        uint _mes,
-        uint _semana,
-        uint _hora
-    );
-    event Cancellation(
-        address indexed _from,
-        uint _labID,
-        uint _mes,
-        uint _semana,
-        uint _hora
-    );
+
+    //IMPORTANTEEEEEEEEEEEE!
+    // devuelve array con los indices de los puestos y la clave es un array de enteros laboratorio 
+    mapping (uint=> uint[]) public puestos;
+
+
+
+    //dado la fecha, entrada turno y el el indice de laboratorio quiero que devuelva un array con el numero de puestos
+    mapping (string => mapping (uint => mapping (uint => uint[]))) public puestosBuscados;
+
     
-    
-  */
+    //dado el numero lab, fecha (numero de milisegundos) , dado turno ( todos los turnos que hay en un puesto en un dia), te devuelva la reserva
+    mapping( uint =>mapping (uint=> mapping (uint=> DatosReserva ))) public puestosReservados;
+
+
+
+
+
     
     
     
@@ -308,7 +290,7 @@ contract ReslabEtsit {
     
     
 /**
-     * El numero de labs  creadas.
+     * Te devuelve el numero de puestos registrados
      *
      * @return El numero de puestos creadas.
      */
@@ -316,10 +298,25 @@ contract ReslabEtsit {
         return puestosRegistrados.length;
     }
     
+
+  /**
+     * Te devuelve el numero de turnos
+     *
+     * @return El numero de turnos creadas.
+     */
+    function turnosLength() public view returns(uint) {
+        return turnos.length;
+    }
+    
+
+    //devuelve la longitud del array de los puestos de un laboratorio 
+    function puestosLaboratorioLength(uint _laboratorioindex) public view returns(uint) {
+        return puestos[_laboratorioindex].length;
+    }
     
     
      /**
-     * El numero de labs  creadas.
+     * El numero de labs  registrados
      *
      * @return El numero de labs creadas.
      */
@@ -329,38 +326,39 @@ contract ReslabEtsit {
     
     
     
-        /**
-     * El numero de reservas existentes.
-     *
-     * @return El numero de alertas existentes.
-     */
-    function reservasLength() public view returns(uint) {
-        return reservasLab.length;
 
-    }
 
-	  /**
-     * El numero de ultimosRegistros existentes.
-     *
-     * @return El numero de ultimosRegistros existentes.
-     */
-    function ultimosRegistrosLength(address dir) public view returns(uint) {
-	return ultimosRegistros[dir].length;
-    }
-        
     /**
      * Permite obtener la longitud del array de personasTotales.
      * 
      */
     function personasLength(string memory _nombre, string memory _fecha) public view returns(uint) {
 
-	uint longitud = personasTotales[_fecha][_nombre].length;
+        uint longitud = personasTotales[_fecha][_nombre].length;
 
-	if(longitud == 0){
-	  longitud = 1;
-	}
+        if(longitud == 0){
+        longitud = 1;
+	    }
 
-  	return longitud;
+  	    return longitud;
+
+    }
+
+
+
+      /**
+     * Permite obtener la longitud del array de puestosTotale del lab
+     * 
+     */
+    function puestosLength2(string memory _nombre) public view returns(uint) {
+
+        uint longitud2 = puestosTotales[_nombre].length;
+
+        if(longitud2 == 0){
+        longitud2 = 1;
+	    }
+
+  	    return longitud2;
 
     }
 
@@ -372,17 +370,18 @@ contract ReslabEtsit {
      */
     function dirPersonas(string memory _nombre, string memory _fecha, uint _indice) public view returns(address) {
 
-	if(personasTotales[_fecha][_nombre].length > 0){
-	address _dirUno = personasTotales[_fecha][_nombre][_indice];
-	return _dirUno;
+        if(personasTotales[_fecha][_nombre].length > 0){
 
-	}else{
-	return msg.sender;
-	}			
+        address _dirUno = personasTotales[_fecha][_nombre][_indice];
+        return _dirUno;
+
+        }else{
+        return msg.sender;
+	    }			
 	
     }
     
-        /**
+    /**
      * Obtiene los datos de una persona registrada.
      * 
      * @param persona La direccion de una persona.
@@ -391,43 +390,51 @@ contract ReslabEtsit {
      */
     function obtenerDatosPersona(address persona)  public view returns(address) {
 	
-	
-	if(!estaRegistrado(persona)){
-	return address(0);
-	} else{	
-	return datosPersona[persona].dir;
+        
+        if(!estaRegistrado(persona)){
+        return address(0);
+        } else{	
+        return datosPersona[persona].dir;
 	}
 	
         
         
     } 
+
+
+    //puestos que hay en un lab. Coger el array que te da el mapping de puestos y devolver su .length
+
+    function puestosdeLaboratorio(uint _laboratorioindex) public view returns(uint) {
+
+        return puestos[_laboratorioindex].length;
+    }
     
 
 
-        /**
-     * La alerta (si la hay) de un alumno.
-     *
-     */
-    function reservas(address _dir) public view returns (ReservaAlumno memory) {
+     // puestos que hay en un lab segun la fecha, la entrada 
+    function BuscaPuestoLab( string  memory _fecha, uint _entradaTurno,uint _laboratorioindex) public view returns(uint) {
 
-	return reservasAlumno[_dir]; 
+        return puestosBuscados[_fecha][_entradaTurno][_laboratorioindex].length;
     }
+
 
 
 
     /**
      * Eliminar la alerta de un usuario
      *
-     */
+    
     function reiniciarReserva() public {
 
 	reservasAlumno[msg.sender].estado = 0 ;
 
-
+    
     }
 
+    */
+
         /**
-     * El lab del que se desea ver el historial.
+     * El lab del que se desea ver su info y el arrai de uestos
      *
      */
     function LabPulsado(uint x) public view returns (string memory) {
@@ -437,68 +444,66 @@ contract ReslabEtsit {
 
 
           /**
-     * El lab del que se desea ver el historial.
+     * El puesto del que se desea ver toda su información tercera pantalla
      *
      */
-    function PuestoPulsado(uint x) public view returns (string memory) {
+    /*function PuestoPulsado(uint x) public view returns (string memory) {
 
 	return puestosRegistrados[x].nombreP; 
     }
 
     
   /**
-     * Las personas pueden registrar su asistencia a un lab con el metodo guardarReserva.
+     * Las personas pueden registrar su asistencia en un puesto con el metodo guardarReserva.
      * 
      * Impedir que se pueda meter un nombre vacio.
      *
-     *  _nombre El nombre del aula. 
-     * _ent Hora de entrada al aula.
-     *  _fecha Fecha de entrada al aula.
-     *  _puesto Puesto en el aula.
+     *  _nombre El nombre del puesto. 
+     * _ent Hora de entrada al lab.
+     *  _fecha Fecha de entrada al lab.
+     *  _puesto Puesto en el lab.
      */
-    function guardarReserva(string memory _nombre, string memory _entradaTurno, string memory _fecha,  uint _turno) public {
+    /*function guardarReserva(string memory _nombre, string memory _entradaTurno, string memory _fecha,   uint _turno) public {
         
 	
-    bytes memory a = bytes(_nombre);
-    require(a.length != 0, "El nombre no puede ser vacio");
+        bytes memory a = bytes(_nombre);
+        require(a.length != 0, "El nombre no puede estar vacia");
 
-	bytes memory b = bytes(_entradaTurno);
-	require(b.length != 0, "La hora de entrada no puede ser vacio");
+        bytes memory b = bytes(_entradaTurno);
+        require(b.length != 0, "La hora de entrada no puede estar vacia");
 
-	bytes memory c = bytes(_fecha);
-	require(c.length != 0, "La fecha no puede ser vacio");
+        bytes memory c = bytes(_fecha);
+        require(c.length != 0, "La fecha no puede estar vacia");
 
-	
-	datosPuesto[_fecha][_nombre][_turno][msg.sender].dir = msg.sender;
-	datosPuesto[_fecha][_nombre][_turno][msg.sender].fecha = _fecha;
-	datosPuesto[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
+        
+
+        
+        datosPuesto[_fecha][_nombre][_turno][msg.sender].dir = msg.sender; //datosPuesto es un mapping ( el puesto que devuelve adjudicado a una persona dado la fecha, nombre lab , entrada y direcccion de la persona)
+        datosPuesto[_fecha][_nombre][_turno][msg.sender].fecha = _fecha;
+        datosPuesto[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
 	
  	
-	if (reservasAlumno[msg.sender].estado==0) {
-   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Inicial";
-	} else if (reservasAlumno[msg.sender].estado==1) {
-   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Sospechoso";
-	} else if (reservasAlumno[msg.sender].estado==2) {
-   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Positivo";
-	} else {
-   	datosPuesto[_fecha][_nombre][_turno][msg.sender].estado = "Negativo";
-	}
 
-        personas[_fecha][_nombre][_turno].push(msg.sender);
-	personasTotales[_fecha][_nombre].push(msg.sender);
-	ultimosRegistros[msg.sender].push(UltimaReserva(_nombre,_turno,_fecha));
-	
-	if (turnos_existentes[_fecha][_nombre][_turno] == false){
-	   turnos[_fecha][_nombre].push(_turno);
-	   turnos_existentes[_fecha][_nombre][_turno] = true;
-	}
+
+        personas[_fecha][_nombre][_turno].push(msg.sender); //personas ( mapping que devuelve la personas que han asistido a algun lab en una fecha  lab y  turno específico)
+        personasTotales[_fecha][_nombre].push(msg.sender); // personasTotales (devuelve todas las ersonas que han asistido dada una fecha y el nombre de un lab)
+        ultimosRegistros[msg.sender].push(UltimaReserva(_nombre,_turno,_fecha)); // Mapping que devuelve los ultimos registros de la ultima reserva // ultimaReserva( es un struct con turno, fecha nombre lab) 
+        
+        if (turnos_existentes[_fecha][_nombre][_turno] == false){ // mapping evitar duplicados, si ese turno dado el nombre de un uesto , fecha no esta cogido entonces se puede reservar 
+        turnos[_fecha][_nombre].push(_turno); // se suma al numero de puestos cogidos llamado turnos ( mapping  dado un puestos y una fecha)
+
+
+
+
+        turnos_existentes[_fecha][_nombre][_turno] = true;
+        }
 
         
     }
     
 
     /**
-     * Las personas pueden registrar su salida del aula con el metodo guardarSalida.
+     * Las personas pueden registrar su salida del lab con el metodo guardarSalida.
      * 
      * Impedir que se pueda meter un nombre vacio.
      *
@@ -506,70 +511,14 @@ contract ReslabEtsit {
      *  _sal Hora de salida al aula.
      *  _fecha Fecha de entrada al aula.
      */
-    function guardarSalida(string memory _nombre, string memory _salidaTurno, string memory _fecha, uint _turno) public {
+    /*function guardarSalida(string memory _nombre, string memory _salidaTurno, string memory _fecha, uint _turno) public {
 
-	datosPuesto[_fecha][_nombre][_turno][msg.sender].salidaTurno = _salidaTurno;
+	    datosPuesto[_fecha][_nombre][_turno][msg.sender].salidaTurno = _salidaTurno;
         
     }
 
 
 
-
-      /**
-     * Permite al administrador obtener los datos de un aula para que sean visualizados.
-     * 
-     */
-    function guardarEntradasLaboratorio(string memory _nombre, string memory _fecha) public view returns(PinchaLab[] memory) {
-
-	uint cont = 0;
-	uint iterador = 0;
-
-	uint num_turnos = turnos[_fecha][_nombre].length;
-	
-	for(uint j = 0; j < num_turnos ; j++){
-
-	cont = cont + personas[_fecha][_nombre][turnos[_fecha][_nombre][j]].length;
-
-	}	
-
-
-	if(num_turnos > 0){
-
-	PinchaLab[] memory entradas = new PinchaLab[](cont);
-
-	for(uint j = 0; j < num_turnos ; j++){
-
-	address[] memory _dir = personas[_fecha][_nombre][turnos[_fecha][_nombre][j]];	
-
-	for(uint i = iterador; i < _dir.length + iterador ; i++){
-
-	
-	entradas[i].puesto = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].puesto;
-	
-    entradas[i].info = datosLab[_fecha][_nombre][turnos[_fecha][_nombre][j]][_dir[i]].info;
-	
-	}
-	iterador = iterador + _dir.length;
-	}
-	iterador = 0;
-	cont = 0;
-	num_turnos = 0;
-	return entradas;
-
-	}
-	else{
-	
-	PinchaLab[] memory entradas_dos = new PinchaLab[](1);
-	
-	entradas_dos[0].puesto = "A";
-    
-	entradas_dos[0].info = "linux";
-
-	return entradas_dos;
-
-	}	
-
-    }
 
 
 
@@ -617,20 +566,48 @@ contract ReslabEtsit {
     
         
      //poner lo del laboratorio pero me dice lo de use pragma experimental ABIENCODERV2
-    function creaLaboratorio( string memory _nombreL)  soloOwner public returns (uint) {
+    function creaLaboratorio( uint  _laboratorioindex,string memory _nombreL,string memory _asignaura,string memory _Info) soloOwner public returns (uint) {
         
         bytes memory bn = bytes(_nombreL);
         require(bn.length != 0, "El nombre del lab no puede ser vacio");
         
-        laboratoriosRegistrados.push(DatosLaboratorio(laboratoriosRegistrados.length,_nombreL));
+        laboratoriosRegistrados.push(DatosLaboratorio(_laboratorioindex,_nombreL,_asignaura,_Info));
         return laboratoriosRegistrados.length - 1;
+    }
+    
+
+    function creaAsignatura( string memory _nombreAsig,string memory _lab,string memory _Info)  soloOwner public returns (uint) {
+        
+        bytes memory bn = bytes(_nombreAsig);
+        require(bn.length != 0, "El nombre de la asig no puede ser vacio");
+        
+       asignaturasRegistradas.push(DatosAsignatura(_nombreAsig,_lab,_Info));
+        return asignaturasRegistradas.length - 1;
     }
     
     
     
     
-    
+    //poner lo del laboratorio pero me dice lo de use pragma experimental ABIENCODERV2
+    function creaPuesto(string memory _NombreP,uint  _fecha,uint  _entradaTurno,uint  _salidaTurno,bool _estado,string memory _info) soloOwner public returns (uint) {
         
+        bytes memory bn = bytes(_NombreP);
+        require(bn.length != 0, "El nombre del lab no puede ser vacio");
+        
+        puestosRegistrados.push(DatosPuesto(_NombreP,_fecha,_entradaTurno,_salidaTurno,_estado,_info));
+        return puestosRegistrados.length - 1;
+    
+    }   
+
+
+    function creaTurno(string memory _nombre, uint _fecha, uint _hora) soloOwner public returns (uint) {
+    
+    bytes memory bn = bytes(_nombre);
+    require(bn.length != 0, "El nombre de la evaluacion no puede ser vacio");
+    
+    turnos.push(DatosTurnos(_nombre, _fecha, _hora));
+    return turnos.length - 1;
+} 
     
  
      /**
@@ -659,10 +636,10 @@ contract ReslabEtsit {
      *
      * .
      */
-    /*function asignaturasRegistradasLength() public view returns(uint) {
+    function asignaturasRegistradasLength() public view returns(uint) {
         return asignaturasRegistradas.length;
     }
-    */
+    
     
     
     
@@ -703,14 +680,14 @@ contract ReslabEtsit {
     }
     
     
-        function autoregistroP() noRegistradosP public {
-        
+    function autoregistroP() noRegistradosP public {
+    
         require(msg.sender!=address(0), "El address no puede estar vacio");
         
         datosPersona[msg.sender] = DatosPersona(msg.sender);
         
         registradosP.push(msg.sender);
-        
+    
     }
     
     
@@ -728,7 +705,9 @@ contract ReslabEtsit {
         
     }
     
-    
+
+
+
     
     
     
@@ -752,7 +731,7 @@ contract ReslabEtsit {
     }
     
     
-      function quienSoyP() soloRegistrados public view returns (string memory _nombreP, string memory _emailP,string memory _asignaturaP,string memory _departamentoP) {
+    function quienSoyP() soloRegistrados public view returns (string memory _nombreP, string memory _emailP,string memory _asignaturaP,string memory _departamentoP) {
         DatosProfesor memory datosP = datosProfesor[msg.sender];
         _nombreP = datosP.nombreP;
         _emailP = datosP.emailP;

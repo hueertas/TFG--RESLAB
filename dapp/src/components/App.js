@@ -1,4 +1,104 @@
 
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import '../css/App.css';
+
+
+
+
+
+
+
+import Header from './Header';
+
+import {Alumnos, Alumno} from "./Alumnos/Alumnos";
+
+import Profesores from "./Profesores/Profesores";
+//import Laboratorios from "./Laboratorios/Laboratorios";
+
+import {Laboratorios, Laboratorio} from "./Laboratorios/Laboratorios";
+//import Puestos from "./Puestos/Puestos";
+import {Asignaturas, Asignatura} from "./Asignaturas/Asignaturas";
+//import {Puestos, Puesto} from "./Puestos/Puestos";
+import Loading from './Loading';
+import Layout from './Layout';
+import Home from './Home';
+import ReservarPuestos from "./ReservarPuestos/ReservarPuestos";
+
+
+
+
+function App() {
+  return (
+    
+  
+            <div className="App">
+              <Loading>
+                <BrowserRouter>
+                    <Routes>
+                 
+                      <Route path="/" element={<Layout/>}>
+                        <Route index element={<Home/>}/>
+                        <Route path="/asignaturas/" element={<Asignaturas/>}/>
+                            
+                        <Route path="asignaturas/:index" element={<Asignatura/>}/>
+                        
+                        
+                      
+                        <Route path="/alumnos/" element={<Alumnos/>}/>
+                        <Route path="alumnos/:addr" element={<Alumno/>}/>
+                        <Route path="/profesores/" element={<Profesores/>}/>
+                            
+                        <Route path="/laboratorios/" element={<Laboratorios/>}/>
+                        <Route path="laboratorios/:index" element={<Laboratorio/>}/>
+                        
+                        <Route path="reservarPuestos/" element={<ReservarPuestos/>}/>
+                        
+                            
+                     
+                      </Route>
+                    </Routes>
+                </BrowserRouter>
+            </Loading>
+        </div>
+    );
+}
+
+
+
+export default App;
+
+
+
+
+
+
+
+
+
+/*return (
+  <div className="App">
+  
+      <Router>
+          <Header drizzle={drizzle} drizzleState={drizzleState}/>
+          <Navegacion/>
+          <Route path="/" exact>
+              <p>Bienvenido a la práctica de BCDA. </p>
+          </Route>
+          <Route path="/asignaturas/">
+              <Evaluaciones drizzle={drizzle} drizzleState={drizzleState}/>
+          
+      </Router>
+  </div>
+);
+}}
+</DrizzleContext.Consumer>
+);
+}
+---------------------------------3 version sin hooks
+
+
 import {DrizzleContext} from "@drizzle/react-plugin";
 
 import React from 'react';
@@ -15,11 +115,12 @@ import {
 
 
 import Header from './Header';
-import Asignaturas from './Asignaturas/Asignaturas';
+
 import Alumnos from "./Alumnos/Alumnos";
 import MisReservas from "./MisReservas/MisReservas";
 import Profesores from "./Profesores/Profesores";
 import Laboratorios from "./Laboratorios/Laboratorios";
+import {Asignaturas, Asignatura} from "./Asignaturas/Asignaturas";
 
 
 
@@ -63,6 +164,9 @@ function App() {
               </Route>
               <Route path="/asignaturas/">
                    <Asignaturas drizzle={drizzle} drizzleState={drizzleState}/>
+              
+               <Route path="asignaturas/:addr" element={<Asignatura/>}/>
+              
               </Route>
               <Route path="/alumnos/">
                    <Alumnos drizzle={drizzle} drizzleState={drizzleState}/>
@@ -96,25 +200,27 @@ function App() {
 export default App;
 
 
-/*return (
-  <div className="App">
-  
-      <Router>
-          <Header drizzle={drizzle} drizzleState={drizzleState}/>
-          <Navegacion/>
-          <Route path="/" exact>
-              <p>Bienvenido a la práctica de BCDA. </p>
-          </Route>
-          <Route path="/asignaturas/">
-              <Evaluaciones drizzle={drizzle} drizzleState={drizzleState}/>
-          
-      </Router>
-  </div>
-);
-}}
-</DrizzleContext.Consumer>
-);
-}*/
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
 
 
 //cambio consumer / ganchosss 

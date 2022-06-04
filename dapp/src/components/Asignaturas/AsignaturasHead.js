@@ -1,3 +1,25 @@
+
+
+
+// dentro de laboratrio un enlace con los puestos y sus caracteristicas
+
+
+  
+const AsignaturasHead = () =>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Laboratorio</th>
+        <th>Info</th>
+    </tr>
+    </thead>;
+
+
+
+export default AsignaturasHead;
+
+
 /*const AsignaturasHead = () =>
     <thead>
     <tr>
@@ -7,11 +29,8 @@
     </tr>
     </thead>;
 
-export default AsignaturasHead;*/
-
-
-// dentro de laboratrio un enlace con los puestos y sus caracteristicas
-
+export default AsignaturasHead;
+-------------------------------------
 
   
 const AsignaturasHead= ({laboratoriosLength}) => {
@@ -30,3 +49,6 @@ const AsignaturasHead= ({laboratoriosLength}) => {
 };
 
 export default AsignaturasHead;
+
+
+*/

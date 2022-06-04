@@ -17,20 +17,44 @@ module.exports = async callback => {
 
       
 
-        console.log("Matricular a dos alumnos:");
+       console.log("Matricular a dos alumnos:");
         let evaAccount = accounts[1];
       //  let pepeAccount = accounts[2];
         console.log("Cuenta de Eva =", evaAccount);
        // console.log("Cuenta de Pepito =", pepeAccount);
-//
-        await reslabetsit.autoregistroP( {from: evaAccount});
+       await reslabetsit.automatricula("Eva Martinez", "em@dominio.es", {from: evaAccount});
+
+
+       console.log("Crear dos asignaturas:");
+        await reslabetsit.creaAsignatura("core", "lab1", "info");
+        await reslabetsit.creaAsignatura("dapp ", "lab2", "info");
+
+
+        
+       console.log("Crear dos laboratrios:");
+       await reslabetsit.creaLaboratorio(1,"lab1", "core", "info");
+       await reslabetsit.creaLaboratorio(2,"lab2 ", "dap", "info");
+
+
+       console.log("Crear dos puestos:");
+       await reslabetsit.creaPuesto("puesto1", 8,8,9,false, "info");
+       await reslabetsit.creaPuesto("puesto2", 9,10,9,false, "info");
+
+
+       console.log("Crear dos turnos:");
+       await reslabetsit.creaTurno("turno1", 8,8);
+       await reslabetsit.creaTurno("turno2", 9,10);
+
+
+
+       /* await reslabetsit.autoregistroP( {from: evaAccount});
        // await reslabetsit.automatricula("Jose Redondo", "jr@stio.com", {from: pepeAccount});
         console.log("terminada matricula");
        /* await reslabetsit.creaLaboratorio("lab", 13, 30);
         await reslabetsit.creaLaboratorio( "hola",12, 70);
         console.log("Crear dos laboratorios:");*/
 
-        await reslabetsit.guardarReserva("B10", "10:00","10/07/2021","23",2);
+       /* await reslabetsit.guardarReserva("B10", "10:00","10/07/2021","23",2);
 		console.log("Dir:");
 		console.log(evaAccount);
 		//console.log(evaAccount);
@@ -48,7 +72,7 @@ module.exports = async callback => {
 */
 
 
-       console.log("Añadir labs:"); 
+       /*console.log("Añadir labs:"); 
        await reslabetsit.creaLaboratorio("labB")
 
       /*console.log("Añadir calificaciones:");
