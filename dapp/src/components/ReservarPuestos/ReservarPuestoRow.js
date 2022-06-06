@@ -10,9 +10,9 @@ const ReservarPuestoRow = ({puestoIndex}) => {
 
 
     //siempre que se haga una llamada una veces si y otra veces no
-    let puestoName = useCacheCall(['ReslabEtsit'],
+    /*let puestoName = useCacheCall(['ReslabEtsit'],
         call => puestoAddr && call("ReslabEtsit", "puestos", puestoAddr)?.nombre
-    );
+    );*/
     // ver bien como llamar al puesto esee!!!!
 
     
@@ -25,7 +25,7 @@ const ReservarPuestoRow = ({puestoIndex}) => {
             const puesto = call("ReslabEtsit", "puestosReservados", puestoAddr, tu);
             cells.push(
                 <td key={"p2-" + puestoIndex + "-" + tu}>
-                    {puesto?.fecha === 0 ? "dir alumno" : "Vacio"}
+                    {puesto?.fecha === 9 ? "dir alumno" : "Vacio"}
                     {/*nota?.tipo === "1" ? (nota?.calificacion / 10).toFixed(1) : ""*/}
                     {/*nota?.tipo === "2" ? (nota?.calificacion / 10).toFixed(1) + "(M.H.)" : ""*/}
                 </td>
@@ -37,7 +37,7 @@ const ReservarPuestoRow = ({puestoIndex}) => {
     return <tr key={"d" + puestoIndex}>
          
             <th>P<sub>{puestoIndex}</sub></th>
-            {<td>{puestoName}</td>}
+            {<td>{puestoAddr?.nombre}</td>}
             {cells}
         </tr>;
 };

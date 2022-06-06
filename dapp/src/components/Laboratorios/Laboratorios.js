@@ -7,6 +7,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import React, {useState} from 'react';
 import moment from 'moment';
+import ReservarPuestos from '../ReservarPuestos/ReservarPuestos';
 
 
 const {useDrizzle} = drizzleReactHooks;
@@ -34,7 +35,10 @@ export const Laboratorios = () => {
     
     let {index} = useParams();
     
+    //let {fechaindex} = useParams();
+    
     const datos = useCacheCall("ReslabEtsit", "laboratoriosRegistrados", index);
+    /* const datos = useCacheCall("ReslabEtsit", "laboratoriosReservados", labindex,fechaindex);*/
     const datospuesto = useCacheCall("ReslabEtsit", "puestosLaboratorioLength") || 0;
     const [dateState, setDateState] = useState(new Date());
     const changeDate = (e) => {
@@ -71,19 +75,19 @@ export const Laboratorios = () => {
 
             <p>El día seleccionado es: <b>{moment(dateState).format('MMMM Do YYYY')}</b></p>
 
-            <BuscaPuesto/>
-
+          <ReservarPuestos indexlab={index} fecha={moment(dateState).format('MMMM Do YYYY')} />
             
+           {/*<Link to={`/reservarPuestos/${index}`}>Reservar el puesto </Link>*/} 
+           
     
             <Link to="/laboratorios">Volver</Link>
         </>
     };
 
 
+ // meter una constante con el mapping y pasarle esos parametros
 
-
-
-
+        // va a llamar al head y al body de reserva puestos
        
    
 
