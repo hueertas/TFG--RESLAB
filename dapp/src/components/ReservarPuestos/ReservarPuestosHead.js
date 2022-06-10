@@ -10,6 +10,7 @@ const ReservarPuestosHead = () => {
     thead.push(<th key={"chn"}>Nombre Puestos</th>);
 
     const el = useCacheCall("ReslabEtsit", "turnosLength") || 0;
+    //thead.push(<th key={"xxx"}>{el}{el}</th>);
     for (let i = 0; i < el; i++) {
         thead.push(<th key={"chev-" + i}>Turno<sub>{i}</sub></th>);
     }

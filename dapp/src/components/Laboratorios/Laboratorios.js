@@ -35,23 +35,23 @@ export const Laboratorios = () => {
     
     let {index} = useParams();
     
-    //let {fechaindex} = useParams();
     
+   
     const datos = useCacheCall("ReslabEtsit", "laboratoriosRegistrados", index);
     /* const datos = useCacheCall("ReslabEtsit", "laboratoriosReservados", labindex,fechaindex);*/
-    const datospuesto = useCacheCall("ReslabEtsit", "puestosLaboratorioLength") || 0;
+    //const datospuesto = useCacheCall("ReslabEtsit", "puestosLaboratorioLength") || 0;
     const [dateState, setDateState] = useState(new Date());
     const changeDate = (e) => {
         setDateState(e)
       }
 
-    let rows = [];
+    /*let rows = [];
     for (let i = 0; i < datospuesto; i++) {
         rows.push(<Laboratorio key={"ab-"+i} laboratorioIndex={i}/>);
        //rows.push(<tr><td>{i}</td></tr>);
 
-    }
-    
+    }*/
+    const el = useCacheCall("ReslabEtsit", "turnosLength") || 0;
     return <>
             <header className="AppAlumno">
                 <h2>LABORATORIOS
@@ -64,7 +64,7 @@ export const Laboratorios = () => {
                 
                 <li><b>Nombre:</b> {datos?.nombreL ?? "Desconocido"}</li>
                 {/*<li><b>Asig</b> {datos?.asignaura ?? "Desconocido"}</li>*/}
-                <li><b>Puestos correspondientes:</b>{rows}</li>
+                {/*<li><b>Puestos correspondientes:</b>{rows}</li>*/}
 
                 <li><b>Info:</b> {index}</li>
             </ul>
@@ -74,8 +74,9 @@ export const Laboratorios = () => {
             onChange={changeDate}/>
 
             <p>El día seleccionado es: <b>{moment(dateState).format('MMMM Do YYYY')}</b></p>
-
-          <ReservarPuestos indexlab={index} fecha={dateState} />
+            
+            <p> el numero de turnos es {el}</p>
+          {<ReservarPuestos indexlab={index} fecha={dateState} />}
             
            {/*<Link to={`/reservarPuestos/${index}`}>Reservar el puesto </Link>*/} 
            

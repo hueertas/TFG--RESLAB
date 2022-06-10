@@ -52,7 +52,7 @@ contract ReslabEtsit {
     }
     
     
-    struct DatosTurnos{
+    struct DatosTurno{
         string nombre;
         uint fecha;
       
@@ -200,7 +200,7 @@ contract ReslabEtsit {
 
     // array turnos de los puestos
 
-    DatosTurnos[] public turnos;
+    DatosTurno[] public turnosRegistrados;
         
    
 
@@ -348,7 +348,7 @@ contract ReslabEtsit {
      */
 
     function turnosLength() public view returns(uint) {
-        return turnos.length;
+        return turnosRegistrados.length;
     }
     
 
@@ -640,10 +640,10 @@ contract ReslabEtsit {
     function creaTurno(string memory _nombre, uint _fecha) soloOwner public returns (uint) {
     
     bytes memory bn = bytes(_nombre);
-    require(bn.length != 0, "El nombre de la puesto no puede estar vacio");
+    require(bn.length != 0, "El nombre de la turno no puede estar vacio");
     
-    turnos.push(DatosTurnos(_nombre, _fecha));
-    return turnos.length - 1;
+    turnosRegistrados.push(DatosTurno(_nombre, _fecha));
+    return turnosRegistrados.length - 1;
 } 
     
  

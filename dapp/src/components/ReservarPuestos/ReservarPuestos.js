@@ -18,7 +18,7 @@ const ReservarPuestos = ({indexlab,fecha}) => {
             <h2>Reservar Puestos</h2>
             <table>
                 <ReservarPuestosHead />
-                <ReservarPuestosBody indexlab={indexlab} fecha={fecha} />
+                {<ReservarPuestosBody indexlab={indexlab} fecha={fecha} />}
             </table>
 
             

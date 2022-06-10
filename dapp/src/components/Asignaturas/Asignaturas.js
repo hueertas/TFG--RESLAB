@@ -28,7 +28,7 @@ const {useCacheCall} = useDrizzle();
 let {index} = useParams();
 
 const datos = useCacheCall("ReslabEtsit", "asignaturasRegistradas", index);
-
+const el = useCacheCall("ReslabEtsit", "turnosLength") || 0; //demostrar que en asignatura si lo coge porque ?????????????
 return <>
         <header className="AppAlumno">
             <h2>Asignatura</h2>
@@ -38,6 +38,8 @@ return <>
             <li><b>Nombre:</b> {datos?.nombre ?? "Desconocido"}</li>
             <li><b>Lab:</b> {datos?.laboratorio ?? "Desconocido"}</li>
             <li><b>Info:</b> {index}</li>
+
+            <p> el numero de turnos es {el}</p>
         </ul>
 
         <Link to="/asignaturas">Volver</Link>

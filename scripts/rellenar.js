@@ -22,7 +22,7 @@ module.exports = async callback => {
       //  let pepeAccount = accounts[2];
         console.log("Cuenta de Eva =", evaAccount);
        // console.log("Cuenta de Pepito =", pepeAccount);
-       await reslabetsit.automatricula("Eva Martinez", "em@dominio.es", {from: evaAccount});
+      // await reslabetsit.automatricula("Eva Martinez", "em@dominio.es", {from: evaAccount});
 
 
        console.log("Crear dos asignaturas:");
@@ -45,7 +45,11 @@ module.exports = async callback => {
        await reslabetsit.creaTurno("turno1", 8);
        await reslabetsit.creaTurno("turno2",9);
 
+   
 
+      const tl =  await reslabetsit.turnosLength();
+
+      console.log("numero de turnos", tl);
 
        /* await reslabetsit.autoregistroP( {from: evaAccount});
        // await reslabetsit.automatricula("Jose Redondo", "jr@stio.com", {from: pepeAccount});
