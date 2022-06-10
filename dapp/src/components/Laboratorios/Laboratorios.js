@@ -75,7 +75,7 @@ export const Laboratorios = () => {
 
             <p>El día seleccionado es: <b>{moment(dateState).format('MMMM Do YYYY')}</b></p>
 
-          <ReservarPuestos indexlab={index} fecha={moment(dateState).format('MMMM Do YYYY')} />
+          <ReservarPuestos indexlab={index} fecha={dateState} />
             
            {/*<Link to={`/reservarPuestos/${index}`}>Reservar el puesto </Link>*/} 
            

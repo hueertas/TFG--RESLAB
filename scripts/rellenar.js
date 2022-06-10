@@ -37,13 +37,13 @@ module.exports = async callback => {
 
 
        console.log("Crear dos puestos:");
-       await reslabetsit.creaPuesto("puesto1", 8,8,9,false, "info");
-       await reslabetsit.creaPuesto("puesto2", 9,10,9,false, "info");
+       await reslabetsit.creaPuesto("puesto1", 1);
+       await reslabetsit.creaPuesto("puesto2", 2);
 
 
        console.log("Crear dos turnos:");
-       await reslabetsit.creaTurno("turno1", 8,8);
-       await reslabetsit.creaTurno("turno2", 9,10);
+       await reslabetsit.creaTurno("turno1", 8);
+       await reslabetsit.creaTurno("turno2",9);
 
 
 

@@ -3,16 +3,16 @@ import {drizzleReactHooks} from '@drizzle/react-plugin'
 
 const {useDrizzle} = drizzleReactHooks;
 
-const ReservarPuestoRow = ({puestoIndex}) => {
+const ReservarPuestoRow = ({puestoIndice,indexlab, fecha}) => {
     const {useCacheCall} = useDrizzle();
 
-    const puestoAddr = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndex);
+    const puestoAddr = useCacheCall("ReslabEtsit", "puestosDelLaboratorioLength", indexlab);
 
 
-    //siempre que se haga una llamada una veces si y otra veces no
-    /*let puestoName = useCacheCall(['ReslabEtsit'],
-        call => puestoAddr && call("ReslabEtsit", "puestos", puestoAddr)?.nombre
-    );*/
+    //acceder a los datos de un puesto dado su lab 
+    let puestoName = useCacheCall(['ReslabEtsit'],
+        call => puestoAddr && call("ReslabEtsit", "puestosDelLaboratorioLength", puestoAddr)?.nombre
+    );
     // ver bien como llamar al puesto esee!!!!
 
     
@@ -22,9 +22,9 @@ const ReservarPuestoRow = ({puestoIndex}) => {
         let cells = [];
         const turnosLength = call("ReslabEtsit", "turnosLength") || 0;
         for (let tu = 0; tu < turnosLength; tu++) {
-            const puesto = call("ReslabEtsit", "puestosReservados", puestoAddr, tu);
+            const puesto = call("ReslabEtsit", "datosReserva", puestoAddr, tu);
             cells.push(
-                <td key={"p2-" + puestoIndex + "-" + tu}>
+                <td key={"p2-" + indexlab + "-" + tu}>
                     {puesto?.fecha === 9 ? "dir alumno" : "Vacio"}
                     {/*nota?.tipo === "1" ? (nota?.calificacion / 10).toFixed(1) : ""*/}
                     {/*nota?.tipo === "2" ? (nota?.calificacion / 10).toFixed(1) + "(M.H.)" : ""*/}
@@ -34,14 +34,12 @@ const ReservarPuestoRow = ({puestoIndex}) => {
         return cells;
     });
 
-    return <tr key={"d" + puestoIndex}>
+    return <tr key={"d" + indexlab}>
          
-            <th>P<sub>{puestoIndex}</sub></th>
+            <th>P<sub>{indexlab}</sub></th>
             {<td>{puestoAddr?.nombre}</td>}
             {cells}
         </tr>;
 };
 
 export default ReservarPuestoRow;
-
-
