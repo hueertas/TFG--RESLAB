@@ -5,7 +5,7 @@ const Home = () => (
             <div className="TituloHome"> Página Home </div> 
         
 
-            <img className="escuelalogo" src="/escuela.png"/>
+            <img className="tecnologia" src="/tecnologia.jpg"/>
             
             </h1>
     </header>

@@ -246,14 +246,18 @@ contract ReslabEtsit {
 
 
     
-    //dado el numero lab, fecha (numero de milisegundos) ,  te devuelva la reserva
+    //dado el numero puesto, turno (numero de milisegundos) ,  te devuelva la reserva
    mapping( uint =>mapping (uint=> DatosReserva )) public datosReserva;
 
 
    //
     //dado el numero lab, de un puesto, fecha (numero de milisegundos) ,  y turno te devuelva la reserva
 
-     mapping( uint =>mapping (uint=> mapping (uint=> mapping (uint=> DatosReserva )))) public datosReservaPorPuesto;
+     mapping( uint =>mapping (uint=> mapping (uint=> mapping (uint=> DatosReserva )))) public datosReservaPorLabPuestoFechaTurno;
+
+     //dado el numero lab, de un puesto,  y turno te devuelva la reserva
+
+     mapping( uint =>mapping (uint=>  mapping (uint=> DatosReserva ))) public datosReservaPorLabPuestoTurno;
 
 
      

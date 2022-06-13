@@ -1,6 +1,7 @@
 .App {
   margin: 10px;
   
+  
 }
 
 .AppHeader {
@@ -153,15 +154,18 @@ table {
                   font-family:serif;
                 }
 
-                .escuelalogo{
+                .tecnologia{
                   
-                  float: center;
+                  
 
-                  background-image: linear-gradient(50%);
-                 
+             
+
+                  
+                  background-color: transparent;
                   filter:brightness(150%);
                   
-                  width: 500px;
+                  filter: blur(1px);
+                  
                   
                  
                  

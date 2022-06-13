@@ -48,6 +48,7 @@ module.exports = async callback => {
    
 
       const tl =  await reslabetsit.turnosLength();
+      //const pl =  await reslabetsit.puestosDelLaboratorioLength(_indexlab);
 
       console.log("numero de turnos", tl);
 
