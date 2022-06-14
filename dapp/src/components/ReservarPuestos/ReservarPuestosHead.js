@@ -5,6 +5,9 @@ const {useDrizzle} = drizzleReactHooks;
 const ReservarPuestosHead = () => {
     const {useCacheCall} = useDrizzle();
 
+
+    
+
     let thead = [];
     thead.push(<th key={"chae"}>P/T</th>);
     thead.push(<th key={"chn"}>Nombre Puestos</th>);

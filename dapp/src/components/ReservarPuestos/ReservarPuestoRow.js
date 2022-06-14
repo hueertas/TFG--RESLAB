@@ -1,47 +1,42 @@
 import {drizzleReactHooks} from '@drizzle/react-plugin';
 import moment from 'moment';
+import ReservarPorTurno from "./ReservarPorTurno";
 
 const {useDrizzle} = drizzleReactHooks;
 
 const ReservarPuestoRow = ({indexlab,puestoIndice, fecha}) => {
     const {useCacheCall} = useDrizzle();
 
-    const puestoAddr = useCacheCall("ReslabEtsit", "puestosDelLaboratorioLength");
+    //const puestoAddr = useCacheCall("ReslabEtsit", "puestosDelLaboratorio",indexlab);
 
-        //acceder a los datos de un puesto dado su lab 
-        let puestoName = useCacheCall(['ReslabEtsit'],
-        call => puestoAddr && call("ReslabEtsit", "puestosDelLaboratorioLength", puestoAddr)?.nombre
-    );
+    //const puestoIndex = useCacheCall("ReslabEtsit", "puestosRegistrados",indexlab) || 0;
+
+       //acceder a los datos de un puesto dado su lab 
+        let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre
+    
     // ver bien como llamar al puesto esee!!!!
 
-    let cells = useCacheCall(['ReslabEtsit'], call => {
-        if (!puestoAddr) { return []; }
+    const el = useCacheCall("ReslabEtsit", "turnosLength") || 0;
+    let rows=[];
+    for (let i = 0; i < el; i++) {
 
-        let cells = [];
-        const turnosLength = call("ReslabEtsit", "turnosLength") || 0;
-        for (let tu = 0; tu < turnosLength; tu++) {
-            const puesto = call("ReslabEtsit", "datosReserva", puestoName, tu);
-            cells.push(
-                <td key={"p2-" + indexlab + "-" + tu}>
-                    {puesto?.nombre === "puesto1" ? "dir alumno" : "Vacio"}
-                    {/*nota?.tipo === "1" ? (nota?.calificacion / 10).toFixed(1) : ""*/}
-                    {/*nota?.tipo === "2" ? (nota?.calificacion / 10).toFixed(1) + "(M.H.)" : ""*/}
-                </td>
-            );
-        }
-        return cells;
-    });
+        
+            rows.push(<ReservarPorTurno key={"cb-"+i} turnoIndex={i} fecha={fecha} puestoIndice={puestoIndice} />);
+    }
 
+
+  
     return <>
 
-        <tr key={"d" + indexlab}>
+        <tr key={"d" + puestoIndice}>
                 
-                <th>P<sub>{indexlab}</sub></th>
-                <td>{puestoAddr?.nombre}</td>
-                {cells}
+                <th>P<sub>{puestoIndice}</sub></th>
+                <td>{puestoName}</td>
+                {rows}
+                
         </tr>;
          
-        {/* <p>El día seleccionado es: <b>{moment(fecha).format('MMMM Do YYYY')} y el puesto es : {puestoAddr}</b></p>*/}
+        { <p>El día seleccionado es: <b>{moment(fecha).format('MMMM Do YYYY')} y el puesto es : {puestoName}</b></p>}
 
          </>
         

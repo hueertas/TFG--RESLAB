@@ -52,6 +52,7 @@ export const Laboratorios = () => {
 
     }*/
     const el = useCacheCall("ReslabEtsit", "turnosLength") || 0;
+    
     return <>
             <header className="AppAlumno">
                 <h2>LABORATORIOS
