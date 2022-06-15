@@ -1,6 +1,7 @@
 import {drizzleReactHooks} from '@drizzle/react-plugin';
 import moment from 'moment';
-import ReservarPorTurno from "./ReservarPorTurno";
+import BotonReservar from './BotonReservar';
+import ReservarUnPuesto from "./ReservarUnPuesto";
 
 const {useDrizzle} = drizzleReactHooks;
 
@@ -11,18 +12,29 @@ const ReservarPuestoRow = ({indexlab,puestoIndice, fecha}) => {
 
     //const puestoIndex = useCacheCall("ReslabEtsit", "puestosRegistrados",indexlab) || 0;
 
-       //acceder a los datos de un puesto dado su lab 
-        let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre
+       //acceder al nombre  de todos los puesto que hay registrados dando el indice del puesto
+    let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre
     
-    // ver bien como llamar al puesto esee!!!!
+   
+    let rows = useCacheCall(['ReslabEtsit'], call => {
+        if (!puestoName) { return []; }
 
-    const el = useCacheCall("ReslabEtsit", "turnosLength") || 0;
+    const el = call("ReslabEtsit", "turnosLength") || 0;
     let rows=[];
     for (let i = 0; i < el; i++) {
 
-        
-            rows.push(<ReservarPorTurno key={"cb-"+i} turnoIndex={i} fecha={fecha} puestoIndice={puestoIndice} />);
-    }
+        const reserva = call("ReslabEtsit", "datosReservaPorLabPuestoFechaTurno",puestoIndice, fecha,i);
+            //rows.push(<ReservarUnPuesto key={"cb-"+i} turnoIndex={i} fecha={fecha} puestoIndice={puestoIndice} />);
+            rows.push(
+                <td key={"p2-" + puestoIndice + "-" + el}>
+                    {reserva?.dirAlumno === "0" ? <img className="noReserva" src="/noReserva.png"/> : <BotonReservar fecha={fecha} puestoIndice={puestoIndice} turnoIndex={i}/>}
+                    
+                    
+                </td>
+            );
+        }
+        return rows;
+    });
 
 
   

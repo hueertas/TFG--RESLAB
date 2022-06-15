@@ -1,6 +1,7 @@
 import ReservarPuestosHead from "./ReservarPuestosHead";
 import ReservarPuestosBody from "./ReservarPuestosBody";
 import {useParams, Link} from "react-router-dom";
+import BotonReservar from "./BotonReservar";
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
@@ -18,9 +19,10 @@ const ReservarPuestos = ({indexlab,fecha}) => {
             <h2>Reservar Puestos</h2>
             <table>
                 <ReservarPuestosHead />
-                {<ReservarPuestosBody indexlab={indexlab} fecha={fecha} />}
+                <ReservarPuestosBody indexlab={indexlab} fecha={fecha} />
             </table>
 
+            
             
         </section>
 

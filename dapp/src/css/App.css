@@ -165,13 +165,37 @@ table {
                   filter:brightness(150%);
                   
                   filter: blur(1px);
+
+                }
                   
-                  
+                .reservaLibre{
+
+                  width: 100px;
+                  height: 50px;
+
+
+                } 
+
+
+                .noReserva{
+
+                  width: 200px;
+                  height: 200px;
+
+
+                } 
+
+
+
+                .pure-button{
+                  color: rgb(38, 107, 76);
+
+                }
                  
                  
                  
 
-                }
+                
 
              /* .Historial {
                 padding: 35px;

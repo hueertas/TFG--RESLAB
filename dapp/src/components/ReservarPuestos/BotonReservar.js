@@ -4,7 +4,7 @@ import {drizzleReactHooks} from '@drizzle/react-plugin'
 
 const {useDrizzle, useDrizzleState} = drizzleReactHooks;
 
-const SoloProfesor = ({children}) => {
+/*const SoloProfesor = ({children}) => {
     const {useCacheCall} = useDrizzle();
     const drizzleState = useDrizzleState(state => state);
 
@@ -18,7 +18,7 @@ const SoloProfesor = ({children}) => {
     </>
 
 };
-
+*/
 
 /*
 PENDIENTE DE INVESTIGAR:
@@ -26,7 +26,7 @@ Si se usa useCacheSend, se envian varias transacciones cada vez que se hace un s
 El problema esta relacionado con actualizar el estado del stackIds dentro de la implementacion de ese hook.
  */
 
-const Calificar = (indexlab, puestoaddr,fecha ) => {
+const BotonReservar = (turnoIndex, puestoIndice,fecha ) => {
     const {drizzle} = useDrizzle();
 
     // Obtener el status de la ultima transaccion enviada:
@@ -36,7 +36,7 @@ const Calificar = (indexlab, puestoaddr,fecha ) => {
     }));
     const [lastStackID, setLastStackID] = useState(undefined)
     const txObject = transactions[transactionStack[lastStackID] || 'undefined'];
-    const status = txObject?.status;
+    
 
     // Conservar los valores metidos en el formulario
     /*let [alumnoAddr, setAlumnoAddr] = useState("")
@@ -45,26 +45,27 @@ const Calificar = (indexlab, puestoaddr,fecha ) => {
     let [calificacion, setCalificacion] = useState("")*/
 
     return (<article className="AppMisDatos">
-        <h3>Reservar puesto</h3>
-        <SoloProfesor>
+       
+      
     
 
                 <button key="submit" className="pure-button" type="button"
                         onClick={ev => {
                             ev.preventDefault();
-                             const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(indexlab, puestoaddr, fecha);
+                             const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoIndice, fecha, turnoIndex);
                             setLastStackID(stackId);
                         }}>
-                    Reservar el puesto
+                   
+                Puesto Libre  <img className="reservaLibre" src="/reservaLibre.png"/>
                 </button>
 
-                <p> Último estado = {status} </p>
+              
            
 
-        </SoloProfesor>
+      
     </article>);
 };
 
 
 //meter un turno de parametro !!!!!!!!!!!!!!!!!!!!
-export default Calificar;
+export default BotonReservar;
