@@ -60,9 +60,7 @@ const BotonReservar = (turnoIndex, puestoIndice,fecha ) => {
                 </button>
 
               
-           
-
-      
+         
     </article>);
 };
 
