@@ -19,8 +19,9 @@ export const Laboratorios = () => {
    
        return (
            <section className="AppLaboratorios">
-               <h2>Laboratorios</h2>
-               <table>
+            <img className="laboratorios" src="/laboratorios.png"/>
+               <h2> Listado de Laboratorios</h2>
+               <table className='tablaLaboratorios'>
                    <LaboratoriosHead/>
                    <LaboratoriosBody />
                </table>
@@ -55,7 +56,7 @@ export const Laboratorios = () => {
     
     return <>
             <header className="AppAlumno">
-                <h2>LABORATORIOS
+                <h2>Laboratorio elegido:
                 </h2>
             </header>
 
@@ -82,7 +83,7 @@ export const Laboratorios = () => {
            {/*<Link to={`/reservarPuestos/${index}`}>Reservar el puesto </Link>*/} 
            
     
-            <Link to="/laboratorios">Volver</Link>
+            <Link to="/laboratorios"><img className="volver" src="/volver.png"/></Link>
         </>
     };
 

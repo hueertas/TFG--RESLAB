@@ -42,8 +42,12 @@ module.exports = async callback => {
 
 
        console.log("Crear dos turnos:");
-       await reslabetsit.creaTurno("turno1", 8);
-       await reslabetsit.creaTurno("turno2",9);
+       await reslabetsit.creaTurno("turno1", 12345678);
+       await reslabetsit.creaTurno("turno2",12345679);
+       await reslabetsit.creaTurno("turno3",12345689);
+       await reslabetsit.creaTurno("turno4",12345699);
+       await reslabetsit.creaTurno("turno5",12345649);
+       await reslabetsit.creaTurno("turno6",12345639);
 
    
 
@@ -52,40 +56,13 @@ module.exports = async callback => {
 
       console.log("numero de turnos", tl);
 
-       /* await reslabetsit.autoregistroP( {from: evaAccount});
-       // await reslabetsit.automatricula("Jose Redondo", "jr@stio.com", {from: pepeAccount});
-        console.log("terminada matricula");
-       /* await reslabetsit.creaLaboratorio("lab", 13, 30);
-        await reslabetsit.creaLaboratorio( "hola",12, 70);
-        console.log("Crear dos laboratorios:");*/
-
-       /* await reslabetsit.guardarReserva("B10", "10:00","10/07/2021","23",2);
-		console.log("Dir:");
-		console.log(evaAccount);
-		//console.log(evaAccount);
- 
-
-       /**console.log("Matricular a dos profes:");
-        //???????????????????? xq la de los profes no va 
-        let santiagoAccount = accounts[3];
-        let carmenAccount = accounts[4];
-        console.log("Cuenta de Santiago =", santiagoAccount);
-        console.log("Cuenta de Carmen =", carmenAccount);
-        await reslabetsit.autoRegistro("Santiago Bautista", "sb@dominio.es","core","dit", {from: santiagoAccount});
-        await reslabetsit.autoRegistro("Carmen Sanchez", "cs@stio.com","adsw","dit1", {from: carmenAccount});
-
-*/
+      console.log("Añadir reservas:");
+      await reslabetsit.guardarReserva( 1, 12345649, 1);
+      await reslabetsit.guardarReserva( 1, 12345649, 2);
+      await reslabetsit.guardarReserva( 2, 12345649, 1);
 
 
-       /*console.log("Añadir labs:"); 
-       await reslabetsit.creaLaboratorio("labB")
 
-      /*console.log("Añadir calificaciones:");
-        await asignatura.califica(evaAccount, 0, 1, 65);
-        await asignatura.califica(evaAccount, 1, 1, 75);
-        await asignatura.califica(pepeAccount, 0, 0, 0);
-        await asignatura.califica(pepeAccount, 1, 1, 50);
-*/
 
     } catch (err) {   // Capturar errores
         console.log(`Error: ${err}`);

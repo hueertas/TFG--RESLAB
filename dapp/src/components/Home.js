@@ -11,13 +11,15 @@ import moment from 'moment';
 const Home = () => (
     <header className="AppHeader">
         <h1>
+
+         
             
-        <div className="consulta"><p className="texto">¡Consulta el dia que mejor te venga! </p></div>
+            <div className="consulta"><p className="texto">¡Consulta el día que mejor te venga! </p></div>
             
             <div className="Presentacion"><p className="texto">¡Bienvenid@ a la página de reservas de la Etsit!</p></div>
         
 
-            <img className="escuela" src="/escuela.png"/>
+            <img className="escuela" src="/escuela.png"/> <img className="escuela" src="/escuela.png"/>
 
             <Calendar className= "calendar"></Calendar>
 

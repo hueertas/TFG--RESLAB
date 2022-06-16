@@ -11,12 +11,20 @@ export const Asignaturas = () => {
        
    
        return (
+
+
+        
            <section className="AppAsignaturas">
-               <h2>Asignaturas</h2>
-               <table>
-                   <AsignaturasHead/>
+            <img className="asignaturas" src="/asignaturas.png"/>
+
+               <h2>Listado de asignaturas</h2>
+               
+               <table className ="tablaAsignaturas">
+                   <AsignaturasHead className = "cabezeraAsignaturas"/>
                    <AsignaturasBody />
                </table>
+
+               
            </section>
        );
    };
@@ -42,7 +50,7 @@ return <>
             <p> el numero de turnos es {el}</p>
         </ul>
 
-        <Link to="/asignaturas">Volver</Link>
+        <Link to="/asignaturas"><img className="volver" src="/volver.png"/></Link>
     </>
 };
 

@@ -25,6 +25,7 @@ const ReservarPuestoRow = ({indexlab,puestoIndice, fecha}) => {
 
         const reserva = call("ReslabEtsit", "datosReservaPorLabPuestoFechaTurno",puestoIndice, fecha,i);
             //rows.push(<ReservarUnPuesto key={"cb-"+i} turnoIndex={i} fecha={fecha} puestoIndice={puestoIndice} />);
+            //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
             rows.push(
                 <td key={"p2-" + puestoIndice + "-" + el}>
                     {reserva?.dirAlumno === "0" ? <img className="noReserva" src="/noReserva.png"/> : <BotonReservar fecha={fecha} puestoIndice={puestoIndice} turnoIndex={i}/>}
@@ -46,9 +47,9 @@ const ReservarPuestoRow = ({indexlab,puestoIndice, fecha}) => {
                 <td>{puestoName}</td>
                 {rows}
                 
-        </tr>;
+        </tr>
          
-        { <p>El día seleccionado es: <b>{moment(fecha).format('MMMM Do YYYY')} y el puesto es : {puestoName}</b></p>}
+        { /*<p>El día seleccionado es: <b>{moment(fecha).format('MMMM Do YYYY')} y el puesto es : {puestoName}</b></p>*/}
 
          </>
         

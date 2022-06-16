@@ -169,6 +169,128 @@ table {
         }
 
 
+        .asignaturas{
+          
+         
+       
+          
+          
+          height: 1500px;
+          width: 2000px;
+          align:right; 
+          position:absolute;
+          right:-700px;
+          top:150px;
+      
+          
+          
+
+        }
+
+        .laboratorios{
+          
+         
+       
+          
+          
+          height: 900px;
+          width: 1200px;
+          align:right; 
+          position:absolute;
+          right:-90px;
+          top:150px;
+      
+          
+          
+
+        }
+
+
+        .AppReservaPuestos{
+          
+         
+       
+          
+          
+          height: 1500px;
+          width: 1000px;
+          align:right; 
+          position:absolute;
+          right:500px;
+          top:150px;
+          color: rgb(13, 8, 8);
+      
+          
+          
+
+        }
+
+
+        .volver{
+          
+         
+       
+          
+          
+          height: 50px;
+          width: 50px;
+          align:left;
+          left: -50px;
+         
+      
+          
+          
+
+        }
+
+
+        .tablaAsignaturas{
+          
+         
+          text-align:left; 
+      
+          left: -10px;
+          bottom: 300px;
+          color: rgb(191, 53, 53);
+          
+          font-weight: bold;
+          text-align: left;
+          height: 300px;
+          width: 500px;
+          opacity: 0.8;
+          
+
+        }
+
+
+        .tablaLaboratorios{
+          
+         
+          text-align:left; 
+      
+          left: -10px;
+          bottom: 300px;
+          color: rgb(191, 53, 53);
+          
+          font-weight: bold;
+          text-align: left;
+          height: 400px;
+          width: 700px;
+          opacity: 0.8;
+          
+
+        }
+
+
+        .clicar{
+          
+          height: 50px;
+          width: 50px;
+          text-align:center; 
+
+        }
+
+
         
         .señalar{
           
@@ -217,6 +339,8 @@ table {
 
         }
 
+
+       
 
        
           

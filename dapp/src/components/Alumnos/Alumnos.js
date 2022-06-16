@@ -51,7 +51,7 @@
                <li><b>Address:</b> {addr}</li>
            </ul>
    
-           <Link to="/alumnos">Volver</Link>
+           <Link to="/alumnos"><img className="volver" src="/volver.png"/></Link>
        </>
    };
 

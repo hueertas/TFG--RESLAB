@@ -560,6 +560,38 @@ contract ReslabEtsit {
         
 
         }
+
+
+
+
+        
+    /** Un alumno quita su reserva - ( solo profe , owner y el propio alumnos 
+    */
+    
+
+        function quitarReserva(uint  _puestoId, uint  _fecha,  uint _turno) public {
+        
+	
+       
+
+        require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
+        require(_turno<24, "Turno invalido");
+
+        //comprobar que el turno esta libre -> EITAR DUPLICADOS 
+
+        
+        if (turnos_existentes[_puestoId][_fecha][_turno] == true){ // mapping evitar duplicados, si ese turno dado el nombre de un puesto , fecha y un turno  no esta cogido entonces se puede reservar 
+        turnosPorPuesto[_puestoId][_fecha].push(_turno); // se suma al numero de puestos cogidos llamado turnos ( mapping  dado un puestos y una fecha)
+
+        turnos_existentes[_puestoId][_fecha][_turno] = false;
+
+
+    
+        }
+
+        
+
+        }
      
   
     

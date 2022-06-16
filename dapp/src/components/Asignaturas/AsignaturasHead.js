@@ -11,7 +11,7 @@ const AsignaturasHead = () =>
         <th>#</th>
         <th>Nombre</th>
         <th>Laboratorio</th>
-        <th>Info</th>
+        <th>Información</th>
     </tr>
     </thead>;
 

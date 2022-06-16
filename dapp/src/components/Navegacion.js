@@ -10,7 +10,7 @@ const Navegacion = () => (
             
             <li><Link to="/laboratorios/">Laboratorios</Link></li>
          
-            <li><Link to="/reservarPuestos/">Reserva el puesto</Link></li>
+            
             
           </ul>
     </nav>
