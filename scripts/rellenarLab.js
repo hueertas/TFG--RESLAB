@@ -36,7 +36,7 @@ module.exports = async callback => {
         console.log("Crear dos laboratorios:");*/
 
 
-        console.log("Añadir asig:"); 
+      /*  console.log("Añadir asig:"); 
         await reslabetsit.creaAsignatura("core","lab1","info")
         await reslabetsit.creaAsignatura("ore","lab2","info")
  
@@ -55,7 +55,16 @@ module.exports = async callback => {
 
         console.log(await reslabetsit.laboratoriosLength());
 
+*/
+    const fecha = new Date();
+    const hoy = fecha.getDate();
 
+
+    const tiempoTranscurrido = Date.now();
+    const hoyEpoc = new Date(tiempoTranscurrido);
+
+    console.log(hoy);
+    console.log(hoyEpoc);
 
     } catch (err) {   // Capturar errores
         console.log(`Error: ${err}`);

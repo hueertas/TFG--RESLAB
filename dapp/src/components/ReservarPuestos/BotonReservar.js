@@ -36,13 +36,9 @@ const BotonReservar = (turnoIndex, puestoIndice,fecha ) => {
     }));
     const [lastStackID, setLastStackID] = useState(undefined)
     const txObject = transactions[transactionStack[lastStackID] || 'undefined'];
+    const status = txObject?.status;
     
 
-    // Conservar los valores metidos en el formulario
-    /*let [alumnoAddr, setAlumnoAddr] = useState("")
-    let [indexEval, setEvalIndex] = useState("")
-    let [tipo, setTipo] = useState("")
-    let [calificacion, setCalificacion] = useState("")*/
 
     return (<article className="AppMisDatos">
        
@@ -52,16 +48,21 @@ const BotonReservar = (turnoIndex, puestoIndice,fecha ) => {
                 <button key="submit" className="pure-button" type="button"
                         onClick={ev => {
                             ev.preventDefault();
-                             const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoIndice, fecha, turnoIndex);
+                             const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoIndice,fecha,turnoIndex);
                             setLastStackID(stackId);
                         }}>
                    
                 Puesto Libre  <img className="reservaLibre" src="/reservaLibre.png"/>
                 </button>
 
+                <p> Último estado = {status} </p>
+
               
          
     </article>);
+
+
+    
 };
 
 

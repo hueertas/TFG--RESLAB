@@ -165,6 +165,8 @@ contract ReslabEtsit {
     
     mapping (address => DatosLaboratorio)  datosLaboratorio;
 
+    mapping (address => DatosTurno)  datosTurno;
+
     //mapping(uint => Laboratorio) public labPuestos; //acceder a los puestos del lab dada la info del lab
   
    // mapping (address => DatosPuesto)  datosPuesto;
@@ -471,85 +473,22 @@ contract ReslabEtsit {
 
 
 
-
-          /**
-     * El puesto del que se desea ver toda su información tercera pantalla
-     *
-     */
-    /*function PuestoPulsado(uint x) public view returns (string memory) {
-
-	return puestosRegistrados[x].nombreP; 
-    }
-
-    
-  /**
-     * Las personas pueden registrar su asistencia en un puesto con el metodo guardarReserva.
-     * 
-     * Impedir que se pueda meter un nombre vacio.
-     *
-     *  _nombre El nombre del puesto. 
-     * _ent Hora de entrada al lab.
-     *  _fecha Fecha de entrada al lab.
-     *  _puesto Puesto en el lab.
-     */
-    /*function guardarReserva(string memory _nombre, string memory _entradaTurno, string memory _fecha,   uint _turno) public {
-        
-	
-        bytes memory a = bytes(_nombre);
-        require(a.length != 0, "El nombre no puede estar vacia");
-
-        bytes memory b = bytes(_entradaTurno);
-        require(b.length != 0, "La hora de entrada no puede estar vacia");
-
-        bytes memory c = bytes(_fecha);
-        require(c.length != 0, "La fecha no puede estar vacia");
-
-        
-
-        
-        datosPuesto[_fecha][_nombre][_turno][msg.sender].dir = msg.sender; //datosPuesto es un mapping ( el puesto que devuelve adjudicado a una persona dado la fecha, nombre lab , entrada y direcccion de la persona)
-        datosPuesto[_fecha][_nombre][_turno][msg.sender].fecha = _fecha;
-        datosPuesto[_fecha][_nombre][_turno][msg.sender].entradaTurno = _entradaTurno; 
-	
- 	
-
-
-        personas[_fecha][_nombre][_turno].push(msg.sender); //personas ( mapping que devuelve la personas que han asistido a algun lab en una fecha  lab y  turno específico)
-        personasTotales[_fecha][_nombre].push(msg.sender); // personasTotales (devuelve todas las ersonas que han asistido dada una fecha y el nombre de un lab)
-        ultimosRegistros[msg.sender].push(UltimaReserva(_nombre,_turno,_fecha)); // Mapping que devuelve los ultimos registros de la ultima reserva // ultimaReserva( es un struct con turno, fecha nombre lab) 
-        
-        if (turnos_existentes[_fecha][_nombre][_turno] == false){ // mapping evitar duplicados, si ese turno dado el nombre de un uesto , fecha no esta cogido entonces se puede reservar 
-        turnos[_fecha][_nombre].push(_turno); // se suma al numero de puestos cogidos llamado turnos ( mapping  dado un puestos y una fecha)
-
-
-
-
-        turnos_existentes[_fecha][_nombre][_turno] = true;
-        }
-
-        
-    }
-    */
-
     /** Un alumno crea una reserva 
     */
+
+    
+    
     
 
-        function guardarReserva(uint  _puestoId, uint  _fecha,  uint _turno) public {
+        function guardarReserva(uint  _puestoId, uint  _fecha,  uint _turno)  public {
         
 	
        
 
         require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
         require(_turno<24, "Turno invalido");
+        require(!estaReservado(msg.sender),"Solo permitido a turnos que no esten reservados");
 
-        //comprobar que el turno esta libre -> EITAR DUPLICADOS 
-
-        
-        if (turnos_existentes[_puestoId][_fecha][_turno] == false){ // mapping evitar duplicados, si ese turno dado el nombre de un puesto , fecha y un turno  no esta cogido entonces se puede reservar 
-        turnosPorPuesto[_puestoId][_fecha].push(_turno); // se suma al numero de puestos cogidos llamado turnos ( mapping  dado un puestos y una fecha)
-
-        turnos_existentes[_puestoId][_fecha][_turno] = true;
 
 
         reservasDelAlumno[_puestoId][_fecha][_turno]= msg.sender;
@@ -559,7 +498,7 @@ contract ReslabEtsit {
 
         
 
-        }
+       
 
 
 
@@ -569,47 +508,24 @@ contract ReslabEtsit {
     */
     
 
-        function quitarReserva(uint  _puestoId, uint  _fecha,  uint _turno) public {
+
+
+       function quitarReserva(uint  _puestoId, uint  _fecha,  uint _turno) public {
         
 	
        
 
         require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
         require(_turno<24, "Turno invalido");
+        require(estaReservado(msg.sender),"Solo permitido a turnos que  esten reservados");
 
-        //comprobar que el turno esta libre -> EITAR DUPLICADOS 
-
-        
-        if (turnos_existentes[_puestoId][_fecha][_turno] == true){ // mapping evitar duplicados, si ese turno dado el nombre de un puesto , fecha y un turno  no esta cogido entonces se puede reservar 
-        turnosPorPuesto[_puestoId][_fecha].push(_turno); // se suma al numero de puestos cogidos llamado turnos ( mapping  dado un puestos y una fecha)
-
-        turnos_existentes[_puestoId][_fecha][_turno] = false;
-
-
-    
-        }
-
-        
-
+         delete reservasDelAlumno[_puestoId][_fecha][_turno];
+         
         }
      
   
     
 
-    /**
-     * Las personas pueden registrar su salida del lab con el metodo guardarSalida.
-     * 
-     * Impedir que se pueda meter un nombre vacio.
-     *
-     * _nombre El nombre del aula. 
-     *  _sal Hora de salida al aula.
-     *  _fecha Fecha de entrada al aula.
-     */
-    /*function guardarSalida(string memory _nombre, string memory _salidaTurno, string memory _fecha, uint _turno) public {
-
-	    datosPuesto[_fecha][_nombre][_turno][msg.sender].salidaTurno = _salidaTurno;
-        
-    }
 
 
 
@@ -617,7 +533,8 @@ contract ReslabEtsit {
 
 
 
-*/
+
+
 
 
 
@@ -837,6 +754,24 @@ contract ReslabEtsit {
         
         return b.length != 0;
     } 
+
+       /**
+     * Consulta si un turno pertenece a un alumno matriculado.
+     * 
+     * @param alumno La direccion de un alumno.
+     * 
+     * @return true si es una alumno matriculado.
+     */
+
+
+       function estaReservado(address alumno) private view returns (bool) {
+      
+        string memory _nombre = datosTurno[alumno].nombre;
+        
+        bytes memory b = bytes(_nombre);
+        
+        return b.length != 0;
+    }
     
 
 
@@ -864,19 +799,7 @@ contract ReslabEtsit {
     } 
     
     
-    //como hacer para que te devuelva los puestos segun asignatura 
-    
-    /*function getPuestos (string asignatura) soloMatriculados public view returns (
-        string nombre, TipoConexionesRed tipoConexionesRed,TipoSO tipoSO)
-         
-         require (asignatura.length!=0,"no vacio");
-         
-         Puesto memory puesto= tipoConexionesRed[msg.sender][asignatura];
-         //meter tb tipoSO
-         tipoConexionesRed=Puesto.tipoConexionesRed
-         tipoSO=Puesto.tipoSO;
-         
-    // con laboratorios tb ! */
+
    
 
 
@@ -887,6 +810,7 @@ contract ReslabEtsit {
      * 
      *
      */
+
     modifier soloOwner() {
         
         require(msg.sender == owner, "Solo permitido al owner");

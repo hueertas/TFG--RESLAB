@@ -38,7 +38,15 @@ module.exports = async callback => {
 
        console.log("Crear dos puestos:");
        await reslabetsit.creaPuesto("puesto1", 1);
-       await reslabetsit.creaPuesto("puesto2", 2);
+       await reslabetsit.creaPuesto("puesto2", 0);
+       await reslabetsit.creaPuesto("puesto2", 1);
+       await reslabetsit.creaPuesto("puesto3", 1);
+       await reslabetsit.creaPuesto("puesto4", 1);
+       await reslabetsit.creaPuesto("puesto5", 1);
+       await reslabetsit.creaPuesto("puesto6", 1);
+       await reslabetsit.creaPuesto("puesto7", 1);
+       await reslabetsit.creaPuesto("puesto8", 1);
+       await reslabetsit.creaPuesto("puesto9", 1);
 
 
        console.log("Crear dos turnos:");
@@ -57,9 +65,9 @@ module.exports = async callback => {
       console.log("numero de turnos", tl);
 
       console.log("Añadir reservas:");
-      await reslabetsit.guardarReserva( 1, 12345649, 1);
-      await reslabetsit.guardarReserva( 1, 12345649, 2);
-      await reslabetsit.guardarReserva( 2, 12345649, 1);
+      await reslabetsit.guardarReserva( 1, 1655416800, 1);
+      await reslabetsit.guardarReserva( 2, 1655416800, 2);
+      await reslabetsit.guardarReserva( 2, 1655416800, 1);
 
 
 
@@ -77,6 +85,7 @@ module.exports = async callback => {
 //npx truffle migrate
 //npx truffle migrate --reset --compile-all
 //npx truffle exec scripts/rellenar.js
+//https://www.epochconverter.com/
 
 //errores
 

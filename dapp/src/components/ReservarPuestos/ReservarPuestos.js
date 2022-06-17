@@ -11,12 +11,13 @@ import React, {useState} from 'react';
 const ReservarPuestos = ({indexlab,fecha}) => {
     
 
-
+    
+    
     
 
     return (
         <section className="AppReservaPuestos">
-            <h2>Reservar Puestos</h2>
+            <h2>Reservar Puestos </h2>
             <table>
                 <ReservarPuestosHead />
                 <ReservarPuestosBody indexlab={indexlab} fecha={fecha} />

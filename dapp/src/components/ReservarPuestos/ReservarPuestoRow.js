@@ -28,7 +28,7 @@ const ReservarPuestoRow = ({indexlab,puestoIndice, fecha}) => {
             //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
             rows.push(
                 <td key={"p2-" + puestoIndice + "-" + el}>
-                    {reserva?.dirAlumno === "0" ? <img className="noReserva" src="/noReserva.png"/> : <BotonReservar fecha={fecha} puestoIndice={puestoIndice} turnoIndex={i}/>}
+                    {reserva?.dirAlumno === "0x69068964Eb1d8F0cAF8Af7481bFDb2FA015E4C56" ? <img className="noReserva" src="/noReserva.png"/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
                     
                     
                 </td>
