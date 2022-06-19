@@ -3,7 +3,6 @@ import {useState} from "react";
 import {drizzleReactHooks} from '@drizzle/react-plugin'
 
 const {useDrizzle, useDrizzleState} = drizzleReactHooks;
-
 /*const SoloProfesor = ({children}) => {
     const {useCacheCall} = useDrizzle();
     const drizzleState = useDrizzleState(state => state);
@@ -26,7 +25,7 @@ Si se usa useCacheSend, se envian varias transacciones cada vez que se hace un s
 El problema esta relacionado con actualizar el estado del stackIds dentro de la implementacion de ese hook.
  */
 
-const BotonReservar = (turnoIndex, puestoIndice,fecha ) => {
+const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
     const {drizzle} = useDrizzle();
 
     // Obtener el status de la ultima transaccion enviada:
@@ -43,7 +42,7 @@ const BotonReservar = (turnoIndex, puestoIndice,fecha ) => {
     return (<article className="AppMisDatos">
        
       
-    
+       
 
                 <button key="submit" className="pure-button" type="button"
                         onClick={ev => {

@@ -480,7 +480,8 @@ contract ReslabEtsit {
     
     
 
-        function guardarReserva(uint  _puestoId, uint  _fecha,  uint _turno)  public {
+        function 
+        (uint  _puestoId, uint  _fecha,  uint _turno)  public {
         
 	
        
