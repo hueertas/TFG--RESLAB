@@ -119,7 +119,7 @@ contract ReslabEtsit {
     struct DatosAsignatura{
         string nombre;
        // Laboratorio[] laboratorio;
-        string laboratorio;
+        uint indexLab;
         string info;
         //credito semanal
         //Matriculas matriculados;
@@ -275,6 +275,10 @@ contract ReslabEtsit {
 
     //dado el indice de laboratorio y la fecha te devuelva los indices de los puestos que estan en ese laboratorio 
     mapping(uint=> mapping( uint => uint[])) public puestosDelLaboratorioFecha;
+
+
+    //dado el indice de una asignatura te devuelve el indice de un lab 
+    mapping(uint => uint) public indiceLabPorAsignatura;
 
     //dado una fecha y un lab cree una rray de puestos 
 
@@ -480,19 +484,18 @@ contract ReslabEtsit {
     
     
 
-        function 
-        (uint  _puestoId, uint  _fecha,  uint _turno)  public {
+        function guardarReserva(uint  _puestoId, uint  _fecha,  uint _turno)  public {
         
 	
        
 
-        require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
-        require(_turno<24, "Turno invalido");
-        require(!estaReservado(msg.sender),"Solo permitido a turnos que no esten reservados");
+            require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
+            require(_turno<24, "Turno invalido");
+            require(!estaReservado(msg.sender),"Solo permitido a turnos que no esten reservados");
 
 
 
-        reservasDelAlumno[_puestoId][_fecha][_turno]= msg.sender;
+            reservasDelAlumno[_puestoId][_fecha][_turno]= msg.sender;
 
 
         }
@@ -516,12 +519,12 @@ contract ReslabEtsit {
 	
        
 
-        require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
-        require(_turno<24, "Turno invalido");
-        require(estaReservado(msg.sender),"Solo permitido a turnos que  esten reservados");
+            require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
+            require(_turno<24, "Turno invalido");
+            require(estaReservado(msg.sender),"Solo permitido a turnos que  esten reservados");
 
-         delete reservasDelAlumno[_puestoId][_fecha][_turno];
-         
+            delete reservasDelAlumno[_puestoId][_fecha][_turno];
+
         }
      
   
@@ -560,12 +563,12 @@ contract ReslabEtsit {
     
      // te rea una asignatura 
 
-    function creaAsignatura( string memory _nombreAsig,string memory _lab,string memory _Info)  soloOwner public returns (uint) {
+    function creaAsignatura( string memory _nombreAsig, uint _indexLab,string memory _Info)  soloOwner public returns (uint) {
         
         bytes memory bn = bytes(_nombreAsig);
         require(bn.length != 0, "El nombre de la asig no puede ser vacio");
         
-       asignaturasRegistradas.push(DatosAsignatura(_nombreAsig,_lab,_Info));
+       asignaturasRegistradas.push(DatosAsignatura(_nombreAsig,_indexLab,_Info));
         return asignaturasRegistradas.length - 1;
     }
     

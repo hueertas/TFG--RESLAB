@@ -26,8 +26,8 @@ module.exports = async callback => {
 
 
        console.log("Crear dos asignaturas:");
-        await reslabetsit.creaAsignatura("core", "lab1", "info");
-        await reslabetsit.creaAsignatura("dapp ", "lab2", "info");
+        await reslabetsit.creaAsignatura("core",1, "info");
+        await reslabetsit.creaAsignatura("dapp ",2, "info");
 
 
         

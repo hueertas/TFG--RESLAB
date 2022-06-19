@@ -60,7 +60,7 @@ export const Laboratorios = () => {
     
     return <>
             <header className="AppAlumno">
-                <h2>Laboratorio elegido:
+                <h2>Laboratorio :
                 </h2>
             </header>
 
@@ -83,7 +83,7 @@ export const Laboratorios = () => {
             <p>El día seleccionado en formato uint es : <b>{myEpoch}</b></p>
             
             <p> el numero de turnos es {el}</p>
-          {<ReservarPuestos indexlab={index} fecha={myEpoch} />}
+          <ReservarPuestos indexlab={index} fecha={myEpoch} />
             
            {/*<Link to={`/reservarPuestos/${index}`}>Reservar el puesto </Link>*/} 
            

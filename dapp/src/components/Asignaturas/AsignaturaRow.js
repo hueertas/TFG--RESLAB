@@ -15,7 +15,7 @@ const AsignaturaRow = ({asignaturaIndex}) => {
     return <tr key={"Asig" + asignaturaIndex}>
                 <th>Asignatura<sub>{asignaturaIndex}</sub></th>
                 <td>{datos?.nombre}</td>
-                <td>{datos?.laboratorio}</td>
+                <td>{datos?.indexLab}</td>
                 <td><Link to={`/asignaturas/${asignaturaIndex}`}><img className="clicar" src="/clicar.png"/></Link></td>
        
 
