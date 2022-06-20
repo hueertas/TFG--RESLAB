@@ -47,6 +47,7 @@ const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
                 <button key="submit" className="pure-button" type="button"
                         onClick={ev => {
                             ev.preventDefault();
+                            console.log(puestoIndice,fecha,turnoIndex,"reseervando")
                              const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoIndice,fecha,turnoIndex);
                             setLastStackID(stackId);
                         }}>

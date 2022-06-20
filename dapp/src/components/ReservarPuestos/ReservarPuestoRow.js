@@ -3,11 +3,21 @@ import moment from 'moment';
 import BotonReservar from './BotonReservar';
 import ReservarUnPuesto from "./ReservarUnPuesto";
 
-const {useDrizzle} = drizzleReactHooks;
+const {useDrizzle,useDrizzleState} = drizzleReactHooks;
 
-const ReservarPuestoRow = ({indexlab,puestoIndice, fecha}) => {
-    const {useCacheCall} = useDrizzle();
+const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
+    const {useCacheCall,drizzle} = useDrizzle();
 
+    const drizzleState = useDrizzleState(state=>state);
+    let miaddress = drizzleState.accounts[0];
+    /*let miaddress;
+       ( async () => {
+            const accounts = await drizzle.web3.eth.getAccounts();
+            
+            miaddress= accounts?.[0];
+        })()
+    */
+    
     //const puestoAddr = useCacheCall("ReslabEtsit", "puestosDelLaboratorio",indexlab);
 
     //const puestoIndex = useCacheCall("ReslabEtsit", "puestosRegistrados",indexlab) || 0;
@@ -21,14 +31,17 @@ const ReservarPuestoRow = ({indexlab,puestoIndice, fecha}) => {
 
     const el = call("ReslabEtsit", "turnosLength") || 0;
     let rows=[];
+    
     for (let i = 0; i < el; i++) {
 
-        const reserva = call("ReslabEtsit", "datosReservaPorLabPuestoFechaTurno",puestoIndice, fecha,i);
+        const reserva = call("ReslabEtsit", "datosReservaPorLabPuestoTurno",puestoIndice, fecha,i);
             //rows.push(<ReservarUnPuesto key={"cb-"+i} turnoIndex={i} fecha={fecha} puestoIndice={puestoIndice} />);
             //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
             rows.push(
                 <td key={"p2-" + puestoIndice + "-" + el}>
-                    {reserva?.dirAlumno === "0x69068964Eb1d8F0cAF8Af7481bFDb2FA015E4C56" ? <img className="noReserva" src="/noReserva.png"/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
+                    {reserva?.dirAlumno === miaddress ? <img className="noReserva" src="/noReserva.png"/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
+                    {miaddress}
+                    {reserva ? reserva?.dirAlumno : "xxx"}
                     
                     
                 </td>

@@ -22,10 +22,11 @@ module.exports = async callback => {
       //  let pepeAccount = accounts[2];
         console.log("Cuenta de Eva =", evaAccount);
        // console.log("Cuenta de Pepito =", pepeAccount);
-      // await reslabetsit.automatricula("Eva Martinez", "em@dominio.es", {from: evaAccount});
+      await reslabetsit.automatricula("Eva Martinez", "em@dominio.es", {from: evaAccount});
+       await reslabetsit.automatricula("owner", "owner@dominio.es", {from: owner});
 
 
-       console.log("Crear dos asignaturas:");
+         console.log("Crear dos asignaturas:");
         await reslabetsit.creaAsignatura("core",1, "info");
         await reslabetsit.creaAsignatura("dapp ",2, "info");
 
@@ -65,7 +66,7 @@ module.exports = async callback => {
       console.log("numero de turnos", tl);
 
       console.log("Añadir reservas:");
-      await reslabetsit.guardarReserva( 1, 1655416800, 1);
+      await reslabetsit.guardarReserva( 1, 1655416800, 1); 
       await reslabetsit.guardarReserva( 2, 1655416800, 2);
       await reslabetsit.guardarReserva( 2, 1655416800, 1);
 
