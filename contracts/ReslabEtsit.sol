@@ -136,7 +136,7 @@ contract ReslabEtsit {
      
      struct DatosReserva{
          address dirAlumno;
-         bool estaReservado;  
+      
      }
      
      /**
@@ -488,14 +488,13 @@ contract ReslabEtsit {
         
 	
        
-
-            require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
+            require(estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
             require(_turno<24, "Turno invalido");
             require(!estaReservado(msg.sender),"Solo permitido a turnos que no esten reservados");
 
+            DatosReserva memory reserva = DatosReserva(msg.sender);
 
-
-            reservasDelAlumno[_puestoId][_fecha][_turno]= msg.sender;
+            datosReservaPorLabPuestoTurno[_puestoId][_fecha][_turno]= reserva;
 
 
         }
@@ -523,7 +522,7 @@ contract ReslabEtsit {
             require(_turno<24, "Turno invalido");
             require(estaReservado(msg.sender),"Solo permitido a turnos que  esten reservados");
 
-            delete reservasDelAlumno[_puestoId][_fecha][_turno];
+            delete datosReservaPorLabPuestoTurno[_puestoId][_fecha][_turno];
 
         }
      

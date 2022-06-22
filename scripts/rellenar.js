@@ -66,9 +66,18 @@ module.exports = async callback => {
       console.log("numero de turnos", tl);
 
       console.log("Añadir reservas:");
-      await reslabetsit.guardarReserva( 1, 1655416800, 1); 
-      await reslabetsit.guardarReserva( 2, 1655416800, 2);
-      await reslabetsit.guardarReserva( 2, 1655416800, 1);
+      await reslabetsit.guardarReserva( 1, 1655416800, 1, {from: owner}); 
+      await reslabetsit.guardarReserva( 2, 1655416800, 2, {from: owner});
+      await reslabetsit.guardarReserva( 2, 1655416800, 1, {from: owner});
+
+      let x = await reslabetsit.datosReservaPorLabPuestoTurno( 1, 1655416800, 1); 
+      let y = await reslabetsit.datosReservaPorLabPuestoTurno( 22, 1655416800, 1); 
+      let z = await reslabetsit.datosReservaPorLabPuestoTurno( 1, 1655416800, 7);
+
+      console.log("reserva ocupada:", x );
+      console.log("reserva vacia:", y );
+      console.log("reserva vacia:", z );
+
 
 
 

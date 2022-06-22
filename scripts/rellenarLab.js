@@ -15,56 +15,17 @@ module.exports = async callback => {
         let owner = await reslabetsit.owner();
         console.log("Cuenta del owner =", owner);
 
-      
+        console.log("Añadir reservas:");
+        let x = await reslabetsit.datosReservaPorLabPuestoTurno( 1, 1655416800, 1); 
+        let y = await reslabetsit.datosReservaPorLabPuestoTurno( 22, 1655416800, 1); 
+        let z = await reslabetsit.datosReservaPorLabPuestoTurno( 1, 1655416800, 7);
 
-       /* console.log("Matricular a dos alumnos:");
-        let evaAccount = accounts[1];
-      
-        console.log("Cuenta de Eva =", evaAccount);
-      
+        console.log("Añadir reservas:", x );
+        console.log("reserva vacia:", y );
+        console.log("reserva vacia:", z );
 
-        await reslabetsit.autoregistroP( {from: evaAccount});
-     
-        console.log("terminada matricula");*/
-
-
-
-
-        
-       /* await reslabetsit.creaLaboratorio("lab", 13, 30);
-        await reslabetsit.creaLaboratorio( "hola",12, 70);
-        console.log("Crear dos laboratorios:");*/
-
-
-      /*  console.log("Añadir asig:"); 
-        await reslabetsit.creaAsignatura("core","lab1","info")
-        await reslabetsit.creaAsignatura("ore","lab2","info")
- 
-        console.log("se han añadido");
-
-
-
-
-       console.log("Añadir labs:"); 
-       await reslabetsit.creaLaboratorio("labB")
-       await reslabetsit.creaLaboratorio("labC")
-
-       console.log("se han añadido");
-    
        
-
-        console.log(await reslabetsit.laboratoriosLength());
-
-*/
-    const fecha = new Date();
-    const hoy = fecha.getDate();
-
-
-    const tiempoTranscurrido = Date.now();
-    const hoyEpoc = new Date(tiempoTranscurrido);
-
-    console.log(hoy);
-    console.log(hoyEpoc);
+ 
 
     } catch (err) {   // Capturar errores
         console.log(`Error: ${err}`);

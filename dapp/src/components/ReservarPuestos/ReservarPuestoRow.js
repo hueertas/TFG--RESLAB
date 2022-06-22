@@ -2,27 +2,18 @@ import {drizzleReactHooks} from '@drizzle/react-plugin';
 import moment from 'moment';
 import BotonReservar from './BotonReservar';
 import ReservarUnPuesto from "./ReservarUnPuesto";
+import BotonQuitarReserva from "./BotonQuitarReserva";
 
 const {useDrizzle,useDrizzleState} = drizzleReactHooks;
 
 const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
-    const {useCacheCall,drizzle} = useDrizzle();
+    const {useCacheCall} = useDrizzle();
 
     const drizzleState = useDrizzleState(state=>state);
     let miaddress = drizzleState.accounts[0];
-    /*let miaddress;
-       ( async () => {
-            const accounts = await drizzle.web3.eth.getAccounts();
-            
-            miaddress= accounts?.[0];
-        })()
-    */
+
     
-    //const puestoAddr = useCacheCall("ReslabEtsit", "puestosDelLaboratorio",indexlab);
-
-    //const puestoIndex = useCacheCall("ReslabEtsit", "puestosRegistrados",indexlab) || 0;
-
-       //acceder al nombre  de todos los puesto que hay registrados dando el indice del puesto
+  
     let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre
     
    
@@ -39,9 +30,13 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
             //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
             rows.push(
                 <td key={"p2-" + puestoIndice + "-" + el}>
-                    {reserva?.dirAlumno === miaddress ? <img className="noReserva" src="/noReserva.png"/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
-                    {miaddress}
-                    {reserva ? reserva?.dirAlumno : "xxx"}
+                    {reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
+                    adress {miaddress} {typeof miaddress}
+                    reserva
+                    {reserva ? reserva : "xxx"} {typeof reserva} {typeof reserva?.dirAlumno}
+                    fecha {fecha}
+
+                 
                     
                     
                 </td>
