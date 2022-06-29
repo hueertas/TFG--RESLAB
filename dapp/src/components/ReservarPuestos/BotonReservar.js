@@ -19,6 +19,10 @@ const {useDrizzle, useDrizzleState} = drizzleReactHooks;
 };
 */
 
+
+   
+    
+
 /*
 PENDIENTE DE INVESTIGAR:
 Si se usa useCacheSend, se envian varias transacciones cada vez que se hace un submit del formulario.
@@ -37,7 +41,12 @@ const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
     const txObject = transactions[transactionStack[lastStackID] || 'undefined'];
     const status = txObject ?  txObject.status : "Desconocido";
     
+     // Conservar los valores metidos en el formulario!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     
 
+  
+     //var intPuestoIndice = parseInt(puestoIndice, 10);
+     
 
     return (<article className="AppMisDatos">
        
@@ -47,17 +56,22 @@ const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
                 <button key="submit" className="pure-button" type="button"
                         onClick={ev => {
                             ev.preventDefault();
-                            console.log(puestoIndice,fecha,turnoIndex,"reseervando")
-                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoIndice,fecha,turnoIndex);
+                           
+                           // const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(2,1655416800,4);
+                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(+puestoIndice,fecha,turnoIndex);
                             setLastStackID(stackId);
                             console.log(puestoIndice,fecha,turnoIndex,"eaaaaaaaa")
+                            console.log(typeof puestoIndice,typeof fecha,typeof turnoIndex,"reseervando")
                             
                         }}>
                    
-                Puesto Libre  <img className="reservaLibre" src="/reservaLibre.png"/>
+                  <img className="reservaLibre" src="/reservaLibre.png"/>
                 </button>
 
                 <p> Último estado = {status} </p>
+                {typeof  +puestoIndice}
+              
+               
 
               
          

@@ -30,12 +30,14 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
             //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
             rows.push(
                 <td key={"p2-" + puestoIndice + "-" + el}>
-                    {reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
-                    adress {miaddress} {typeof miaddress}
-                    reserva
-                    {reserva ? reserva : "xxx"} {typeof reserva} {typeof reserva?.dirAlumno}
-                    fecha {fecha}
-
+                        {reserva === undefined ? <img className="reloj" src="/reloj.png"/> : reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
+                        {/*reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>*/}
+                        {reserva === 0x0000000000000000000000000000000000000000 ? <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> :  "??"}
+                        
+                        {/*me pone interrogacion siempre , no me esta haciendo bien la comparacion!!!!!!!!!!!!!!!*/ }
+                        {reserva}
+                        
+                        {/*typeof  puestoIndice*/}
                  
                     
                     
@@ -67,35 +69,8 @@ export default ReservarPuestoRow;
 
 
 
-
-//no funciona para el primero!!!
-
-
-
-/*import {drizzleReactHooks} from '@drizzle/react-plugin';
-import moment from 'moment';
-
-const {useDrizzle} = drizzleReactHooks;
-
-const ReservarPuestoRow = ({puestoIndice, fecha}) => {
-    const {useCacheCall} = useDrizzle();
-
-    const puestoAddr = useCacheCall("ReslabEtsit", "puestosDelLaboratorioLength");
-
-        //acceder a los datos de un puesto dado su lab 
-        let puestoName = useCacheCall(['ReslabEtsit'],
-        call => puestoAddr && call("ReslabEtsit", "puestosDelLaboratorioLength", puestoAddr)?.nombre
-    );
-    // ver bien como llamar al puesto esee!!!!
-
-    
-
-    return <>
-         
-         <p>El día seleccionado es: <b>{moment(fecha).format('MMMM Do YYYY')} y el puesto es : {puestoIndice}</b></p>
-
-         </>
-        
-};
-
-export default ReservarPuestoRow;*/
+/*                    {reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>}
+                    adress {miaddress} {typeof miaddress}
+                    reserva
+                    {reserva ? reserva : "xxx"} {typeof reserva} {typeof reserva?.dirAlumno}
+                    fecha {fecha}*/

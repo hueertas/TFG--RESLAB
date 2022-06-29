@@ -1,5 +1,5 @@
-pragma solidity ^0.7.4;
-pragma experimental ABIEncoderV2;//enabled when passing an array of string(struct) as a function paramete
+pragma solidity ^0.8.7;
+//pragma experimental ABIEncoderV2;//enabled when passing an array of string(struct) as a function paramete
 
 
 /*
@@ -484,7 +484,7 @@ contract ReslabEtsit {
     
     
 
-        function guardarReserva(uint  _puestoId, uint  _fecha,  uint _turno)  public {
+        function puestosDelLaboratoriorReserva(uint  _puestoId, uint  _fecha,  uint _turno)  public {
         
 	
        

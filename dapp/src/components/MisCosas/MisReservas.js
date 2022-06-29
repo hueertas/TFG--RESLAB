@@ -22,7 +22,8 @@ const MisReservasHead = () =>
     </thead>;
 
 
-
+//mapping dada una direcion te devuelva la reserva que tienes con el turno , la fecha y el puesto 
+//structura de datos con el turno fecha y puesto y llamar directamente ahi 
 const MisReservasBody = () => {
     const {useCacheCall} = useDrizzle();
 

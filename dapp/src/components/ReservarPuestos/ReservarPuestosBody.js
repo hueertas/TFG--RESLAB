@@ -33,7 +33,7 @@ const ReservarPuestosBody = ({indexlab,fecha}) => {
             rows.push(<ReservaPuestoRow key={"cb-"+i} puestoIndice={puestosIndices[i]} fecha={fecha} indexlab={indexlab} />);
     }
 
-    return <tbody>{rows}</tbody>;
+    return <tbody>{rows} </tbody>;
 };
 
 export default ReservarPuestosBody;

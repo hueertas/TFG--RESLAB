@@ -38,25 +38,25 @@ module.exports = async callback => {
 
 
        console.log("Crear dos puestos:");
-       await reslabetsit.creaPuesto("puesto1", 1);
-       await reslabetsit.creaPuesto("puesto2", 0);
-       await reslabetsit.creaPuesto("puesto2", 1);
-       await reslabetsit.creaPuesto("puesto3", 1);
-       await reslabetsit.creaPuesto("puesto4", 1);
-       await reslabetsit.creaPuesto("puesto5", 1);
-       await reslabetsit.creaPuesto("puesto6", 1);
-       await reslabetsit.creaPuesto("puesto7", 1);
-       await reslabetsit.creaPuesto("puesto8", 1);
-       await reslabetsit.creaPuesto("puesto9", 1);
+       await reslabetsit.creaPuesto("C01", 1);
+       await reslabetsit.creaPuesto("C02", 0);
+       await reslabetsit.creaPuesto("C03", 1);
+       await reslabetsit.creaPuesto("C04", 1);
+       await reslabetsit.creaPuesto("C05", 1);
+       await reslabetsit.creaPuesto("C06", 1);
+       await reslabetsit.creaPuesto("C07", 1);
+       await reslabetsit.creaPuesto("C08", 1);
+       await reslabetsit.creaPuesto("C09", 1);
+       await reslabetsit.creaPuesto("C10", 1);
 
 
        console.log("Crear dos turnos:");
-       await reslabetsit.creaTurno("turno1", 12345678);
-       await reslabetsit.creaTurno("turno2",12345679);
-       await reslabetsit.creaTurno("turno3",12345689);
-       await reslabetsit.creaTurno("turno4",12345699);
-       await reslabetsit.creaTurno("turno5",12345649);
-       await reslabetsit.creaTurno("turno6",12345639);
+       await reslabetsit.creaTurno("10:00-11:00", 12345678);
+       await reslabetsit.creaTurno("11:00-12:00",12345679);
+       await reslabetsit.creaTurno("12:00-13:00",12345689);
+       await reslabetsit.creaTurno("16:00-17:00",12345699);
+       await reslabetsit.creaTurno("17:00-18:00",12345649);
+       await reslabetsit.creaTurno("18:00-19:00",12345639);
 
    
 

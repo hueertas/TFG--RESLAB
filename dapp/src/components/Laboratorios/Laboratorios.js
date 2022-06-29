@@ -45,9 +45,15 @@ export const Laboratorios = () => {
     const changeDate = (e) => {
         setDateState(e)
       }
+      
+      /*  var myDate = new Date(dateState); // Your timezone!
+    var myEpoch = myDate.getTime()/1000.0;*/ //ahora sin el date 
 
+    //(var elDia = moment().startOf('date');  
 
-    var myDate = new Date(dateState); // Your timezone!
+    var datehora = moment().startOf(dateState);
+
+    var myDate =  new Date(dateState); ; // Your timezone!
     var myEpoch = myDate.getTime()/1000.0;
 
     /*let rows = [];
@@ -81,6 +87,8 @@ export const Laboratorios = () => {
 
             <p>El día seleccionado es: <b>{moment(dateState).format('MMMM Do YYYY')}</b></p>
             <p>El día seleccionado en formato uint es : <b>{myEpoch}</b></p>
+          
+
             
             <p> el numero de turnos es {el}</p>
           <ReservarPuestos indexlab={index} fecha={myEpoch} />
