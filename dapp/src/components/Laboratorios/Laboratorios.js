@@ -41,17 +41,16 @@ export const Laboratorios = () => {
     const datos = useCacheCall("ReslabEtsit", "laboratoriosRegistrados", index);
     /* const datos = useCacheCall("ReslabEtsit", "laboratoriosReservados", labindex,fechaindex);*/
     //const datospuesto = useCacheCall("ReslabEtsit", "puestosLaboratorioLength") || 0;
-    const [dateState, setDateState] = useState(new Date());
+    const [dateState, setDateState] = useState(new Date(moment().startOf('day')));
     const changeDate = (e) => {
         setDateState(e)
       }
       
-      /*  var myDate = new Date(dateState); // Your timezone!
-    var myEpoch = myDate.getTime()/1000.0;*/ //ahora sin el date 
+     
 
-    //(var elDia = moment().startOf('date');  
+  
 
-    var datehora = moment().startOf(dateState);
+    
 
     var myDate =  new Date(dateState); ; // Your timezone!
     var myEpoch = myDate.getTime()/1000.0;

@@ -27,6 +27,7 @@ import Home from './Home';
 import ReservarPuestos from "./ReservarPuestos/ReservarPuestos";
 import MisCosas from "./MisCosas/MisCosas";
 import Contacto from "./Contacto/Contacto";
+import Prueba from "./Prueba/PruebaCalendario";
 
 
 
@@ -58,6 +59,7 @@ function App() {
                         <Route path="reservarPuestos/" element={<ReservarPuestos/>}/>
                         <Route path="miscosas" element={<MisCosas/>}/>
                         <Route path="contacto" element={<Contacto/>}/>
+                        <Route path="prueba" element={<Prueba/>}/>
                         
                             
                      

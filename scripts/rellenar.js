@@ -32,12 +32,12 @@ module.exports = async callback => {
 
 
         
-       console.log("Crear dos laboratrios:");
+       console.log("Crear  laboratrios:");
        await reslabetsit.creaLaboratorio(1,"lab1", "core", "info");
        await reslabetsit.creaLaboratorio(2,"lab2 ", "dap", "info");
 
 
-       console.log("Crear dos puestos:");
+       console.log("Crear  puestos:");
        await reslabetsit.creaPuesto("C01", 1);
        await reslabetsit.creaPuesto("C02", 0);
        await reslabetsit.creaPuesto("C03", 1);
@@ -50,7 +50,7 @@ module.exports = async callback => {
        await reslabetsit.creaPuesto("C10", 1);
 
 
-       console.log("Crear dos turnos:");
+       console.log("Crear  turnos:");
        await reslabetsit.creaTurno("10:00-11:00", 12345678);
        await reslabetsit.creaTurno("11:00-12:00",12345679);
        await reslabetsit.creaTurno("12:00-13:00",12345689);

@@ -1,56 +1,46 @@
 import {drizzleReactHooks} from '@drizzle/react-plugin'
-
-const {useDrizzle} = drizzleReactHooks;
-
-const MisReservas = () =>
-    <section className="AppMisNotas">
-        <h3>Mis reservas</h3>
-        <table>
-            <MisReservasHead/>
-            <MisReservasBody/>
-        </table>
-    </section>;
+import {useParams, Link} from "react-router-dom";
 
 
-const MisReservasHead = () =>
-    <thead>
-    <tr>
-        <th>Turno</th>
-        <th>Laboratorio</th>
-        <th>Puesto</th>
-    </tr>
-    </thead>;
 
+const MisReservas = () =>{
 
-//mapping dada una direcion te devuelva la reserva que tienes con el turno , la fecha y el puesto 
-//structura de datos con el turno fecha y puesto y llamar directamente ahi 
-const MisReservasBody = () => {
+    const {useDrizzle} = drizzleReactHooks;
+
+    
     const {useCacheCall} = useDrizzle();
 
-    const turnosLength = useCacheCall("ReslabEtsit", "turnosLength") || 0;
+    let {address} = useParams();
 
-    let rows = useCacheCall(['ReslabEtsit'], call => {
-        let rows = [];
-        for (let ei = 0; ei < turnosLength; ei++) {
-            //const nota = call("Asignatura", "miNota", ei);
-            const ev = call("ReslabEtsit", "turnosRegistrados", ei);
-            rows.push(
-                <tr key={"miReservaIndex-" + ei}>
-                    <td>{ev?.nombre}</td>
-                    {/*<td> dado un address te devuelva el uint de un puesto o lab reservado 
-                        {nota?.tipo === "0" ? "N.P." : ""}
-                        {nota?.tipo === "1" ? (nota.calificacion / 10).toFixed(1) : ""}
-                        {nota?.tipo === "2" ? (nota.calificacion / 10).toFixed(1) + "(M.H.)" : ""}
-                     </td>*/}
-                </tr>);
-        }
-        return rows;
-    });
 
-    return <tbody>{rows}</tbody>;
+   
+    const reservaAlumno = useCacheCall("ReslabEtsit", "reservasAlumno",address) || 0;
+
+    return (
+
+
+    <section className="AppMisNotas">
+        <h3>Mis reservas</h3>
+        
+  
+
+
+    <ul>
+    <li><b>Puesto:</b> {reservaAlumno?.puestoIndice ?? "Desconocido"}</li>
+    <li><b>Fecha:</b> {reservaAlumno?.fecha ?? "Desconocido"}</li>
+    <li><b>Turno:</b> {reservaAlumno?.turnoIndex ?? "Desconocido"}</li>
+   
+   
+
+   
+
+    </ul>
+    </section>
+
+
+    );
+
+
 };
-
-
-
 
 export default MisReservas;

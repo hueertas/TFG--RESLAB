@@ -11,6 +11,7 @@ const Navegacion = () => (
             
             <li><Link to="/laboratorios/">Laboratorios</Link></li>
             <li><Link to="/miscosas/">Mis Cosas</Link></li>
+            <li><Link to="/prueba/">Pruebas</Link></li>
            
          
             
