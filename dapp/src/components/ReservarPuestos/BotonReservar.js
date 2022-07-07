@@ -58,7 +58,7 @@ const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
                             ev.preventDefault();
                            
                            // const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(2,1655416800,4);
-                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(+puestoIndice,fecha,turnoIndex);
+                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoIndice,fecha,turnoIndex);
                             setLastStackID(stackId);
                             console.log(puestoIndice,fecha,turnoIndex,"eaaaaaaaa")
                             console.log(typeof puestoIndice,typeof fecha,typeof turnoIndex,"reseervando")
@@ -69,7 +69,7 @@ const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
                 </button>
 
                 <p> Último estado = {status} </p>
-                {typeof  +puestoIndice}
+                {typeof  fecha}
               
                
 

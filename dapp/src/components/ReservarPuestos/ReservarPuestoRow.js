@@ -30,15 +30,25 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
             //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
             rows.push(
                 <td key={"p2-" + puestoIndice + "-" + el}>
-                        {reserva === undefined ? <img className="reloj" src="/reloj.png"/> : reserva === miaddress ? <BotonQuitarReserva  puestoIndice={+puestoIndice} fecha={fecha} turnoIndex={i}/> : <BotonReservar  puestoIndice={+puestoIndice} fecha={fecha} turnoIndex={i}/>}
-                        {/*reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> : <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>*/}
-                        {reserva === 0x0000000000000000000000000000000000000000 ? <BotonReservar  puestoIndice={+puestoIndice} fecha={fecha} turnoIndex={i}/> :  "??"}
+
+                 
+            
+                  
+
+                    
+                        {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> 
+                            :     reserva === miaddress ? <BotonQuitarReserva  puestoIndice={+puestoIndice} fecha={fecha} turnoIndex={i}/> 
+                            :     reserva === "0x0000000000000000000000000000000000000000" ?  <BotonReservar  puestoIndice={+puestoIndice} fecha={fecha} turnoIndex={i}/>
+                            :    "ocupado "
+                            }
+                                                   
+         
                         
                         {/*me pone interrogacion siempre , no me esta haciendo bien la comparacion!!!!!!!!!!!!!!!*/ }
-                        {/*reserva*/}
+                        { reserva}
                        
                         
-                        {typeof  puestoIndice}
+                       
                  
                     
                     

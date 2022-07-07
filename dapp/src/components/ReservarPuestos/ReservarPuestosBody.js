@@ -18,8 +18,8 @@ const ReservarPuestosBody = ({indexlab,fecha}) => {
         
         for (let pi = 0; pi < ml; pi++) {
             const puestoIndice = call("ReslabEtsit", "puestosDelLaboratorio",indexlab,pi) ;   
-          
-                puestosIndices.push(puestoIndice);
+                if (typeof puestoIndice !== "undefined")
+                puestosIndices.push(Number(puestoIndice));
          
             
         }
@@ -29,7 +29,7 @@ const ReservarPuestosBody = ({indexlab,fecha}) => {
     let rows = [];
     for (let i = 0; i < puestosIndices.length; i++) {
 
-        if (typeof puestosIndices[i] !== "undefined")
+      
             rows.push(<ReservaPuestoRow key={"cb-"+i} puestoIndice={puestosIndices[i]} fecha={fecha} indexlab={indexlab} />);
     }
 
