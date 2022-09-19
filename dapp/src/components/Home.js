@@ -14,12 +14,14 @@ const Home = () => (
 
          
             
+            <img className="escaleras" src="/escaleras.jpg"/>
             <div className="consulta"><p className="texto">¡Consulta el día que mejor te venga! </p></div>
             
             <div className="Presentacion"><p className="texto">¡Bienvenid@ a la página de reservas de la Etsit!</p></div>
         
 
-            <img className="escuela" src="/escuela.png"/> <img className="escuela" src="/escuela.png"/>
+            <img className="niña" src="/niñaestudiando.png"/> 
+            
 
             <Calendar className= "calendar"></Calendar>
 
@@ -31,7 +33,7 @@ const Home = () => (
 
 
             
-            </h1>
+        </h1>
     </header>
    );
    export default Home;

@@ -15,7 +15,7 @@ export const Asignaturas = () => {
 
         
            <section className="AppAsignaturas">
-            <img className="asignaturas" src="/asignaturas.png"/>
+            {/*<img className="asignaturas" src="/asignaturas.png"/>*/}
 
                <h2>Listado de asignaturas</h2>
                
@@ -41,6 +41,10 @@ const LabAsig = useCacheCall("ReslabEtsit", "indiceLabPorAsignatura",index) || 0
 
 
 return <>
+
+
+
+    <div className='AppAsignaturadiv'>
         <header className="AppAlumno">
             <h2>Asignatura</h2>
         </header>
@@ -58,6 +62,9 @@ return <>
         </ul>
 
         <Link to="/asignaturas"><img className="volver" src="/volver.png"/></Link>
+
+
+    </div>
     </>
 };
 

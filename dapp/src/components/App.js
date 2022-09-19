@@ -40,6 +40,8 @@ function App() {
               <Loading>
                 <BrowserRouter>
                     <Routes>
+
+                      
                  
                       <Route path="/" element={<Layout/>}>
                         <Route index element={<Home/>}/>
@@ -61,13 +63,18 @@ function App() {
                         <Route path="contacto" element={<Contacto/>}/>
                         <Route path="prueba" element={<Prueba/>}/>
                         
+                        
                             
                      
                       </Route>
                     </Routes>
                 </BrowserRouter>
             </Loading>
+
+            
         </div>
+
+        
     );
 }
 

@@ -118,14 +118,18 @@ contract ReslabEtsit {
     
     struct DatosAsignatura{
         string nombre;
-       // Laboratorio[] laboratorio;
+       
         uint indexLab;
         string info;
-        //credito semanal
-        //Matriculas matriculados;
+        
+        
     }
     
     
+
+    struct CreditoSemanal {
+        uint creditoSemanal;
+    }
     
     
     /**
@@ -183,7 +187,7 @@ contract ReslabEtsit {
 
     
     //Array credito semanal 
-    address [] public creditosemanal;
+    //address [] public creditosemanal;
     
    //array con las direcciones de las asignaturas registradas 
    address[] public asignaturasRegistradasdir;
@@ -260,6 +264,13 @@ contract ReslabEtsit {
      //dado el numero lab, de un puesto,  y turno te devuelva la reserva
 
      mapping( uint =>mapping (uint=>  mapping (uint=> DatosReserva ))) public datosReservaPorLabPuestoTurno;
+
+
+
+     // dado la direcion de un alumno y una asignatura te da el credito semanal perteneciente que le queda
+
+     mapping(address=>mapping (string=> CreditoSemanal))  public CreditoSemanalPorAlumnoAsignatura;
+
 
 
      

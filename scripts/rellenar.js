@@ -54,9 +54,12 @@ module.exports = async callback => {
        await reslabetsit.creaTurno("10:00-11:00", 12345678);
        await reslabetsit.creaTurno("11:00-12:00",12345679);
        await reslabetsit.creaTurno("12:00-13:00",12345689);
-       await reslabetsit.creaTurno("16:00-17:00",12345699);
-       await reslabetsit.creaTurno("17:00-18:00",12345649);
-       await reslabetsit.creaTurno("18:00-19:00",12345639);
+       await reslabetsit.creaTurno("13:00-14:00",12345699);
+       await reslabetsit.creaTurno("16:00-17:00",16347649);
+       await reslabetsit.creaTurno("17:00-18:00",12345639);
+       await reslabetsit.creaTurno("18:00-19:00",12385639);
+       await reslabetsit.creaTurno("19:00-20:00",12395639);
+ 
 
    
 

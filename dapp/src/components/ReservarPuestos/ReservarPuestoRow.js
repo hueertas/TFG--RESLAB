@@ -6,7 +6,7 @@ import BotonQuitarReserva from "./BotonQuitarReserva";
 
 const {useDrizzle,useDrizzleState} = drizzleReactHooks;
 
-const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
+const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
     const {useCacheCall} = useDrizzle();
 
     const drizzleState = useDrizzleState(state=>state);
@@ -15,6 +15,13 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
     
   
     let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre
+
+    //llamar al credito semanal segun alumno y asignatura 
+
+    let creditoSemanal = useCacheCall("ReslabEtsit", "CreditoSemanalPorAlumnoAsignatura",miaddress,NAsignatura);
+    
+    //poner un credito inicial por asignatura y semana ??  y cada que el alumno reserve el credito vaya disminuyendo -> metodo guardar reserva
+    //  si le queda mas credito que uno puede reservar 
     
    
     let rows = useCacheCall(['ReslabEtsit'], call => {
@@ -34,18 +41,18 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha}) =>  {
                  
             
                   
-
+                        
                     
                         {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> 
-                            :     reserva === miaddress ? <BotonQuitarReserva  puestoIndice={+puestoIndice} fecha={fecha} turnoIndex={i}/> 
-                            :     reserva === "0x0000000000000000000000000000000000000000" ?  <BotonReservar  puestoIndice={+puestoIndice} fecha={fecha} turnoIndex={i}/>
-                            :    "ocupado "
+                            :     reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> 
+                            :     reserva === "0x0000000000000000000000000000000000000000" ?  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>
+                            :    <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> 
                             }
                                                    
          
-                        
+                        {/* typeof i*/}
                         {/*me pone interrogacion siempre , no me esta haciendo bien la comparacion!!!!!!!!!!!!!!!*/ }
-                        { reserva}
+                        {/* reserva*/}
                        
                         
                        

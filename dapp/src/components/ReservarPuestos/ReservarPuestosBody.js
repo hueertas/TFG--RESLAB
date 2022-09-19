@@ -4,7 +4,7 @@ import ReservaPuestoRow from "./ReservarPuestoRow";
 
 const {useDrizzle} = drizzleReactHooks;
 
-const ReservarPuestosBody = ({indexlab,fecha}) => {
+const ReservarPuestosBody = ({indexlab,fecha,NAsignatura}) => {
     const {useCacheCall} = useDrizzle();
 
     const ml = useCacheCall("ReslabEtsit", "puestosDelLaboratorioLength",indexlab) || 0;
@@ -30,7 +30,7 @@ const ReservarPuestosBody = ({indexlab,fecha}) => {
     for (let i = 0; i < puestosIndices.length; i++) {
 
       
-            rows.push(<ReservaPuestoRow key={"cb-"+i} puestoIndice={puestosIndices[i]} fecha={fecha} indexlab={indexlab} />);
+            rows.push(<ReservaPuestoRow key={"cb-"+i} puestoIndice={puestosIndices[i]} fecha={fecha} indexlab={indexlab} NAsignatura={NAsignatura}/>);
     }
 
     return <tbody>{rows} </tbody>;

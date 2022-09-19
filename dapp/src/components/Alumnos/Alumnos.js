@@ -20,7 +20,7 @@
        const ml = useCacheCall("ReslabEtsit", "matriculasLength") || 0;
    
        return (
-           <section className="AppAlumnos">
+           <div className="AppAlumnos">
                <h2>Alumnos</h2>
    
                <table>
@@ -28,7 +28,7 @@
                    <AlumnosBody matriculasLength={ml || 0}/>
                    
                </table>
-           </section>
+           </div>
        );
    };
    
@@ -41,6 +41,8 @@
        const datos = useCacheCall("ReslabEtsit", "datosAlumno", addr);
    
        return <>
+
+        <div className='AppAlumnodiv'>
            <header className="AppAlumno">
                <h2>Alumno</h2>
            </header>
@@ -52,7 +54,9 @@
            </ul>
    
            <Link to="/alumnos"><img className="volver" src="/volver.png"/></Link>
+        </div>
        </>
+       
    };
 
 //npx truffle migrate --reset --compile-all

@@ -1,13 +1,37 @@
+
+
+
+
 .App {
   margin: 10px;
+  background-color: rgb(238, 159, 159);
+  width: 100%;
+  height: 70px;
+  top: -5px;
+ 
   
   
 }
 
+.Fondo{
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+
 .AppHeader {
   text-align: center;
-  color: rgb(0, 0, 0);
+  
+  color:  rgb(11, 111, 173);
   font-size: large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(11, 111, 173);
+  background-color: rgb(238, 159, 159);
+  letter-spacing: .05em;
+    text-shadow: 
+      2px 2px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+  
   
 }
 
@@ -17,12 +41,16 @@
 
 
 nav ul {
+  position: absolute;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
-}
+  background-color: rgb(238, 159, 159);
+ 
+  width: 150px;
+  height: 100%;
+  }
 
 nav ul li {
   float: left;
@@ -30,14 +58,98 @@ nav ul li {
 
 nav ul li a {
   display: block;
-  color: rgb(238, 159, 159);
+  color:  rgb(11, 111, 173);
+  
   text-align: center;
-  padding: 10px 10px;
+  padding: 25px 20px;
   text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+ 
+  
+
+
 }
 
+
+
+
+.AppAlumnos{
+  position: absolute;
+  
+  right: 800px;
+}
+
+.AppAlumnodiv{
+  position: absolute;
+  
+  right: 800px;
+}
+
+
+.AppAsignaturadiv{
+  position: absolute;
+  
+  right: 800px;
+}
+
+.AppLaboratoriodiv{
+  position: absolute;
+  left: 200px;
+}
+
+
+
+
+.AppContacto{
+  position: absolute;
+  
+  left: 200px;
+
+  top:150px;
+}
+
+.AppMisCosas{
+  position: absolute;
+  
+  left: 200px;
+
+  top:150px;
+}
+
+
+
+
+
+.AppAsignaturas{
+  position: absolute;
+  right: 800px;
+}
+
+
+.AppLaboratorios{
+  position: absolute;
+  right: 1000px;
+}
+
+
+.AppReservaPuestos{
+  position: absolute;
+  left: 800px;
+  top:100px;
+}
+
+
+
 nav ul li a:hover {
-  background-color: rgb(22, 10, 10);
+  background-color: rgb(76, 35, 60);
+  opacity: 0.6;
+  border-radius: 15px;
+  border: 3px double #0c110d
 }
 
 table { 
@@ -90,52 +202,54 @@ table {
 
 
 
-      .BPanel {
-        color: white;
-        width: 75pt;
-        height: 45pt;
-        margin-top: 2px;
-        background: #000080;
-        border: none; 
-        text-align: center;
-        opacity: 0.7;
-        transition: 0.3s;
+    .BPanel {
+      color: white;
+      width: 75pt;
+      height: 45pt;
+      margin-top: 2px;
+      background: #000080;
+      border: none; 
+      text-align: center;
+      opacity: 0.7;
+      transition: 0.3s;
+      }
+
+
+      .TituloPanel {
+        color: black;
+        text-align:right;
+        font-size: 35px;
+        font-weight: bold;
+        display: block;
+        position:relative;
+        
+        right: 350px;
         }
 
-
-        .TituloPanel {
-          color: black;
-          text-align:right;
-          font-size: 35px;
-          font-weight: bold;
+        .TablaPanelLabs {
           display: block;
+          background-color: #e8fae6;
+          width: 380px;
+          height: 280px;
+          overflow-x: auto;
+          overflow-y: auto; 
           position:relative;
-          
+          top : 10vh;
           right: 350px;
+          box-sizing: border-box;
+          border: none;
+          border-radius: 2px;
+          background-color: #dcdcdc;
           }
-
-          .TablaPanelLabs {
-            display: block;
-            background-color: #e8fae6;
-            width: 380px;
-            height: 280px;
-            overflow-x: auto;
-            overflow-y: auto; 
-            position:relative;
-            top : 10vh;
-            right: 350px;
-            box-sizing: border-box;
-            border: none;
-            border-radius: 2px;
-            background-color: #dcdcdc;
+          .Panel {
+            padding: 35px;
+            display: visible;
+            background-color: rgb(107, 38, 38);
+            overflow: visible;
             }
-            .Panel {
-              padding: 35px;
-              display: visible;
-              background-color: rgb(107, 38, 38);
-              overflow: visible;
-              }
-      .logo {
+      
+      
+          .logo {
         
         overflow: visible;
         float: right;
@@ -144,27 +258,31 @@ table {
         position:absolute;
         right:60px;
         top: 10px;
-        width: 100px;
-        height: 80px;
+        width: 120px;
+        height: 100px;
 
-        }
+            }
 
         .Titulo{
           
           font-family:serif;
+          display:scroll;
+
         }
 
-        .escuela{
+        .niña{
           
          
        
           
           border: 6px solid rgb(201, 93, 93);
-          height: 500px;
-          width: 1000px;
+          height: 200px;
+          width: 200px;
           align:right; 
           position:absolute;
-          right:190px;
+          right:300px;
+          top:340px;
+          opacity: 0.8;
 
         }
 
@@ -302,8 +420,19 @@ table {
           width: 100px;
           align:left; 
           position:absolute;
-          left:250px;
+          left:420px;
           bottom: 150px;
+
+        }
+
+
+        .escaleras{
+          height: 100%;
+          width: 100%;
+          position:absolute;
+          left:158px;
+          opacity: 0.4;
+          top:95px;
 
         }
 
@@ -314,9 +443,9 @@ table {
           text-align:left; 
           font-size: small;
           position:absolute;
-          left: 150px;
+          left: 300px;
           bottom: 450px;
-          color: rgb(0, 0, 0);
+          color: rgb(127, 50, 50);
           font-size: 20px;
           font-weight: bold;
           text-align: left;
@@ -331,9 +460,10 @@ table {
           align:left;
           position:absolute;
 
-          left: 150px;
+          left: 320px;
           bottom: 270px;
           font-size: 20px;
+          
          
           
 
@@ -355,8 +485,12 @@ table {
           
         .reservaLibre{
 
-          width: 50px;
+          width: 25px;
           height: 25px;
+         
+        
+        
+         
 
 
         } 
@@ -403,8 +537,11 @@ table {
 
           .Presentacion {
             
-            color:  rgb(22, 10, 10);
-   
+            color:  rgb(127, 50, 50);
+            left:600px;
+            font-size: 30px;
+            position:absolute;
+            
             }
 
 
@@ -424,13 +561,7 @@ table {
 
                 
 
-             /* .Historial {
-                padding: 35px;
-                display: visible;
-                background-color: rgb(107, 38, 38);
-                overflow: visible;
-                }*/
-  
+          
 
               
 

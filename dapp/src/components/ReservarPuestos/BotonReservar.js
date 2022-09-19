@@ -29,7 +29,7 @@ Si se usa useCacheSend, se envian varias transacciones cada vez que se hace un s
 El problema esta relacionado con actualizar el estado del stackIds dentro de la implementacion de ese hook.
  */
 
-const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
+const BotonReservar = ({puestoIndice,fecha,turnoIndex}) => {
     const {drizzle} = useDrizzle();
 
     // Obtener el status de la ultima transaccion enviada:
@@ -43,7 +43,9 @@ const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
     
      // Conservar los valores metidos en el formulario!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      
-
+    const puestoxIndice= Number(puestoIndice);
+    const fechax= Number(fecha);
+    const turnoxIndex= Number(turnoIndex);
   
      //var intPuestoIndice = parseInt(puestoIndice, 10);
      
@@ -51,25 +53,29 @@ const BotonReservar = (puestoIndice,fecha,turnoIndex) => {
     return (<article className="AppMisDatos">
        
       
-       
+       {/*{typeof puestoxIndice}*/}
+
 
                 <button key="submit" className="pure-button" type="button"
                         onClick={ev => {
                             ev.preventDefault();
                            
-                           // const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(2,1655416800,4);
-                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoIndice,fecha,turnoIndex);
+                            //const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoxIndice,1655416800,4);
+                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoxIndice,fechax,turnoxIndex);
                             setLastStackID(stackId);
-                            console.log(puestoIndice,fecha,turnoIndex,"eaaaaaaaa")
-                            console.log(typeof puestoIndice,typeof fecha,typeof turnoIndex,"reseervando")
+                            //console.log(puestoIndice,fecha,turnoIndex,"eaaaaaaaa")
+                            console.log(typeof puestoxIndice,typeof fechax,typeof turnoxIndex,"reseervando")
+                            console.log(puestoxIndice, fechax, turnoxIndex,"probar")
+                            console.log(puestoIndice, fecha, turnoIndex,"probar2")
+                            console.log(typeof puestoIndice,typeof fecha,typeof turnoIndex,"reseervando2")
                             
                         }}>
                    
                   <img className="reservaLibre" src="/reservaLibre.png"/>
                 </button>
 
-                <p> Último estado = {status} </p>
-                {typeof  fecha}
+                {/*<p> Último estado = {status} </p>*/}
+                
               
                
 

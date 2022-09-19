@@ -1,6 +1,8 @@
 import {drizzleReactHooks} from '@drizzle/react-plugin'
 import {useParams, Link} from "react-router-dom";
 
+const {useDrizzle,useDrizzleState} = drizzleReactHooks;
+
 
 
 const MisReservas = () =>{
@@ -10,11 +12,17 @@ const MisReservas = () =>{
     
     const {useCacheCall} = useDrizzle();
 
-    let {address} = useParams();
+    const drizzleState = useDrizzleState(state=>state);
+    let miaddress = drizzleState.accounts[0];
 
+ 
 
    
-    const reservaAlumno = useCacheCall("ReslabEtsit", "reservasAlumno",address) || 0;
+   
+    
+    const reservaAlumno = useCacheCall("ReslabEtsit", "reservasAlumno",miaddress) || 0;
+
+    
 
     return (
 
@@ -29,6 +37,7 @@ const MisReservas = () =>{
     <li><b>Puesto:</b> {reservaAlumno?.puestoIndice ?? "Desconocido"}</li>
     <li><b>Fecha:</b> {reservaAlumno?.fecha ?? "Desconocido"}</li>
     <li><b>Turno:</b> {reservaAlumno?.turnoIndex ?? "Desconocido"}</li>
+    <li><b>Direccion Ethereum:</b> {miaddress}</li>
    
    
 

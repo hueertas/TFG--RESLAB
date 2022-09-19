@@ -19,7 +19,7 @@ export const Laboratorios = () => {
    
        return (
            <section className="AppLaboratorios">
-            <img className="laboratorios" src="/laboratorios.png"/>
+            {/*<img className="laboratorios" src="/laboratorios.png"/>*/}
                <h2> Listado de Laboratorios</h2>
                <table className='tablaLaboratorios'>
                    <LaboratoriosHead/>
@@ -64,6 +64,9 @@ export const Laboratorios = () => {
     const el = useCacheCall("ReslabEtsit", "turnosLength") || 0;
     
     return <>
+
+
+        <div className='AppLaboratoriodiv'>
             <header className="AppAlumno">
                 <h2>Laboratorio :
                 </h2>
@@ -74,7 +77,7 @@ export const Laboratorios = () => {
             <ul>
                 
                 <li><b>Nombre:</b> {datos?.nombreL ?? "Desconocido"}</li>
-                {/*<li><b>Asig</b> {datos?.asignaura ?? "Desconocido"}</li>*/}
+                <li><b>Asignatura</b> {datos?.asignaura ?? "Desconocido"}</li>
                 {/*<li><b>Puestos correspondientes:</b>{rows}</li>*/}
 
                 <li><b>Info:</b> {index}</li>
@@ -90,12 +93,26 @@ export const Laboratorios = () => {
 
             
             <p> el numero de turnos es {el}</p>
-          <ReservarPuestos indexlab={index} fecha={myEpoch} />
+
+            <Link to="/laboratorios"><img className="volver" src="/volver.png"/></Link>
+
+        </div>
+        <div className='AppReservaPuestos'> 
+
+          <ReservarPuestos  indexlab={index} fecha={myEpoch} NAsignatura={datos?.asignaura}/>
+
+        </div>
             
-           {/*<Link to={`/reservarPuestos/${index}`}>Reservar el puesto </Link>*/} 
+           {/*<Link to={`/reservarPuestos/${index}`}>Reservar el puesto </Link>*/}
+
+
+      
            
     
-            <Link to="/laboratorios"><img className="volver" src="/volver.png"/></Link>
+           
+
+        
+       
         </>
     };
 
