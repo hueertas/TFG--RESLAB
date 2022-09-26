@@ -437,6 +437,50 @@ table {
         }
 
 
+        .top{
+          height: 1500px;
+          width: 1700px;
+          position:absolute;
+          left:300px;
+          opacity: 0.8;
+          top:-46px;
+
+        }
+
+        .bombilla{
+          height: 1500px;
+          width: 1700px;
+          position:absolute;
+          left:300px;
+          opacity: 0.8;
+          top:-46px;
+
+        }
+
+
+
+        .contenedor {
+          position: relative;
+          height: 10px;
+          width: 40px;
+          left: 150px;
+          top:56px;
+          
+        }
+
+      
+        
+        .contenedor img {
+          position: absolute;
+          left: 0;
+          transition: opacity 1.5s ease-in-out;
+        }
+        
+        .contenedor img.top:hover {
+          opacity: 0;
+        }
+        
+
         .consulta{
           
          
@@ -472,7 +516,15 @@ table {
 
        
 
-       
+       .Tabla{
+        overflow:scroll;
+       }
+
+       .TablaReservarPuestos{
+        overflow:scroll;
+        width: 300px;
+        height: 300px;
+       }
           
                     
         

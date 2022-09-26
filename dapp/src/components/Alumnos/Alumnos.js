@@ -22,12 +22,14 @@
        return (
            <div className="AppAlumnos">
                <h2>Alumnos</h2>
-   
-               <table>
+
+            <div className="Tabla">
+               <table >
                    <AlumnosHead/>
                    <AlumnosBody matriculasLength={ml || 0}/>
                    
                </table>
+            </div> 
            </div>
        );
    };

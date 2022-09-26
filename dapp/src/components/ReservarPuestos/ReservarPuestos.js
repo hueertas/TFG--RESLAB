@@ -18,10 +18,13 @@ const ReservarPuestos = ({indexlab,fecha,NAsignatura}) => {
     return (
         <section className="AppReservaPuestosSection">
             <h2>Reservar Puestos </h2>
-            <table>
-                <ReservarPuestosHead />
-                <ReservarPuestosBody indexlab={indexlab} fecha={fecha} NAsignatura={NAsignatura} />
-            </table>
+
+            <div className="TablaReservarPuestos">
+                <table>
+                    <ReservarPuestosHead />
+                    <ReservarPuestosBody indexlab={indexlab} fecha={fecha} NAsignatura={NAsignatura} />
+                </table>
+            </div>
 
             
             

@@ -12,9 +12,17 @@ const Home = () => (
     <header className="AppHeader">
         <h1>
 
-         
+            <div class="contenedor">
+            <img className= "bombilla"src="bombilla.png" />
+            <img class="top" src="escritorio.png" />
+            </div>
+        
             
-            <img className="escaleras" src="/escaleras.jpg"/>
+           {/* <img className="escaleras" src="/escaleras.jpg"/>*/}
+           
+           
+           
+           
             <div className="consulta"><p className="texto">¡Consulta el día que mejor te venga! </p></div>
             
             <div className="Presentacion"><p className="texto">¡Bienvenid@ a la página de reservas de la Etsit!</p></div>
