@@ -20,7 +20,6 @@
 
 .AppHeader {
   text-align: center;
-  
   color:  rgb(11, 111, 173);
   font-size: large;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -30,6 +29,8 @@
     text-shadow: 
       2px 2px 0px #dae4ec, 
       5px 5px 5px rgba(0, 0, 0, 0.2);
+
+      
 
   
   
@@ -69,12 +70,22 @@ nav ul li a {
       1px 1px 0px #dae4ec, 
       5px 5px 5px rgba(0, 0, 0, 0.2);
 
+      
+
  
   
 
 
 }
 
+.covid{
+  position: absolute;
+  
+  left: 1100px;
+  width: 350px;
+  top: 100px;
+ 
+}
 
 
 
@@ -94,7 +105,8 @@ nav ul li a {
 .AppAsignaturadiv{
   position: absolute;
   
-  right: 800px;
+  left: 600px;
+  top:200px;
 }
 
 .AppLaboratoriodiv{
@@ -127,8 +139,82 @@ nav ul li a {
 
 .AppAsignaturas{
   position: absolute;
-  right: 800px;
+  left: 300px;
+  color:  rgb(11, 111, 173);
+  
+  text-align: center;
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+
+
+  
+
 }
+
+.AppAlumno{
+  position: relative;
+  left: -300px;
+  color:  rgb(11, 111, 173);
+  top:-100px;
+
+  
+  
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+
+
+  
+
+}
+
+.ListaAsignatura{
+  position: relative;
+  left: -280px;
+  color:  rgb(12, 13, 13);
+  top:-160px;
+  
+  
+  
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+
+
+  
+
+}
+
+.linkasig{
+  position: relative;
+  left: 300px;
+  top:-50px;
+}
+
+.volverasig{
+  position: absolute;
+  left: -250px;
+  top:150px;
+}
+
+
+
 
 
 .AppLaboratorios{
@@ -212,6 +298,7 @@ table {
       text-align: center;
       opacity: 0.7;
       transition: 0.3s;
+      
       }
 
 
@@ -369,16 +456,36 @@ table {
       
           left: -10px;
           bottom: 300px;
-          color: rgb(191, 53, 53);
+          color: rgb(86, 20, 20);
           
           font-weight: bold;
           text-align: left;
           height: 300px;
           width: 500px;
           opacity: 0.8;
+          border-collapse: separate;
+
+          background-color: rgb(179, 225, 236);
           
 
         }
+
+        .tablaAsignaturas th {
+          background-color: rgb(190, 147, 148); 
+        }
+
+        .tablaAsignaturas tr:nth-child(odd) {
+          background-color: rgb(244, 202, 202);
+        }
+        .tablaAsignaturas tr:nth-child(even) {
+          background-color: rgb(249, 234, 234);
+        }
+
+
+        .tablaAsignaturasdiv{
+          overflow-y:scroll;
+          height: 600px;
+         }
 
 
         .tablaLaboratorios{
@@ -438,8 +545,8 @@ table {
 
 
         .top{
-          height: 1500px;
-          width: 1700px;
+          height: 835px;
+          width: 1750px;
           position:absolute;
           left:300px;
           opacity: 0.8;
@@ -448,8 +555,8 @@ table {
         }
 
         .bombilla{
-          height: 1500px;
-          width: 1700px;
+          height: 835px;
+          width: 1750px;
           position:absolute;
           left:300px;
           opacity: 0.8;
@@ -458,13 +565,23 @@ table {
         }
 
 
+        .imgfondo{
+          height: 680px;
+          width: 1600px;
+          position:absolute;
+          left:300px;
+          opacity: 0.4;
+          top:250px;
+
+        }
+
+
 
         .contenedor {
-          position: relative;
-          height: 10px;
-          width: 40px;
-          left: 150px;
-          top:56px;
+          position: absolute;
+         
+          left: 160px;
+          top:140px;
           
         }
 
@@ -522,7 +639,7 @@ table {
 
        .TablaReservarPuestos{
         overflow:scroll;
-        width: 300px;
+        width: 700px;
         height: 300px;
        }
           
@@ -589,11 +706,18 @@ table {
 
           .Presentacion {
             
-            color:  rgb(127, 50, 50);
-            left:600px;
-            font-size: 30px;
+            color:   rgb(11, 111, 173);
+            left:740px;
+            font-size: 60px;
             position:absolute;
-            
+            top:440px;
+            background: #202020; 
+            -webkit-background-clip: text; 
+            -moz-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+            text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(8, 48, 63, 0.3);
+                        
             }
 
 
@@ -601,6 +725,7 @@ table {
             
               color: rgb(22, 10, 10);
               font-size: large;
+              
             
   
                   

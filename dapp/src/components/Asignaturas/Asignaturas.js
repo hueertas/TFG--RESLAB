@@ -19,10 +19,14 @@ export const Asignaturas = () => {
 
                <h2>Listado de asignaturas</h2>
                
-               <table className ="tablaAsignaturas">
-                   <AsignaturasHead className = "cabezeraAsignaturas"/>
-                   <AsignaturasBody />
-               </table>
+               <div className='tablaAsignaturasdiv'>
+                <table className ="tablaAsignaturas">
+                    <AsignaturasHead className = "cabezeraAsignaturas"/>
+                    <AsignaturasBody />
+                </table>
+               </div>
+
+               <img className="covid" src="/covid free.png"/>
 
                
            </section>
@@ -49,19 +53,21 @@ return <>
             <h2>Asignatura</h2>
         </header>
 
-        <ul>
+        <ul className='ListaAsignatura'>
             <li><b>Nombre:</b> {datos?.nombre ?? "Desconocido"}</li>
             <li><b>Lab:</b> {datos?.indexLab ?? "Desconocido"}</li>
             <li><b>Info:</b> {index}</li>
 
-            <p> el numero de turnos es {el}</p>
+           {/*<p> el numero de turnos es {el}</p>*/}
 
-            <Link to={`/laboratorios/${index}`}>Acceder al laboratorio de la asigantura: {datos?.nombre}</Link>
+            
 
+             <Link className='linkasig' to={`/laboratorios/${index}`}>Pulse para acceder al laboratorio de la asigantura: {datos?.nombre}</Link>
+            
 
         </ul>
 
-        <Link to="/asignaturas"><img className="volver" src="/volver.png"/></Link>
+        <Link  className='volverasig' to="/asignaturas"><img className="volver" src="/volver.png"/></Link>
 
 
     </div>

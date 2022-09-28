@@ -23,18 +23,18 @@ const Home = () => (
            
            
            
-            <div className="consulta"><p className="texto">¡Consulta el día que mejor te venga! </p></div>
+            {/*<div className="consulta"><p className="texto">¡Consulta el día que mejor te venga! </p></div>*/}
             
-            <div className="Presentacion"><p className="texto">¡Bienvenid@ a la página de reservas de la Etsit!</p></div>
+            <div className="Presentacion"><p className="texto">¡Bienvenid@!</p></div>
         
 
-            <img className="niña" src="/niñaestudiando.png"/> 
+            
             
 
-            <Calendar className= "calendar"></Calendar>
+           {/* <Calendar className= "calendar"></Calendar>*/}
 
             
-            <img className="señalar" src="/señalar.png"/>
+            {/*<img className="señalar" src="/señalar.png"/>*/}
 
 
          
