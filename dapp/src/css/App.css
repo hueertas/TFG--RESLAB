@@ -109,6 +109,8 @@ nav ul li a {
   top:200px;
 }
 
+
+
 .AppLaboratoriodiv{
   position: absolute;
   left: 200px;
@@ -162,7 +164,30 @@ nav ul li a {
   left: -300px;
   color:  rgb(11, 111, 173);
   top:-100px;
+  font-size: 30px;
 
+  
+  
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+
+
+  
+
+}
+
+.ReservarPuestosTitulo{
+ 
+
+  color:  rgb(11, 111, 173);
+  
+  font-size: 50px;
   
   
   padding: 25px 20px;
@@ -184,6 +209,7 @@ nav ul li a {
   left: -280px;
   color:  rgb(12, 13, 13);
   top:-160px;
+  font-size: 20px;
   
   
   
@@ -201,6 +227,48 @@ nav ul li a {
 
 }
 
+
+.Selectcalendar{
+  position: relative;
+  left: -280px;
+  color:   rgb(11, 111, 173);
+  top:-160px;
+  font-size: 20px;
+
+  
+  
+
+
+
+
+  
+
+}
+
+.diaselec{
+  position: relative;
+  left: -300px;
+  color:  rgb(12, 13, 13);
+  top:-180px;
+  font-size: 15px;
+  
+  
+  
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+
+
+  
+
+}
+ 
+
 .linkasig{
   position: relative;
   left: 300px;
@@ -210,7 +278,13 @@ nav ul li a {
 .volverasig{
   position: absolute;
   left: -250px;
-  top:150px;
+  top:200px;
+}
+
+.volverLab{
+  position: absolute;
+  left: -400px;
+  top:540px;
 }
 
 
@@ -219,7 +293,18 @@ nav ul li a {
 
 .AppLaboratorios{
   position: absolute;
-  right: 1000px;
+  position: absolute;
+  left: 300px;
+  color:  rgb(11, 111, 173);
+  
+  text-align: center;
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 

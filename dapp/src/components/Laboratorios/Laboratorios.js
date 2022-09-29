@@ -21,10 +21,15 @@ export const Laboratorios = () => {
            <section className="AppLaboratorios">
             {/*<img className="laboratorios" src="/laboratorios.png"/>*/}
                <h2> Listado de Laboratorios</h2>
-               <table className='tablaLaboratorios'>
-                   <LaboratoriosHead/>
-                   <LaboratoriosBody />
-               </table>
+               
+               <div className='tablaAsignaturasdiv'>
+                <table className='tablaAsignaturas'>
+                    <LaboratoriosHead/>
+                    <LaboratoriosBody />
+                </table>
+               </div>
+
+               <img className="covid" src="/covid free.png"/>
            </section>
        );
    };
@@ -66,7 +71,7 @@ export const Laboratorios = () => {
     return <>
 
 
-        <div className='AppLaboratoriodiv'>
+        <div className='AppAsignaturadiv'>
             <header className="AppAlumno">
                 <h2>Laboratorio :
                 </h2>
@@ -74,7 +79,7 @@ export const Laboratorios = () => {
 
             
     
-            <ul>
+            <ul className='ListaAsignatura'>
                 
                 <li><b>Nombre:</b> {datos?.nombreL ?? "Desconocido"}</li>
                 <li><b>Asignatura</b> {datos?.asignaura ?? "Desconocido"}</li>
@@ -83,18 +88,22 @@ export const Laboratorios = () => {
                 <li><b>Info:</b> {index}</li>
             </ul>
 
-            <Calendar 
+            <h1 className='Selectcalendar'>- Seleccione el día para reservar turno:</h1>
+
+            <Calendar className='Selectcalendar'
             value={dateState}
             onChange={changeDate}/>
 
+            <div className='diaselec'>
+
             <p>El día seleccionado es: <b>{moment(dateState).format('MMMM Do YYYY')}</b></p>
             <p>El día seleccionado en formato uint es : <b>{myEpoch}</b></p>
-          
+            </div>
 
             
-            <p> el numero de turnos es {el}</p>
+            {/*<p> el numero de turnos es {el}</p>*/}
 
-            <Link to="/laboratorios"><img className="volver" src="/volver.png"/></Link>
+            <Link className='volverLab' to="/laboratorios"><img className="volver" src="/volver.png"/></Link>
 
         </div>
         <div className='AppReservaPuestos'> 

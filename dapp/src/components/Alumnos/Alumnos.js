@@ -20,11 +20,11 @@
        const ml = useCacheCall("ReslabEtsit", "matriculasLength") || 0;
    
        return (
-           <div className="AppAlumnos">
+           <div className="AppLaboratorios">
                <h2>Alumnos</h2>
 
-            <div className="Tabla">
-               <table >
+            <div className="tablaAsignaturasdiv">
+               <table className='tablaAsignaturas'>
                    <AlumnosHead/>
                    <AlumnosBody matriculasLength={ml || 0}/>
                    
@@ -44,18 +44,18 @@
    
        return <>
 
-        <div className='AppAlumnodiv'>
+        <div className='AppAsignaturadiv'>
            <header className="AppAlumno">
                <h2>Alumno</h2>
            </header>
    
-           <ul>
+           <ul className='ListaAsignatura'>
                <li><b>Nombre:</b> {datos?.nombre ?? "Desconocido"}</li>
                <li><b>Email:</b> {datos?.email ?? "Desconocido"}</li>
                <li><b>Address:</b> {addr}</li>
            </ul>
    
-           <Link to="/alumnos"><img className="volver" src="/volver.png"/></Link>
+           <Link className='volverasig' to="/alumnos"><img className="volver" src="/volver.png"/></Link>
         </div>
        </>
        

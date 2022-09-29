@@ -17,7 +17,7 @@ const ReservarPuestos = ({indexlab,fecha,NAsignatura}) => {
 
     return (
         <section className="AppReservaPuestosSection">
-            <h2>Reservar Puestos </h2>
+            <h2 className="ReservarPuestosTitulo">Reservar Puestos </h2>
 
             <div className="TablaReservarPuestos">
                 <table>
