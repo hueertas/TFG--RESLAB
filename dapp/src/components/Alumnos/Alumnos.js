@@ -30,6 +30,9 @@
                    
                </table>
             </div> 
+
+            <img className="covid" src="/covid free.png"/>
+            
            </div>
        );
    };

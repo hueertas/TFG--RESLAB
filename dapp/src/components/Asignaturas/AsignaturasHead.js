@@ -8,10 +8,11 @@
 const AsignaturasHead = () =>
     <thead>
     <tr>
-        <th>#</th>
+        {/*<th>#</th>*/}
         <th>Nombre</th>
         <th>Laboratorio</th>
-        <th>Información</th>
+        <th>Pinche para acceder al laboratorio y obtener información</th>
+      
     </tr>
     </thead>;
 

@@ -12,12 +12,13 @@ const LaboratorioRow = ({laboratorioIndex}) => {
     const datos = useCacheCall("ReslabEtsit", "laboratoriosRegistrados", laboratorioIndex);
 
     return <tr key={"LAb" + laboratorioIndex}>
-                <th>Lab<sub>{laboratorioIndex}</sub></th>
-                <td>{datos?.laboratorioindex}</td>
+                {/*<th>Lab<sub>{laboratorioIndex}</sub></th>*/}
+                {/*<td>{datos?.laboratorioindex}</td>*/}
                 <td>{datos?.nombreL}</td>
                 <td>{datos?.asignaura}</td>
                 {/*<td>{datos?.info}</td>*/}
                 <td><Link to={`/laboratorios/${laboratorioIndex}`}><img className="clicar" src="/clicar.png"/></Link></td>
+                
        
 
         

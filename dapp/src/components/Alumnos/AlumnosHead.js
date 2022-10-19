@@ -1,7 +1,7 @@
 const AlumnosHead = () =>
     <thead>
     <tr>
-        <th>#</th>
+        {/*<th>#</th>*/}
         <th>Nombre</th>
         <th>email</th>
         <th>Cmds</th>

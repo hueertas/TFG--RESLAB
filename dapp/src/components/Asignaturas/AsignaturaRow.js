@@ -1,23 +1,30 @@
 
 
 import {drizzleReactHooks} from '@drizzle/react-plugin'
-import {Link} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
+
+
+
+
 
 const {useDrizzle} = drizzleReactHooks;
 
+
+
 const AsignaturaRow = ({asignaturaIndex}) => {
     const {useCacheCall} = useDrizzle();
+  
     const datos = useCacheCall("ReslabEtsit", "asignaturasRegistradas", asignaturaIndex);
 
 
     
 
     return <tr key={"Asig" + asignaturaIndex}>
-                <th>Asignatura<sub>{asignaturaIndex}</sub></th>
+                {/*<th>Asignatura<sub>{asignaturaIndex}</sub></th>*/}
                 <td>{datos?.nombre}</td>
                 <td>{datos?.indexLab}</td>
                 <td><Link to={`/asignaturas/${asignaturaIndex}`}><img className="clicar" src="/clicar.png"/></Link></td>
-       
+                
 
         
     </tr>;

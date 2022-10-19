@@ -15,7 +15,7 @@ const AlumnoRow = ({alumnoIndex}) => {
     );
 
     return <tr key={"ALU-" + alumnoIndex}>
-        <th>A<sub>{alumnoIndex}</sub></th>
+       {/* <th>A<sub>{alumnoIndex}</sub></th>*/}
 
         <td>{datos?.nombre}</td>
         <td>{datos?.email}</td>

@@ -36,7 +36,7 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
             //rows.push(<ReservarUnPuesto key={"cb-"+i} turnoIndex={i} fecha={fecha} puestoIndice={puestoIndice} />);
             //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
             rows.push(
-                <td key={"p2-" + puestoIndice + "-" + el}>
+               <td key={"p2-" + puestoIndice + "-" + el}>
 
                  
             
@@ -71,7 +71,7 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
 
         <tr key={"d" + puestoIndice}>
                 
-                <th>P<sub>{puestoIndice}</sub></th>
+                {/*<th>P<sub>{puestoIndice}</sub></th>*/}
                 <td>{puestoName}</td>
                 {rows}
                 
