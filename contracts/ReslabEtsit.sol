@@ -134,7 +134,6 @@ contract ReslabEtsit {
     
     /**
      * 
-
      si esta reservado por un alumno
      * */
      
@@ -750,7 +749,6 @@ contract ReslabEtsit {
     
     
     
-
     
     
     /**

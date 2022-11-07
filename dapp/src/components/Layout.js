@@ -11,7 +11,7 @@ function Layout() {
             
             <Header />
             <Navegacion />
-            <img className="imgfondo" src="/fondoApp.png"/>
+            <img className="imgfondo" src="/fondodApp.jpg"/>
             <Outlet />
             {/*<Fondo/>*/}
          

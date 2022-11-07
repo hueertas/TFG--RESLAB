@@ -53,9 +53,7 @@ export const Laboratorios = () => {
       
      
 
-  
 
-    
 
     var myDate =  new Date(dateState); ; // Your timezone!
     var myEpoch = myDate.getTime()/1000.0;

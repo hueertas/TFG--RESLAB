@@ -8,7 +8,7 @@ const LaboratoriosBody = () => {
     const laboratoriosLength = useCacheCall("ReslabEtsit", "laboratoriosLength") || 0;
 
     let rows = [];
-    for (let i = 0; i < laboratoriosLength; i++) {
+    for (let i = 0; i < laboratoriosLength ; i++) {
         rows.push(<LaboratorioRow key={"ab-"+i} laboratorioIndex={i}/>);
        //rows.push(<tr><td>{i}</td></tr>);
 

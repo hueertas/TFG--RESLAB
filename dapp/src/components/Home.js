@@ -3,29 +3,40 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import React, {useState} from 'react';
 import moment from 'moment';
+import Navegacion from "./Navegacion";
 
 
 
 
 
 const Home = () => (
-    <header className="AppHeader">
+
+   
+
         <h1>
 
+        
+           
             <div class="contenedor">
-            <img className= "bombilla"src="bombilla.png" />
-            <img class="top" src="escritorio.png" />
+            <img className= "bombilla"src="titulobombilla.png" />
+            <img class="top" src="tituloorde.png" />
             </div>
+
+          
+
+            
+         
+           
         
             
-           {/* <img className="escaleras" src="/escaleras.jpg"/>*/}
+            
            
            
            
            
             {/*<div className="consulta"><p className="texto">¡Consulta el día que mejor te venga! </p></div>*/}
             
-            <div className="Presentacion"><p className="texto">¡Bienvenid@!</p></div>
+            {/*<div className="Presentacion"><p className="texto">¡Bienvenid@!</p></div>*/}
         
 
             
@@ -42,7 +53,9 @@ const Home = () => (
 
             
         </h1>
-    </header>
+
+    
+   
    );
    export default Home;
 

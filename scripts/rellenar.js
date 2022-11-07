@@ -27,19 +27,38 @@ module.exports = async callback => {
 
 
          console.log("Crear dos asignaturas:");
-        await reslabetsit.creaAsignatura("core",1, "info");
-        await reslabetsit.creaAsignatura("dapp ",2, "info");
+        await reslabetsit.creaAsignatura("core",0, "info");
+        await reslabetsit.creaAsignatura("einb ",1, "info");
+        await reslabetsit.creaAsignatura("segu ",3, "info");
+        await reslabetsit.creaAsignatura("elmg ",2, "info");
+        await reslabetsit.creaAsignatura("sdg1 ",2, "info");
+        await reslabetsit.creaAsignatura("sdg2 ",2, "info");
+        await reslabetsit.creaAsignatura("programacion ",0, "info");
+        await reslabetsit.creaAsignatura("celt ",1, "info");
+        await reslabetsit.creaAsignatura("diseñoweb ",0, "info");
+        await reslabetsit.creaAsignatura("programacion2 ",0, "info");
+        await reslabetsit.creaAsignatura("fisica ",4, "info");
 
 
         
        console.log("Crear  laboratrios:");
-       await reslabetsit.creaLaboratorio(1,"lab1", "core", "info");
-       await reslabetsit.creaLaboratorio(2,"lab2 ", "dap", "info");
+       await reslabetsit.creaLaboratorio(0,"lab0", "core,programcion1,programcion2,diseñoweb", "info");
+       await reslabetsit.creaLaboratorio(1,"lab1 ", "einb,celt,", "info");
+       await reslabetsit.creaLaboratorio(2,"lab2 ", "elmg,sdg1,sdg2", "info");
+       await reslabetsit.creaLaboratorio(3,"lab3 ", "segu", "info");
+       await reslabetsit.creaLaboratorio(4,"lab4 ", "fisica", "info");
+       await reslabetsit.creaLaboratorio(5,"lab5 ", "sdg2", "info");
+       await reslabetsit.creaLaboratorio(6,"lab6 ", "algebra", "info");
+       await reslabetsit.creaLaboratorio(7,"lab7 ", "adsw", "info");
+       await reslabetsit.creaLaboratorio(8,"lab8 ", "dbor", "info");
+       await reslabetsit.creaLaboratorio(9,"lab9 ", "quimica", "info");
+       
+        
 
 
        console.log("Crear  puestos:");
        await reslabetsit.creaPuesto("C01", 1);
-       await reslabetsit.creaPuesto("C02", 0);
+       await reslabetsit.creaPuesto("C02", 1);
        await reslabetsit.creaPuesto("C03", 1);
        await reslabetsit.creaPuesto("C04", 1);
        await reslabetsit.creaPuesto("C05", 1);
@@ -48,6 +67,26 @@ module.exports = async callback => {
        await reslabetsit.creaPuesto("C08", 1);
        await reslabetsit.creaPuesto("C09", 1);
        await reslabetsit.creaPuesto("C10", 1);
+       await reslabetsit.creaPuesto("C01", 2);
+       await reslabetsit.creaPuesto("C02", 2);
+       await reslabetsit.creaPuesto("C03", 2);
+       await reslabetsit.creaPuesto("C04", 2);
+       await reslabetsit.creaPuesto("C05", 2);
+       await reslabetsit.creaPuesto("C06", 2);
+       await reslabetsit.creaPuesto("C07", 2);
+       await reslabetsit.creaPuesto("C08", 2);
+       await reslabetsit.creaPuesto("C09", 2);
+       await reslabetsit.creaPuesto("C10", 2);
+       await reslabetsit.creaPuesto("C01", 0);
+       await reslabetsit.creaPuesto("C02", 0);
+       await reslabetsit.creaPuesto("C03", 0);
+       await reslabetsit.creaPuesto("C04", 0);
+       await reslabetsit.creaPuesto("C05", 0);
+       await reslabetsit.creaPuesto("C06", 0);
+       await reslabetsit.creaPuesto("C07", 0);
+       await reslabetsit.creaPuesto("C08", 0);
+       await reslabetsit.creaPuesto("C09", 0);
+       await reslabetsit.creaPuesto("C10", 0);
 
 
        console.log("Crear  turnos:");

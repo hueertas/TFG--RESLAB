@@ -12,7 +12,7 @@ const LaboratoriosHead = () =>
         {/*<th>Index</th>*/}
         <th>Nombre</th>
         
-        <th>Asignatura</th>
+        <th>Lista de Asignaturas</th>
         <th>Info</th>
        
 

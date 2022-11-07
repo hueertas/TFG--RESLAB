@@ -16,9 +16,6 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
   
     let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre
 
-    //llamar al credito semanal segun alumno y asignatura 
-
-    let creditoSemanal = useCacheCall("ReslabEtsit", "CreditoSemanalPorAlumnoAsignatura",miaddress,NAsignatura);
     
     //poner un credito inicial por asignatura y semana ??  y cada que el alumno reserve el credito vaya disminuyendo -> metodo guardar reserva
     //  si le queda mas credito que uno puede reservar 
@@ -48,10 +45,12 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
                             :     reserva === "0x0000000000000000000000000000000000000000" ?  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>
                             :    <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> 
                             }
+
+                        { /*credito ? <img className="reloj" src="/error.png"/> :  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> */}
                                                    
          
                         {/* typeof i*/}
-                        {/*me pone interrogacion siempre , no me esta haciendo bien la comparacion!!!!!!!!!!!!!!!*/ }
+                       
                         {/* reserva*/}
                        
                         

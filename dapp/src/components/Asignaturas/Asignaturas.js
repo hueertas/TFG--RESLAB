@@ -56,13 +56,13 @@ return <>
         <ul className='ListaAsignatura'>
             <li><b>Nombre:</b> {datos?.nombre ?? "Desconocido"}</li>
             <li><b>Lab:</b> {datos?.indexLab ?? "Desconocido"}</li>
-            <li><b>Info:</b> {index}</li>
+           {/* <li><b>Info:</b> {index}</li>*/}
 
            {/*<p> el numero de turnos es {el}</p>*/}
 
             
 
-             <Link className='linkasig' to={`/laboratorios/${index}`}>Pulse para acceder al laboratorio de la asigantura: {datos?.nombre}</Link>
+             <Link className='linkasig' to={`/laboratorios/${datos?.indexLab}`}>Pulse para acceder al laboratorio de la asigantura: {datos?.nombre}</Link>
             
 
         </ul>

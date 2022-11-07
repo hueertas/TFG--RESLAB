@@ -11,6 +11,8 @@
    
    import AlumnosHead from "./AlumnosHead";
    import AlumnosBody from "./AlumnosBody";
+   import Header from "../Header";
+  
    
    const {useDrizzle} = drizzleReactHooks;
    
@@ -18,9 +20,19 @@
        const {useCacheCall} = useDrizzle();
    
        const ml = useCacheCall("ReslabEtsit", "matriculasLength") || 0;
+
+      
    
        return (
+
+          
+
+        
+
            <div className="AppLaboratorios">
+
+            
+             
                <h2>Alumnos</h2>
 
             <div className="tablaAsignaturasdiv">
