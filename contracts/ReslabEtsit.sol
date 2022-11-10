@@ -20,20 +20,7 @@ contract ReslabEtsit {
     address public profesorP;
      
     
-    /// Nombre de la asignatura
-    //string public nombre;
-    
-   
-    
-    /**
-     * Datos de un puesto
-     */
-     
-     
-     
-    enum TipoSO {windows, macos , linux}
-    
-    enum TipoConexionesRed { cable, inalambrico} // array de strings 
+ 
 
     
     
@@ -127,13 +114,14 @@ contract ReslabEtsit {
     
     
 
-    struct CreditoSemanal {
-        uint creditoSemanal;
+    struct CreditoDiario {
+        uint creditoDiario;
     }
     
     
     /**
      * 
+
      si esta reservado por un alumno
      * */
      
@@ -266,9 +254,9 @@ contract ReslabEtsit {
 
 
 
-     // dado la direcion de un alumno y una asignatura te da el credito semanal perteneciente que le queda
+     // dado la direcion de un alumno , una asignatura y un dia  te da un contador de reservas que lleva
 
-     mapping(address=>mapping (string=> CreditoSemanal))  public CreditoSemanalPorAlumnoAsignatura;
+     mapping( address=>mapping (string=>mapping (uint => uint)))  public contadorCredito;
 
 
 
@@ -494,45 +482,46 @@ contract ReslabEtsit {
     
     
 
-        function guardarReserva(uint  _puestoId, uint  _fecha,  uint _turno)  public {
+        function guardarReserva(uint  _puestoId, uint  _fecha,  uint _turno, string memory _asignatura)  public {
         
 	
        
             require(estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
             require(_turno<24, "Turno invalido");
             require(!estaReservado(msg.sender),"Solo permitido a turnos que no esten reservados");
+            require(contadorCredito[msg.sender][_asignatura][_fecha]<3, "se ha excedido el numero maximo de credito");
+
+     
+           // contadorCredito[msg.sender][_asignatura][_fecha]=0;
 
             DatosReserva memory reserva = DatosReserva(msg.sender);
+            
 
             datosReservaPorLabPuestoTurno[_puestoId][_fecha][_turno]= reserva;
+            contadorCredito[msg.sender][_asignatura][_fecha]++;
+            
 
 
         }
 
         
-
-       
-
-
-
-
-        
     /** Un alumno quita su reserva - ( solo profe , owner y el propio alumnos 
     */
-    
 
 
-
-       function quitarReserva(uint  _puestoId, uint  _fecha,  uint _turno) public {
+       function quitarReserva(uint  _puestoId, uint  _fecha,  uint _turno,  string memory _asignatura) public {
         
 	
        
 
-            require(!estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
+            require(estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
             require(_turno<24, "Turno invalido");
-            require(estaReservado(msg.sender),"Solo permitido a turnos que  esten reservados");
+           // require(estaReservado(msg.sender),"Solo permitido a turnos que  esten reservados");
+            require(datosReservaPorLabPuestoTurno[_puestoId][_fecha][_turno].dirAlumno==msg.sender, "la reserva es de otro alumno");
+            
 
-            delete datosReservaPorLabPuestoTurno[_puestoId][_fecha][_turno];
+         datosReservaPorLabPuestoTurno[_puestoId][_fecha][_turno]= DatosReserva(address(0x0));
+            contadorCredito[msg.sender][_asignatura][_fecha]--;
 
         }
      
@@ -749,6 +738,7 @@ contract ReslabEtsit {
     
     
     
+
     
     
     /**

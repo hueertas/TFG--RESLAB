@@ -41,9 +41,9 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
                         
                     
                         {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> 
-                            :     reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> 
-                            :     reserva === "0x0000000000000000000000000000000000000000" ?  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/>
-                            :    <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> 
+                            :     reserva === miaddress ? <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i} NAsignatura={NAsignatura}/> 
+                            :     reserva === "0x0000000000000000000000000000000000000000" ?  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i} NAsignatura={NAsignatura}/>
+                            :    <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i} NAsignatura={NAsignatura}/> 
                             }
 
                         { /*credito ? <img className="reloj" src="/error.png"/> :  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> */}

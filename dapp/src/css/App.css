@@ -88,9 +88,9 @@ nav ul li a {
 .covid{
   position: absolute;
   
-  left: 1100px;
+  left: 800px;
   width: 350px;
-  top: 100px;
+  top: 90px;
  
 }
 
@@ -148,7 +148,7 @@ nav ul li a {
 
 .AppAsignaturas{
   position: absolute;
-  left: 300px;
+  left: 700px;
   color:  rgb(11, 111, 173);
   
   text-align: center;
@@ -544,9 +544,9 @@ table {
         .tablaAsignaturas{
           
          
-          text-align:left; 
+          text-align:center; 
       
-          left: -10px;
+          left: 200px;
           bottom: 300px;
           color: rgb(86, 20, 20);
           

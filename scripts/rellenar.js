@@ -17,7 +17,7 @@ module.exports = async callback => {
 
       
 
-       console.log("Matricular a dos alumnos:");
+     console.log("Matricular a dos alumnos:");
         let evaAccount = accounts[1];
       //  let pepeAccount = accounts[2];
         console.log("Cuenta de Eva =", evaAccount);
@@ -26,7 +26,7 @@ module.exports = async callback => {
        await reslabetsit.automatricula("owner", "owner@dominio.es", {from: owner});
 
 
-         console.log("Crear dos asignaturas:");
+        console.log("Crear dos asignaturas:");
         await reslabetsit.creaAsignatura("core",0, "info");
         await reslabetsit.creaAsignatura("einb ",1, "info");
         await reslabetsit.creaAsignatura("segu ",3, "info");
@@ -62,7 +62,7 @@ module.exports = async callback => {
        await reslabetsit.creaPuesto("C03", 1);
        await reslabetsit.creaPuesto("C04", 1);
        await reslabetsit.creaPuesto("C05", 1);
-       await reslabetsit.creaPuesto("C06", 1);
+     /*  await reslabetsit.creaPuesto("C06", 1);
        await reslabetsit.creaPuesto("C07", 1);
        await reslabetsit.creaPuesto("C08", 1);
        await reslabetsit.creaPuesto("C09", 1);
@@ -86,10 +86,10 @@ module.exports = async callback => {
        await reslabetsit.creaPuesto("C07", 0);
        await reslabetsit.creaPuesto("C08", 0);
        await reslabetsit.creaPuesto("C09", 0);
-       await reslabetsit.creaPuesto("C10", 0);
+       await reslabetsit.creaPuesto("C10", 0);*/
 
 
-       console.log("Crear  turnos:");
+      console.log("Crear  turnos:");
        await reslabetsit.creaTurno("10:00-11:00", 12345678);
        await reslabetsit.creaTurno("11:00-12:00",12345679);
        await reslabetsit.creaTurno("12:00-13:00",12345689);
@@ -107,21 +107,29 @@ module.exports = async callback => {
 
       console.log("numero de turnos", tl);
 
-      console.log("Añadir reservas:");
-      await reslabetsit.guardarReserva( 1, 1655416800, 1, {from: owner}); 
-      await reslabetsit.guardarReserva( 2, 1655416800, 2, {from: owner});
-      await reslabetsit.guardarReserva( 2, 1655416800, 1, {from: owner});
+     console.log("Añadir reservas:");
+      await reslabetsit.guardarReserva( 1, 1655416801, 1,"core", {from: owner}); 
+      await reslabetsit.guardarReserva( 2, 1655416802, 2, {from: owner});
+      await reslabetsit.guardarReserva( 2, 1655416803, 1, {from: owner});
 
       let x = await reslabetsit.datosReservaPorLabPuestoTurno( 1, 1655416800, 1); 
       let y = await reslabetsit.datosReservaPorLabPuestoTurno( 22, 1655416800, 1); 
       let z = await reslabetsit.datosReservaPorLabPuestoTurno( 1, 1655416800, 7);
 
-      console.log("reserva ocupada:", x );
+     console.log("reserva ocupada:", x );
       console.log("reserva vacia:", y );
       console.log("reserva vacia:", z );
 
+      
 
 
+
+
+        //ME DA ERROR EL METODO PORQUE??¿?¿'¡'
+   console.log("quitar reservas:");
+    await reslabetsit.quitarReserva( 1, 1655416801, 1,"core", {from: owner});
+    let w = await reslabetsit.datosReservaPorLabPuestoTurno(  1, 1655416800, 1);
+    console.log("reserva vacia:", w ); 
 
 
     } catch (err) {   // Capturar errores

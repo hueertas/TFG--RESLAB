@@ -29,7 +29,7 @@ Si se usa useCacheSend, se envian varias transacciones cada vez que se hace un s
 El problema esta relacionado con actualizar el estado del stackIds dentro de la implementacion de ese hook.
  */
 
-const BotonReservar = ({puestoIndice,fecha,turnoIndex}) => {
+const BotonReservar = ({puestoIndice,fecha,turnoIndex,NAsignatura}) => {
     const {drizzle} = useDrizzle();
 
     // Obtener el status de la ultima transaccion enviada:
@@ -61,7 +61,7 @@ const BotonReservar = ({puestoIndice,fecha,turnoIndex}) => {
                             ev.preventDefault();
                            
                             //const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoxIndice,1655416800,4);
-                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoxIndice,fechax,turnoxIndex);
+                            const stackId = drizzle.contracts.ReslabEtsit.methods.guardarReserva.cacheSend(puestoxIndice,fechax,turnoxIndex,NAsignatura);
                             setLastStackID(stackId);
                             //console.log(puestoIndice,fecha,turnoIndex,"eaaaaaaaa")
                             console.log(typeof puestoxIndice,typeof fechax,typeof turnoxIndex,"reseervando")

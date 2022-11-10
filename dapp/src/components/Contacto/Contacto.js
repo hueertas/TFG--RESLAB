@@ -17,7 +17,7 @@ const Contacto = () => {
                                 
                             </ul>
 
-                            <p className="mb-0">© 2019 Company: Madrid</p>
+                            <p className="mb-0">© 2023 Company: Madrid</p>
                
         </article>);
     
