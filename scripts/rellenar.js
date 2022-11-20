@@ -39,6 +39,8 @@ module.exports = async callback => {
         await reslabetsit.creaAsignatura("programacion2 ",0, "info");
         await reslabetsit.creaAsignatura("fisica ",4, "info");
 
+    
+
 
         
        console.log("Crear  laboratrios:");

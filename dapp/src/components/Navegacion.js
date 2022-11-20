@@ -18,7 +18,9 @@ const Navegacion = () => (
             <li><Link to="/laboratorios/">Laboratorios</Link></li>
             <li><Link to="/miscosas/">Mis Cosas</Link></li>
             <li className = "Contacto"><Link to="/contacto/">Contacto</Link></li>
+            <SoyAlguno owner>
             <li><Link to="/reservasLaboratorios/">Reservas</Link></li>
+            </SoyAlguno>
            
          
             

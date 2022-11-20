@@ -119,19 +119,10 @@ const MisReservasRow = (indexlab, fecha,puestoIndice) => {
                     <td > { reserva === miaddress ? i+1 :"no turno" }</td>
                     <td > { reserva === miaddress ? puestoIndice :"no puesto" }</td>
 
-                 
-            
-                  
+
                         
               </tr>      
-                       
-
-                       
-                        
-                       
-                 
-                    
-                    
+ 
                 
             );
         }

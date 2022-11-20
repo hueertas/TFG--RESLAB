@@ -14,6 +14,7 @@ const TablaReservasLabRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
     let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre;
     const reservaTurno = useCacheSend("ReslabEtsit", "datosTurno",miaddress)?.nombre ; 
 
+
     
 
     //RECORRER TODOS LOS ADREES ?? Y PEDIRINFO FUNCION ADREES REGISTRADO
@@ -27,6 +28,10 @@ const TablaReservasLabRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
     for (let i = 0; i < el; i++) {
 
         const reserva = call("ReslabEtsit","datosReservaPorLabPuestoTurno",puestoIndice,fecha,i);
+
+      
+
+        
        
        
 
@@ -35,7 +40,10 @@ const TablaReservasLabRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
 
 
                        
-                        { reserva === miaddress ? "OCUPADO"  :"LIBRE" }
+                        { reserva === "0x0000000000000000000000000000000000000000" ? "LIBRE" : "OCUPADO" }
+                        { reserva === "0x0000000000000000000000000000000000000000" ? "LIBRE" : reserva }
+                      
+                     
                    
  
                     

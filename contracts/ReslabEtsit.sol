@@ -20,7 +20,7 @@ contract ReslabEtsit {
      * El contrato lo despliega el profesor.
      */
     address public owner;
-    address public profesorP;
+    address public profesor;
      
     
  
@@ -440,19 +440,17 @@ contract ReslabEtsit {
     }
     
     /**
-     * Obtiene los datos de una persona registrada.
+     * Obtiene los datos de un alumno que ha reservado.
      * 
-     * @param persona La direccion de una persona.
-     * 
-     * @return los datos de una persona registrada.
+  
      */
-    function obtenerDatosPersona(address persona)  public view returns(address) {
+    function obtenerDatosAlumno(address _alumno)  public view returns(address) {
 	
         
-        if(!estaRegistrado(persona)){
+        if(!estaReservado(_alumno)){
         return address(0);
         } else{	
-        return datosPersona[persona].dir;
+        return datosPersona[_alumno].dir;
 	}
 	
         
@@ -807,9 +805,9 @@ contract ReslabEtsit {
      * 
      */
     
-       function estaRegistrado(address profesor) private view returns (bool) {
+       function estaRegistrado(address _profesor) private view returns (bool) {
       
-        string memory _nombreP = datosProfesor[profesor].nombreP;
+        string memory _nombreP = datosProfesor[_profesor].nombreP;
         
         bytes memory b = bytes(_nombreP);
         
@@ -851,7 +849,7 @@ contract ReslabEtsit {
      */
     modifier soloProfesor() {
         
-        require(msg.sender == profesorP, "Solo permitido al profesor");
+        require(msg.sender == profesor, "Solo permitido al profesor");
         _;
     }
     
