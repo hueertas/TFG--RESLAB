@@ -1,6 +1,7 @@
 import {drizzleReactHooks} from "@drizzle/react-plugin";
 
 import ReservaPuestoRow from "./ReservarPuestoRow";
+import MisReservas from "../MisCosas/MisReservas";
 
 const {useDrizzle} = drizzleReactHooks;
 
@@ -33,7 +34,9 @@ const ReservarPuestosBody = ({indexlab,fecha,NAsignatura}) => {
             rows.push(<ReservaPuestoRow key={"cb-"+i} puestoIndice={puestosIndices[i]} fecha={fecha} indexlab={indexlab} NAsignatura={NAsignatura}/>);
     }
 
-    return <tbody>{rows} </tbody>;
+    return  <tbody>{rows} </tbody>
+   
+    ;
 };
 
 export default ReservarPuestosBody;

@@ -1,3 +1,6 @@
+    
+    
+    
 pragma solidity ^0.8.7;
 //pragma experimental ABIEncoderV2;//enabled when passing an array of string(struct) as a function paramete
 
@@ -257,6 +260,10 @@ contract ReslabEtsit {
      // dado la direcion de un alumno , una asignatura y un dia  te da un contador de reservas que lleva
 
      mapping( address=>mapping (string=>mapping (uint => uint)))  public contadorCredito;
+
+     //dada un alumno y un array de puestos devolver true si la reserva tiene el puesto y el alumnos --PARTE MIS COSAS
+
+     mapping( address =>mapping  (uint => bool )) public Misreservas;
 
 
 
@@ -736,7 +743,24 @@ contract ReslabEtsit {
         _asignaturaP = datosP.asignaturaP;
     }
     
+      
+       /**
+     * ddevuelve el lab reservado por el alumno, turno y puesto
+     * 
     
+     * 
+     
+     */ 
+
+      function miReserva()  soloMatriculados public view returns (string memory lab) {
+        
+        DatosLaboratorio  memory nombrelab = datosLaboratorio[msg.sender];
+        
+       
+        lab = nombrelab.nombreL;
+       
+        
+    }
     
 
     

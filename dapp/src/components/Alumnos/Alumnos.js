@@ -12,6 +12,9 @@
    import AlumnosHead from "./AlumnosHead";
    import AlumnosBody from "./AlumnosBody";
    import Header from "../Header";
+   import SoyAlguno from '../roles/SoyAlguno';
+   import SoyOwner from '../roles/SoyOwner';
+   import SoyAlumno from '../roles/SoyAlumno';
   
    
    const {useDrizzle} = drizzleReactHooks;
@@ -21,7 +24,7 @@
    
        const ml = useCacheCall("ReslabEtsit", "matriculasLength") || 0;
 
-      
+     
    
        return (
 
@@ -31,9 +34,14 @@
 
            <div className="AppLaboratorios">
 
-            
+                
              
                <h2>Alumnos</h2>
+              
+
+              
+
+         
 
             <div className="tablaAsignaturasdiv">
                <table className='tablaAsignaturas'>
@@ -42,6 +50,7 @@
                    
                </table>
             </div> 
+               
 
             <img className="covid" src="/covid free.png"/>
             

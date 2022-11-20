@@ -27,7 +27,8 @@ import Home from './Home';
 import ReservarPuestos from "./ReservarPuestos/ReservarPuestos";
 import MisCosas from "./MisCosas/MisCosas";
 import Contacto from "./Contacto/Contacto";
-import Prueba from "./Prueba/PruebaCalendario";
+import {ReservasLabs,ReservasLab} from "./ReservasLaboratorios/ReservasLabs";
+
 
 
 
@@ -48,12 +49,14 @@ function App() {
                         <Route path="/asignaturas/" element={<Asignaturas/>}/>
                             
                         <Route path="asignaturas/:index" element={<Asignatura/>}/>
-                        
-                        
+                       
+                      
                       
                         <Route path="/alumnos/" element={<Alumnos/>}/>
                         <Route path="alumnos/:addr" element={<Alumno/>}/>
                         <Route path="/profesores/" element={<Profesores/>}/>
+
+                     
                             
                         <Route path="/laboratorios/" element={<Laboratorios/>}/>
                         <Route path="laboratorios/:index" element={<Laboratorio/>}/>
@@ -61,7 +64,8 @@ function App() {
                         <Route path="reservarPuestos/" element={<ReservarPuestos/>}/>
                         <Route path="miscosas" element={<MisCosas/>}/>
                         <Route path="contacto" element={<Contacto/>}/>
-                        <Route path="prueba" element={<Prueba/>}/>
+                        <Route path="reservasLaboratorios" element={<ReservasLabs/>}/>
+                        <Route path="reservasLaboratorios/:index" element={<ReservasLab/>}/>
                         
                         
                             

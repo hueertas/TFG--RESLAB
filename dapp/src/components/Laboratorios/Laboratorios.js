@@ -8,6 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 import React, {useState} from 'react';
 import moment from 'moment';
 import ReservarPuestos from '../ReservarPuestos/ReservarPuestos';
+import MisReservas from '../MisCosas/MisReservas';
 
 
 const {useDrizzle} = drizzleReactHooks;
@@ -106,7 +107,12 @@ export const Laboratorios = () => {
         </div>
         <div className='AppReservaPuestos'> 
 
-          <ReservarPuestos  indexlab={index} fecha={myEpoch} NAsignatura={datos?.asignaura}/>
+       
+
+        <ReservarPuestos  indexlab={index} fecha={myEpoch} NAsignatura={datos?.asignaura}/>
+        <MisReservas  indexlab={index} fecha={moment(dateState).format('MMMM Do YYYY')}/>
+
+         
 
         </div>
             
@@ -124,31 +130,4 @@ export const Laboratorios = () => {
     };
 
 
- // meter una constante con el mapping y pasarle esos parametros
-
-        // va a llamar al head y al body de reserva puestos
-       
-   
-
-    /*import {drizzleReactHooks} from '@drizzle/react-plugin';
-
-import LaboratorioRow from "./LaboratorioRow";
-const {useDrizzle} = drizzleReactHooks;
-
-const LaboratoriosBody = () => {
-    const {useCacheCall} = useDrizzle();
-    const laboratoriosLength = useCacheCall("ReslabEtsit", "laboratoriosLength") || 0;
-
-    let rows = [];
-
-    // de todos los puestos de un lab ( llamo a la funcion que he descrito )
-    for (let i = 0; i < laboratoriosLength; i++) {
-        rows.push(<LaboratorioRow key={"ab-"+i} laboratorioIndex={i}/>);
-       //rows.push(<tr><td>{i}</td></tr>);
-
-    }
-    return <tbody>{rows}</tbody>;
-
-};
-
-export default LaboratoriosBody;*/
+ 

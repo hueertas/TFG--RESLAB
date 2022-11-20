@@ -1,15 +1,16 @@
-import ReservarPuestosHead from "./ReservarPuestosHead";
-import ReservarPuestosBody from "./ReservarPuestosBody";
+import ReservarPuestosHead from "../ReservarPuestos/ReservarPuestosHead";
+
 import {useParams, Link} from "react-router-dom";
-import BotonReservar from "./BotonReservar";
+
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 import React, {useState} from 'react';
 import MisReservas from "../MisCosas/MisReservas";
+import TablaReservasLabBody from "./TablaReservasLabBody";
 
 
-const ReservarPuestos = ({indexlab,fecha,NAsignatura}) => {
+const TablaReservasLab = ({indexlab,fecha,NAsignatura}) => {
     
 
     
@@ -24,7 +25,7 @@ const ReservarPuestos = ({indexlab,fecha,NAsignatura}) => {
             <div className="TablaReservarPuestos">
                 <table>
                     <ReservarPuestosHead />
-                    <ReservarPuestosBody indexlab={indexlab} fecha={fecha} NAsignatura={NAsignatura} />
+                    <TablaReservasLabBody indexlab={indexlab} fecha={fecha} NAsignatura={NAsignatura} />
                 </table>
             </div>
 
@@ -37,7 +38,7 @@ const ReservarPuestos = ({indexlab,fecha,NAsignatura}) => {
 };
 
 
-export default ReservarPuestos;
+export default TablaReservasLab;
 
 
-//<p> este es el laboratorio : {indexlab} en la fecha : {fecha}</p>
+//<p> este es el laboratorio : {indexlab} en la fecha : {fecha}</p>*/

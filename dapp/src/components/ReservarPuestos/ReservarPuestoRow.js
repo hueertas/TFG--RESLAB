@@ -3,22 +3,25 @@ import moment from 'moment';
 import BotonReservar from './BotonReservar';
 import ReservarUnPuesto from "./ReservarUnPuesto";
 import BotonQuitarReserva from "./BotonQuitarReserva";
+import {useParams, Link} from "react-router-dom";
+import MisReservas from "../MisCosas/MisReservas";
+import ReservarPuestos from './ReservarPuestos';
 
 const {useDrizzle,useDrizzleState} = drizzleReactHooks;
 
 const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
-    const {useCacheCall} = useDrizzle();
+    const {useCacheCall,useCacheSend} = useDrizzle();
 
     const drizzleState = useDrizzleState(state=>state);
     let miaddress = drizzleState.accounts[0];
 
-    
+    const datos = useCacheCall("ReslabEtsit", "laboratoriosRegistrados", indexlab);
   
-    let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre
+    let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre;
+    const reservaTurno = useCacheSend("ReslabEtsit", "datosTurno",miaddress)?.nombre ; 
 
     
-    //poner un credito inicial por asignatura y semana ??  y cada que el alumno reserve el credito vaya disminuyendo -> metodo guardar reserva
-    //  si le queda mas credito que uno puede reservar 
+
     
    
     let rows = useCacheCall(['ReslabEtsit'], call => {
@@ -30,8 +33,9 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
     for (let i = 0; i < el; i++) {
 
         const reserva = call("ReslabEtsit","datosReservaPorLabPuestoTurno",puestoIndice,fecha,i);
-            //rows.push(<ReservarUnPuesto key={"cb-"+i} turnoIndex={i} fecha={fecha} puestoIndice={puestoIndice} />);
-            //crea un reserva que le pases la direcion alumno, con su puesto , su turno y su fecha y si coincide esa direccion con algun alumno, eso tiene que ser un address
+       
+       
+
             rows.push(
                <td key={"p2-" + puestoIndice + "-" + el}>
 
@@ -48,10 +52,14 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
 
                         { /*credito ? <img className="reloj" src="/error.png"/> :  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> */}
                                                    
-         
+                        
                         {/* typeof i*/}
                        
-                        {/* reserva*/}
+                        { reserva === miaddress ? datos?.nombreL  :"no lab" }
+                        { reserva === miaddress ? fecha  :"no fecha" }
+                        { reserva === miaddress ? i+1  :"no turno" }
+                        { reserva === miaddress ? puestoIndice  :"no puesto" }
+                      
                        
                         
                        
@@ -59,12 +67,16 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
                     
                     
                 </td>
+               
+               
+                
             );
+            
         }
         return rows;
     });
 
-
+ 
   
     return <>
 
@@ -76,7 +88,10 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
                 
         </tr>
          
+       
         { /*<p>El día seleccionado es: <b>{moment(fecha).format('MMMM Do YYYY')} y el puesto es : {puestoName}</b></p>*/}
+
+       
 
          </>
         
