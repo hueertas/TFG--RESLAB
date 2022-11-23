@@ -1,7 +1,7 @@
 import {drizzleReactHooks} from "@drizzle/react-plugin";
 
 import ReservaPuestoRow from "./ReservarPuestoRow";
-import MisReservas from "../MisCosas/MisReservas";
+
 
 const {useDrizzle} = drizzleReactHooks;
 

@@ -117,6 +117,22 @@ nav ul li a {
 }
 
 
+.AppMisCosasdiv{
+  position: absolute;
+  
+  left: 600px;
+  top:250px;
+}
+
+.AppMisCosasSection{
+  position: relative;
+  
+  right: -500px;
+  top:-700px;
+}
+
+
+
 
 .AppLaboratoriodiv{
   position: absolute;
@@ -141,6 +157,17 @@ nav ul li a {
 
   top:150px;
 }
+
+.AppMisReservas{
+  position: absolute;
+  
+  right: -700px;
+
+  top:-20px;
+  
+
+}
+
 
 
 

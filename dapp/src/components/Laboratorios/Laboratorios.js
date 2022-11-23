@@ -8,7 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 import React, {useState} from 'react';
 import moment from 'moment';
 import ReservarPuestos from '../ReservarPuestos/ReservarPuestos';
-import MisReservas from '../MisCosas/MisReservas';
+
 
 
 const {useDrizzle} = drizzleReactHooks;
@@ -110,7 +110,7 @@ export const Laboratorios = () => {
        
 
         <ReservarPuestos  indexlab={index} fecha={myEpoch} NAsignatura={datos?.asignaura}/>
-        <MisReservas  indexlab={index} fecha={moment(dateState).format('MMMM Do YYYY')}/>
+     
 
          
 

@@ -46,6 +46,7 @@ const BotonReservar = ({puestoIndice,fecha,turnoIndex,NAsignatura}) => {
     const puestoxIndice= Number(puestoIndice);
     const fechax= Number(fecha);
     const turnoxIndex= Number(turnoIndex);
+    
   
      //var intPuestoIndice = parseInt(puestoIndice, 10);
      

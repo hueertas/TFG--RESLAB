@@ -4,7 +4,7 @@ import BotonReservar from './BotonReservar';
 import ReservarUnPuesto from "./ReservarUnPuesto";
 import BotonQuitarReserva from "./BotonQuitarReserva";
 import {useParams, Link} from "react-router-dom";
-import MisReservas from "../MisCosas/MisReservas";
+
 import ReservarPuestos from './ReservarPuestos';
 
 const {useDrizzle,useDrizzleState} = drizzleReactHooks;
@@ -50,15 +50,8 @@ const ReservarPuestoRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
                             :    <BotonQuitarReserva  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i} NAsignatura={NAsignatura}/> 
                             }
 
-                        { /*credito ? <img className="reloj" src="/error.png"/> :  <BotonReservar  puestoIndice={puestoIndice} fecha={fecha} turnoIndex={i}/> */}
-                                                   
-                        
-                        {/* typeof i*/}
                        
-                        { reserva === miaddress ? datos?.nombreL  :"no lab" }
-                        { reserva === miaddress ? fecha  :"no fecha" }
-                        { reserva === miaddress ? i+1  :"no turno" }
-                        { reserva === miaddress ? puestoIndice  :"no puesto" }
+                  
                       
                        
                         

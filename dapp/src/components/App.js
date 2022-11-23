@@ -25,9 +25,11 @@ import Loading from './Loading';
 import Layout from './Layout';
 import Home from './Home';
 import ReservarPuestos from "./ReservarPuestos/ReservarPuestos";
-import MisCosas from "./MisCosas/MisCosas";
+
 import Contacto from "./Contacto/Contacto";
 import {ReservasLabs,ReservasLab} from "./ReservasLaboratorios/ReservasLabs";
+import {MisCosas,MiReserva} from "./MisCosas/MisCosas";
+
 
 
 
@@ -63,9 +65,12 @@ function App() {
                         
                         <Route path="reservarPuestos/" element={<ReservarPuestos/>}/>
                         <Route path="miscosas" element={<MisCosas/>}/>
+                        <Route path="miscosas/:index" element={<MiReserva/>}/>
+                        
                         <Route path="contacto" element={<Contacto/>}/>
                         <Route path="reservasLaboratorios" element={<ReservasLabs/>}/>
                         <Route path="reservasLaboratorios/:index" element={<ReservasLab/>}/>
+                      
                         
                         
                             
