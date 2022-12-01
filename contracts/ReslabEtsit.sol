@@ -150,6 +150,8 @@ contract ReslabEtsit {
     
     /// Acceder a los datos de un alumno dada su direccion.
     mapping (address => DatosAlumno) public datosAlumno;
+    /// Acceder a los datos de un alumno dada su strinf.
+    mapping (uint => DatosAlumno) public datosAlumnoNumber;
     
       /// Acceder a los datos de un profe dada su direccion.
     mapping (address => DatosProfesor) public datosProfesor;
@@ -514,12 +516,14 @@ contract ReslabEtsit {
     */
 
 
-       function quitarReserva(uint  _puestoId, uint  _fecha,  uint _turno,  string memory _asignatura) public {
+       function quitarReserva(uint  _puestoId, uint  _fecha,  uint _turno,  string memory _asignatura)  public {
         
 	
        
 
+            //require(estaMatriculado(msg.sender) || msg.sender == owner,"Solo permitido a alumnos no matriculados"); para ower tb o poner el modificador?????
             require(estaMatriculado(msg.sender),"Solo permitido a alumnos no matriculados");
+
             require(_turno<24, "Turno invalido");
            // require(estaReservado(msg.sender),"Solo permitido a turnos que  esten reservados");
             require(datosReservaPorLabPuestoTurno[_puestoId][_fecha][_turno].dirAlumno==msg.sender, "la reserva es de otro alumno");
@@ -728,17 +732,15 @@ contract ReslabEtsit {
     }
     
 
-    /**
-     * Permite a un profe obtener sus propios datos.
+   /**
+     * Permite saber datos address.
      * 
-     * 
-    
-    function quienSoyP() soloRegistrados public view returns (string memory _nombreP, string memory _emailP,string memory _asignaturaP,string memory _departamentoP) {
-        DatosProfesor memory datosP = datosProfesor[msg.sender];
-        _nombreP = datosP.nombreP;
-        _emailP = datosP.emailP;
-        _departamentoP = datosP.departamentoP;
-        _asignaturaP = datosP.asignaturaP;
+   
+     */
+    function quienEs(address _dir) soloMatriculados public view returns (string memory _nombre, string memory _email) {
+        DatosAlumno memory datos = datosAlumno[_dir];
+        _nombre = datos.nombre;
+        _email = datos.email;
     }
     
       
@@ -862,6 +864,18 @@ contract ReslabEtsit {
         require(estaMatriculado(msg.sender), "Solo permitido a alumnos matriculados");
         _;
     }
+
+
+        
+    /**
+     * Modificador para que una funcion solo la pueda ejecutar un alumno matriculado.
+     */
+    modifier soloMatriculadosyOwner() {
+        
+        require(estaMatriculado(msg.sender) || msg.sender == owner, "Solo permitido a alumnos owner matriculados");
+        _;
+    }
+    
     
     
       modifier soloRegistrados() {

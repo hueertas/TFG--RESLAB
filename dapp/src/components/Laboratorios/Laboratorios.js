@@ -69,10 +69,11 @@ export const Laboratorios = () => {
     
     return <>
 
-
+        
         <div className='AppAsignaturadiv'>
+       
             <header className="AppAlumno">
-                <h2>Laboratorio :
+                <h2>Laboratorio: {index}
                 </h2>
             </header>
 
@@ -80,14 +81,14 @@ export const Laboratorios = () => {
     
             <ul className='ListaAsignatura'>
                 
-                <li><b>Nombre:</b> {datos?.nombreL ?? "Desconocido"}</li>
-                <li><b>Asignatura</b> {datos?.asignaura ?? "Desconocido"}</li>
-                {/*<li><b>Puestos correspondientes:</b>{rows}</li>*/}
+                {/*<li><b>Nombre:</b> {datos?.nombreL ?? "Desconocido"}</li>*/}
+                <li><b>Listado de asignaturas del {datos?.nombreL}:</b> </li>
+                <p>{datos?.asignaura ?? "Desconocido"}</p>
 
-                <li><b>Info:</b> {index}</li>
+                {/*<li><b>Info:</b> {index}</li>*/}
             </ul>
-
-            <h1 className='Selectcalendar'>- Seleccione el día para reservar turno:</h1>
+           
+            <h1 className='Selectcalendar1'> Seleccione el día para reservar su turno:</h1>
 
             <Calendar className='Selectcalendar'
             value={dateState}

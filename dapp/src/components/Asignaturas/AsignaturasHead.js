@@ -11,7 +11,7 @@ const AsignaturasHead = () =>
         {/*<th>#</th>*/}
         <th>Nombre</th>
         <th>Laboratorio</th>
-        <th>Pinche para acceder al laboratorio y obtener información</th>
+        <th>Información</th>
       
     </tr>
     </thead>;

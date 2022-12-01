@@ -13,7 +13,7 @@ const TablaReservasLabRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
   
     let puestoName = useCacheCall("ReslabEtsit", "puestosRegistrados", puestoIndice)?.nombre;
     const reservaTurno = useCacheSend("ReslabEtsit", "datosTurno",miaddress)?.nombre ; 
-    const datos = useCacheCall("ReslabEtsit", "quienSoy");
+    
 
     
     
@@ -30,24 +30,29 @@ const TablaReservasLabRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
 
         const reserva = call("ReslabEtsit","datosReservaPorLabPuestoTurno",puestoIndice,fecha,i)
         //const reservax = call("ReslabEtsit","datosReservaPorLabPuestoTurno",puestoIndice,fecha,i)?.dirAlumno;
+       // const xx = address(reserva);
+        const datosPersona = call("ReslabEtsit","datosAlumno",+reserva);
+       // const datos = call("ReslabEtsit", "quienEs",+reserva);
+       const datos = call("ReslabEtsit", "datosAlumnoNumber", +reserva);
+
+    
         
-       // const datosPersona = call("ReslabEtsit","datosAlumno",  );
         //COLAPSA pq reserva es string
+        console.log("persona = ", datosPersona)
+        console.log("reserva = ", reserva)
+        console.log("turno = ", i)
 
             rows.push(
                <td key={"p2-" + puestoIndice + "-" + el}>
 
-                        {typeof reservax}
+                     
                         {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> :  
-                        reserva === "0x0000000000000000000000000000000000000000" ? "✓" : "OCUPADO POR "   }
-                 
-                        {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> :  
-                        reserva === "0x0000000000000000000000000000000000000000" ? "" : "datosPersona?.email" }
+                        reserva === "0x0000000000000000000000000000000000000000" ? "✓" : "OCUPADO POR " + reserva }
+                    
+                      
 
-                        {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> :  
-                        reserva === "0x0000000000000000000000000000000000000000" ? "" : "  Nombre: " }
-                        {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> :  
-                        reserva === "0x0000000000000000000000000000000000000000" ? "" : "datosPersona?.nombre" }
+                      
+
                     
 
                 </td>

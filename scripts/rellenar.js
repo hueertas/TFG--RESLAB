@@ -41,6 +41,8 @@ module.exports = async callback => {
 
     
 
+    
+
 
         
        console.log("Crear  laboratrios:");

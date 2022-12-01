@@ -7,9 +7,11 @@ const Navegacion = () => (
     <nav>
          <ul>
             <li><Link to="/"><img className="Home" src="/home.jpg"/></Link></li>
+
+            
             
             <li><Link to="/asignaturas/">Asignaturas</Link></li>
-            
+      
             <SoyAlguno owner>
             <li><Link to="/alumnos/">Alumnos</Link></li>
             <li><Link to="/profesores/">Profesores</Link></li>
@@ -21,6 +23,8 @@ const Navegacion = () => (
             <SoyAlguno owner>
             <li><Link to="/reservasLaboratorios/">Reservas</Link></li>
             </SoyAlguno>
+
+            
            
          
             

@@ -33,8 +33,9 @@ const TablaMisCosasRow =  ({indexlab,puestoIndice, fecha,NAsignatura}) =>  {
 
 
                         {typeof reserva === "undefined" ?   <img className="reloj" src="/reloj.png"/> :  
-                        reserva === "0x0000000000000000000000000000000000000000" ? "✓" : reserva === miaddress ? "OCUPADO" : "MI RESERVA"   }
-                 
+                        reserva === "0x0000000000000000000000000000000000000000" ? "✓" : +reserva === +miaddress ? "MI RESERVA" : "OCUPADO"  }
+                       
+                      
                         
 
                     

@@ -64,7 +64,7 @@ const BotonQuitarReservar = ({puestoIndice,fecha,turnoIndex,NAsignatura}) => {
                    <img className="noReserva" src="/noReserva.png"/>
                 </button>
 
-                <p> Último estado = {status} </p>
+                {/*<p> Último estado = {status} </p>*/}
 
         
          

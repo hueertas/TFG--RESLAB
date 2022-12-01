@@ -18,11 +18,11 @@ const ReservarPuestos = ({indexlab,fecha,NAsignatura}) => {
 
     return (
         <section className="AppReservaPuestosSection">
-            <h2 className="ReservarPuestosTitulo">Reservar Puestos </h2>
+            <h2 className="ReservarPuestosTitulo">Reserve aquí su puesto: </h2>
+            <h2 className="ReservarPuestosNota">Nota: Sólo se podrá reservar un máximo de tres turnos por día. Cualquier duda consulte con el administrador de la dApp. Para ello pulse Contacto en la navegación de la parte izquierda.</h2>
 
-
-            <div className="TablaReservarPuestos">
-                <table>
+            <div className="TablaReservar">
+                <table className="TablaReservarPuestos">
                     <ReservarPuestosHead />
                     <ReservarPuestosBody indexlab={indexlab} fecha={fecha} NAsignatura={NAsignatura} />
                 </table>

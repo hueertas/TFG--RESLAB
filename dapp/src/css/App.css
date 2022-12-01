@@ -1,7 +1,6 @@
 
 
 
-
 .App {
   margin: 12px;
   width: 100%;
@@ -25,7 +24,10 @@
   color:  rgb(9, 94, 146);
   font-size:x-large;
  
-  font-family:Georgia, 'Times New Roman', Times, serif
+  font-family:Georgia, 'Times New Roman', Times, serif;
+
+ 
+ 
  
 
       
@@ -88,9 +90,10 @@ nav ul li a {
 .covid{
   position: absolute;
   
-  left: 800px;
-  width: 350px;
-  top: 90px;
+  left: 1100px;
+  width: 450px;
+  height: 250px;
+  top: 110px;
  
 }
 
@@ -121,7 +124,16 @@ nav ul li a {
   position: absolute;
   
   left: 600px;
-  top:250px;
+  top:375px;
+  
+}
+
+.AppMisCosasdiv1{
+  position: absolute;
+  
+  left: 450px;
+  top:780px;
+  
 }
 
 .AppMisCosasSection{
@@ -156,15 +168,31 @@ nav ul li a {
   left: 200px;
 
   top:150px;
+  font-size: 20px;
+  color: rgb(9, 94, 146);;
 }
 
 .AppMisReservas{
+  
   position: absolute;
+  height: 650px;
+  width: 900px;
   
   right: -700px;
 
   top:-20px;
   
+
+}
+.AppMisReservas1{
+  overflow-y:scroll;
+ 
+  height: 520px;
+  width: 900px;
+  border: solid 2px rgb(155, 176, 192);
+          
+  white-space: pre-line;
+  text-overflow: ellipsis;
 
 }
 
@@ -175,8 +203,59 @@ nav ul li a {
 
 .AppAsignaturas{
   position: absolute;
-  left: 700px;
-  color:  rgb(11, 111, 173);
+  left: 300px;
+  color:  rgb(86, 20, 20);
+  font-size: 20px;
+  text-align: center;
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Cabin Condensed', sans-serif;
+  letter-spacing: .05em;
+  
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+
+
+  
+
+}
+
+.AppAlumno{
+  position: relative;
+  left: -300px;
+  color: rgb(9, 94, 146);
+  top:-100px;
+  font-size: 20px;
+  
+
+  
+  
+  padding: 25px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .05em;
+    text-shadow: 
+      1px 1px 0px #dae4ec, 
+      5px 5px 5px rgba(0, 0, 0, 0.2);
+
+
+
+  
+
+}
+
+
+
+
+.ReservarPuestosTitulo{
+ 
+
+  color:   rgb(9, 94, 146);
+  
+  font-size: 30px;
   
   text-align: center;
   padding: 25px 20px;
@@ -192,23 +271,10 @@ nav ul li a {
   
 
 }
+.ReservarPuestosNota{
+ 
 
-.AppAlumno{
-  position: relative;
-  left: -300px;
-  color:  rgb(11, 111, 173);
-  top:-100px;
-  font-size: 30px;
-
-  
-  
-  padding: 25px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: .05em;
-    text-shadow: 
-      1px 1px 0px #dae4ec, 
-      5px 5px 5px rgba(0, 0, 0, 0.2);
+font-size: 15px;
 
 
 
@@ -216,24 +282,11 @@ nav ul li a {
 
 }
 
-.ReservarPuestosTitulo{
- 
-
-  color:  rgb(11, 111, 173);
+.AppReservaPuestosSection{
+  position: absolute;
+  top:-50px;
+  left:100px;
   
-  font-size: 50px;
-  
-  
-  padding: 25px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: .05em;
-    text-shadow: 
-      1px 1px 0px #dae4ec, 
-      5px 5px 5px rgba(0, 0, 0, 0.2);
-
-
-
   
 
 }
@@ -243,7 +296,8 @@ nav ul li a {
   left: -280px;
   color:  rgb(12, 13, 13);
   top:-160px;
-  font-size: 20px;
+  font-size: 18px;
+  
   
   
   
@@ -265,15 +319,21 @@ nav ul li a {
 .Selectcalendar{
   position: relative;
   left: -280px;
-  color:   rgb(11, 111, 173);
-  top:-160px;
+  color:  rgb(9, 94, 146);
+  top:-180px;
   font-size: 20px;
 
+
+}
+
+.Selectcalendar1{
+  position: relative;
+  left: -280px;
+  color:  rgb(9, 94, 146);
+  top:-180px;
+  font-size: 20px;
   
   
-
-
-
 
   
 
@@ -320,6 +380,11 @@ nav ul li a {
   left: -400px;
   top:540px;
 }
+.volverLab1{
+  position: absolute;
+  left: -400px;
+  top:300px;
+}
 
 
 
@@ -329,7 +394,8 @@ nav ul li a {
   position: absolute;
   position: absolute;
   left: 300px;
-  color:  rgb(11, 111, 173);
+  color:  rgb(86, 20, 20);
+  font-size: 20px;
   
   text-align: center;
   padding: 25px 20px;
@@ -578,9 +644,9 @@ table {
           color: rgb(86, 20, 20);
           
           font-weight: bold;
-          text-align: left;
+          text-align: center;
           height: 300px;
-          width: 500px;
+          width: 900px;
           opacity: 0.8;
           border-collapse: separate;
 
@@ -600,10 +666,50 @@ table {
           background-color: rgb(249, 234, 234);
         }
 
+        
+        .TablaAppMisReservas{
+          
+         
+          text-align:center; 
+          border: solid 2px rgb(155, 176, 192);
+      
+          left: 500px;
+          bottom: 300px;
+          color: rgb(86, 20, 20);
+          
+          font-weight: bold;
+          text-align: center;
+          height: 400px;
+          width: 875px;
+          opacity: 0.8;
+          border-collapse: separate;
+
+          background-color: rgb(179, 225, 236);
+          
+
+        }
+
+        .AppMisReservas{
+          position:absolute;
+
+          left:700px;
+          top:-10px;
+
+
+        }
+
+      
+
+
 
         .tablaAsignaturasdiv{
           overflow-y:scroll;
-          height: 600px;
+          height: 500px;
+          border: solid 2px rgb(155, 176, 192);
+          
+          white-space: pre-line;
+          text-overflow: ellipsis;
+          
          }
 
 
@@ -628,9 +734,10 @@ table {
 
         .clicar{
           
-          height: 50px;
-          width: 50px;
-          text-align:center; 
+          height: 140px;
+          width: 140px;
+         float: center;
+         
 
         }
 
@@ -764,9 +871,39 @@ table {
        }
 
        .TablaReservarPuestos{
+
         overflow:scroll;
-        width: 700px;
+        width: 900px;
         height: 300px;
+        font-size: 22px;
+        border: solid 2px rgb(155, 176, 192);
+          
+          white-space: pre-line;
+          text-overflow: ellipsis;
+          opacity: 0.8;
+          border-collapse: separate;
+
+          background-color: rgb(179, 225, 236);
+       }
+
+       
+       .TablaReservarPuestos th {
+        background-color: rgb(221, 227, 230); 
+      }
+
+      .TablaReservarPuestos tr:nth-child(odd) {
+        background-color: rgb(186, 210, 218);
+      }
+      .TablaReservarPuestos tr:nth-child(even) {
+        background-color: rgb(218, 237, 241);
+      }
+
+
+       .TablaReservar{
+
+        overflow-y:scroll;
+        width: 930px;
+        height: 500px;
        }
           
                     
@@ -780,7 +917,7 @@ table {
           
         .reservaLibre{
 
-          width: 25px;
+          width: 60px;
           height: 25px;
          
         
@@ -793,7 +930,7 @@ table {
 
         .noReserva{
 
-          width: 50px;
+          width: 60px;
           height: 25px;
 
 

@@ -13,7 +13,7 @@ const LaboratoriosHead = () =>
         <th>Nombre</th>
         
         <th>Lista de Asignaturas</th>
-        <th>Info</th>
+        <th>Información</th>
        
 
 

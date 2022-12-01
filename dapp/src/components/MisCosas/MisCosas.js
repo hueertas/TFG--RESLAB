@@ -18,14 +18,16 @@ export const MisCosas = () => {
         <h2>Mis Cosas</h2>
         <MisDatos/>
         
-    <section className="AppMisReservas">
+    <div className="AppMisReservas">
     <h3>Mis Reservas</h3>
-    <table >
+    <div className="AppMisReservas1">
+    <table className="TablaAppMisReservas">
         <MisReservasHead/>
         <MisReservasBody  />
        
     </table>
-    </section>
+    </div>
+    </div>
     </section>;
 };
 
@@ -51,7 +53,7 @@ export const MiReserva = () => {
 
         <div className='AppMisCosasdiv'>
 
-            <h1 className='Selectcalendar'>- Seleccione el día para reservar turno:</h1>
+            <h1 className='Selectcalendar'>Seleccione el día para reservar turno:</h1>
 
             <Calendar className='Selectcalendar'
             value={dateState}
@@ -64,12 +66,13 @@ export const MiReserva = () => {
             </div>
 
 
-            <Link className='volverLab' to="/miscosas"><img className="volver" src="/volver.png"/></Link>
+            <Link className='volverLab1' to="/miscosas"><img className="volver" src="/volver.png"/></Link>
 
-            <TablaMisCosas indexlab={index} fecha={myEpoch} NAsignatura={datos?.asignaura}></TablaMisCosas>
+            
 
         </div>
-        <div className='AppReservaPuestos'> 
+        <div className='AppMisCosasdiv1'> 
+        <TablaMisCosas indexlab={index} fecha={myEpoch} NAsignatura={datos?.asignaura}></TablaMisCosas>
 
         </div>
 
